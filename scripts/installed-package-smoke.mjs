@@ -17,6 +17,8 @@ import process from "node:process";
 import { fileURLToPath } from "node:url";
 import { setTimeout as sleep } from "node:timers/promises";
 
+import { withMountedDmg } from "./mounted-dmg.mjs";
+
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(scriptDirectory, "..");
 const packageStagingRoot = resolve(repositoryRoot, "artifacts/package-smoke");
@@ -347,7 +349,8 @@ function captureOutput(stream, append) {
 }
 
 async function terminateProcessTree(child) {
-  if (child.exitCode !== null || child.signalCode !== null) return;
+  if (!child.pid || child.exitCode !== null || child.signalCode !== null)
+    return;
   if (process.platform === "win32") {
     runCommand("taskkill.exe", ["/PID", String(child.pid), "/T", "/F"]);
   } else {
@@ -375,7 +378,7 @@ async function terminateProcessTree(child) {
   }
 }
 
-async function launchUntilReady(executable, layout) {
+export async function launchUntilReady(executable, layout) {
   await access(executable);
   let standardOutput = "";
   let standardError = "";
@@ -385,6 +388,21 @@ async function launchUntilReady(executable, layout) {
     stdio: ["ignore", "pipe", "pipe"],
     windowsHide: true,
   });
+  let processError;
+  child.on("error", (error) => {
+    processError = error;
+  });
+  const diagnostics = () =>
+    `\nstdout:\n${standardOutput}\nstderr:\n${standardError}`;
+  const checkProcessError = () => {
+    if (processError) {
+      throw new Error(
+        `Installed Graphite could not run: ${processError.message}` +
+          diagnostics(),
+        { cause: processError },
+      );
+    }
+  };
   const appendOutput = (name) => (chunk) => {
     const combined = `${name === "stdout" ? standardOutput : standardError}${chunk}`;
     if (name === "stdout") standardOutput = combined.slice(-32_768);
@@ -393,30 +411,48 @@ async function launchUntilReady(executable, layout) {
   captureOutput(child.stdout, appendOutput("stdout"));
   captureOutput(child.stderr, appendOutput("stderr"));
 
+  let startupError;
   try {
     const deadline = Date.now() + startupTimeoutMs;
     while (!(await exists(layout.databasePath)) && Date.now() < deadline) {
+      checkProcessError();
       if (child.exitCode !== null || child.signalCode !== null) {
         throw new Error(
           `Installed Graphite exited before creating its database.` +
-            `\nstdout:\n${standardOutput}\nstderr:\n${standardError}`,
+            diagnostics(),
         );
       }
       await sleep(250);
     }
+    checkProcessError();
     assert(
       await exists(layout.databasePath),
-      `Installed Graphite did not create '${layout.databasePath}' within ${startupTimeoutMs} ms.`,
+      `Installed Graphite did not create '${layout.databasePath}' within ${startupTimeoutMs} ms.` +
+        diagnostics(),
     );
     await sleep(stabilityWindowMs);
+    checkProcessError();
     assert(
       child.exitCode === null && child.signalCode === null,
       `Installed Graphite exited during the startup stability window.` +
-        `\nstdout:\n${standardOutput}\nstderr:\n${standardError}`,
+        diagnostics(),
     );
-  } finally {
-    await terminateProcessTree(child);
+  } catch (error) {
+    startupError = error;
   }
+  try {
+    await terminateProcessTree(child);
+  } catch (error) {
+    if (startupError) {
+      throw new AggregateError(
+        [startupError, error],
+        "Installed startup and cleanup failed.",
+        { cause: error },
+      );
+    }
+    throw error;
+  }
+  if (startupError) throw startupError;
 }
 
 async function validateRuntime(executable, layout, lifecycle) {
@@ -553,23 +589,11 @@ async function windowsLifecycle(artifacts, layout) {
 }
 
 async function copyMacosApplication(dmg, layout) {
-  const mountRoot = resolve(layout.scratchRoot, "dmg");
   const installRoot = resolve(layout.scratchRoot, "Applications");
   const installedApp = resolve(installRoot, "Graphite.app");
-  assertChildPath(layout.scratchRoot, mountRoot, "DMG mount root");
   assertChildPath(layout.scratchRoot, installedApp, "macOS install root");
-  await rm(mountRoot, { force: true, recursive: true });
-  await mkdir(mountRoot, { recursive: true });
   await mkdir(installRoot, { recursive: true });
-  runCommand("hdiutil", [
-    "attach",
-    "-readonly",
-    "-nobrowse",
-    "-mountpoint",
-    mountRoot,
-    dmg,
-  ]);
-  try {
+  await withMountedDmg(dmg, async (mountRoot) => {
     const applications = (await readdir(mountRoot, { withFileTypes: true }))
       .filter((entry) => entry.isDirectory() && entry.name.endsWith(".app"))
       .map((entry) => resolve(mountRoot, entry.name));
@@ -579,9 +603,7 @@ async function copyMacosApplication(dmg, layout) {
     );
     await rm(installedApp, { force: true, recursive: true });
     runCommand("ditto", [applications[0], installedApp]);
-  } finally {
-    runCommand("hdiutil", ["detach", mountRoot]);
-  }
+  });
   return installedApp;
 }
 

@@ -190,6 +190,16 @@ function HowTo() {
         similarity groups, not verified scientific classifications. Zotero tags
         remain unchanged. Collections reuse the library-wide map.
       </p>
+      <h3>Back and selection</h3>
+      <p>
+        Opening a search result selects and centers that paper like a canvas
+        click; use checkboxes to collect multiple papers. Back restores previous
+        graph navigation and paper selections, including the camera. Clicking
+        empty graph space or Clear selection removes the selection and focus
+        without moving the camera. Clear selection closes its panel; reopen it
+        to use Undo, which restores only selected papers. Dragging or zooming
+        the graph does not clear selection.
+      </p>
       <h3>Navigate a PDF</h3>
       <p>
         Use the page arrows, thumbnails, or Page Up and Page Down. To jump to a

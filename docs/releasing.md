@@ -42,6 +42,20 @@ packages, checksums, and synthetic metadata below the ignored
 `artifacts/package-smoke/` directory. Raw bundles are below the ignored
 `.cache/cargo-target/release/bundle/` directory.
 
+Both macOS smoke checks mount the DMG read-only in a dedicated temporary
+directory. They retry normal unmounting up to three times and verify that the
+volume is no longer mounted before deleting that directory. If unmounting
+fails or cannot be verified, the check fails and retains the directory for
+runner cleanup. Diagnostics preserve inspection and cleanup errors together;
+no forced unmount or skipped package check is used.
+
+macOS dependency inspection accepts Apple's system SQLite library under
+`/usr/lib/`, while still rejecting external copies of the checked runtimes.
+Installed-startup failures include captured standard output and error output,
+including timeouts. If process termination also fails, both errors remain
+visible. A vanished unrelated volume does not prevent DMG cleanup; other
+mount-inventory errors still fail the check without deleting its directory.
+
 The installed-runtime smoke command is deliberately restricted to clean
 GitHub Actions runners. Do not bypass its guards or test installation over
 a valuable application profile. Native interactive acceptance needs a

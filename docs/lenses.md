@@ -8,7 +8,8 @@ created. It does not create or modify Zotero collections.
 
 1. Open **Search library**. Check papers to collect them without closing
    search. Try a second query: the first papers stay selected. Opening a
-   result's title focuses that paper without replacing your selection.
+   result's title selects that paper alone and centers it in the graph,
+   just like a node click. Use checkboxes to keep a multiple-paper selection.
 2. Choose **Review selection** in search, or **N selected** in the top bar.
    The panel lists full titles, first authors, and years, including papers
    outside the current graph. Remove individual papers or clear the list;
@@ -20,12 +21,16 @@ created. It does not create or modify Zotero collections.
    select the Lens in the sidebar to reopen its papers.
 
 The working selection lasts for this session and library. Search queries,
-filters, result pages, graph views, Back, and Reader navigation keep it.
+filters, result pages, graph views, and Reader navigation keep it. Back
+restores the selection saved before the corresponding navigation step.
 Switching libraries clears it and its Undo history; save a Lens first to
 keep the set. A graph click still selects that paper; Shift/Command-click
 adds or removes papers. Use **Add to selection** in a paper's details to
-collect a focused search result. Clicking the graph background or closing
-those details only dismisses focus.
+collect a focused search result. Clicking empty graph space clears selection
+and focus without moving the camera. Clear selection does the same and closes
+the selection panel. Reopen the panel to Undo the last removal or clear:
+Undo restores only the selected papers, not focus or camera. Closing paper
+details alone dismisses focus without clearing the selection.
 
 Checkboxes work with Tab and Space. In the selection panel, each title opens
 its paper and each named Remove control edits membership. Escape closes the

@@ -8,6 +8,7 @@ export interface PaperSelectionState {
 }
 
 export type PaperSelectionAction =
+  | { type: "restore"; state: PaperSelectionState }
   | {
       type: "add" | "toggle" | "replace";
       paper: ResearchItem;
@@ -29,6 +30,8 @@ export function paperSelectionReducer(
   action: PaperSelectionAction,
 ): PaperSelectionState {
   switch (action.type) {
+    case "restore":
+      return action.state;
     case "reset":
       return {
         ...emptyPaperSelection,

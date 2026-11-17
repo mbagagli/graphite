@@ -8,7 +8,12 @@ import {
   useReducer,
 } from "react";
 import { useLibraryPreparation } from "./useLibraryPreparation";
-import { emptyPaperSelection, paperSelectionReducer } from "./paperSelection";
+import {
+  type PaperSelectionState,
+  type PaperSelectionAction,
+  emptyPaperSelection,
+  paperSelectionReducer,
+} from "./paperSelection";
 import { GraphHistory } from "./graphHistory";
 import {
   sharedMetadata,
@@ -65,6 +70,10 @@ const defaultLayers: GraphLayerVisibility = {
 };
 
 interface GraphSnapshot {
+  collected: PaperSelectionState;
+  relationshipEvidence:
+    RelationshipEvidence | SemanticRelationshipEvidence | null;
+  selectedExternalNode: GraphNode | null;
   projection: GraphProjection;
   activePaperId: string | null;
   layers: GraphLayerVisibility;
@@ -123,6 +132,10 @@ export function useWorkspace() {
   const [focusRequest, setFocusRequest] = useState<GraphFocusRequest | null>(
     null,
   );
+  const focusRequestSerial = useRef(0);
+  const requestGraphFocus = useCallback((id: string) => {
+    setFocusRequest({ id, serial: ++focusRequestSerial.current, dive: false });
+  }, []);
   const [view, setView] = useState<ViewMode>("graph");
   const [collected, dispatchSelection] = useReducer(
     paperSelectionReducer,
@@ -272,60 +285,6 @@ export function useWorkspace() {
     [activeLensId, data, temporaryLens],
   );
 
-  const selectPaper = useCallback(
-    (
-      paperId: string,
-      additive = false,
-      source: ResearchSelection["source"] = "graph",
-    ) => {
-      const paper = papersById.get(paperId);
-      if (!paper) return;
-      dispatchSelection({
-        type: additive ? "toggle" : "replace",
-        paper,
-        source,
-      });
-      focusPaper(paperId);
-      if (view === "analytics") {
-        setFocusRequest((previous) => ({
-          id: paperId,
-          serial: (previous?.serial ?? 0) + 1,
-          dive: false,
-        }));
-      }
-      setView("graph");
-      setRelationshipEvidence(null);
-      setSelectedExternalNode(null);
-    },
-    [focusPaper, papersById, view],
-  );
-
-  const addToSelection = useCallback(
-    (paperId: string) => {
-      const paper = papersById.get(paperId);
-      if (paper) dispatchSelection({ type: "add", paper, source: "inspector" });
-    },
-    [papersById],
-  );
-
-  const clearFocus = useCallback(() => {
-    focusPaper(null);
-    setRelationshipEvidence(null);
-    setSelectedExternalNode(null);
-  }, [focusPaper]);
-
-  const clearSelection = useCallback(() => {
-    dispatchSelection({ type: "clear" });
-    clearFocus();
-  }, [clearFocus]);
-
-  const toggleLayer = useCallback((relation: GraphRelationType) => {
-    setLayers((current) => ({
-      ...current,
-      [relation]: !current[relation],
-    }));
-  }, []);
-
   const captureGraph = useCallback((): GraphSnapshot => {
     if (!data) throw new Error("The library is still loading.");
     graphControls.current?.capture();
@@ -335,6 +294,9 @@ export function useWorkspace() {
         items: data.snapshot.items,
         topics: data.snapshot.topics,
       },
+      collected,
+      relationshipEvidence,
+      selectedExternalNode,
       activePaperId,
       layers,
       activeLensId,
@@ -353,6 +315,9 @@ export function useWorkspace() {
     });
   }, [
     data,
+    collected,
+    relationshipEvidence,
+    selectedExternalNode,
     activePaperId,
     layers,
     activeLensId,
@@ -368,6 +333,114 @@ export function useWorkspace() {
     coverageNotice,
     seedConnections,
   ]);
+
+  const recordGraph = useCallback(() => {
+    if (!data) return;
+    history.current.commit(history.current.begin(), captureGraph());
+    retryExploration.current = null;
+    setExplorationPending(null);
+    setExplorationError(null);
+    setHistoryDepth(history.current.depth);
+  }, [data, captureGraph]);
+
+  const editSelection = useCallback(
+    (action: PaperSelectionAction) => {
+      if (paperSelectionReducer(collected, action) === collected) return;
+      recordGraph();
+      dispatchSelection(action);
+    },
+    [collected, recordGraph],
+  );
+
+  const selectPaper = useCallback(
+    (
+      paperId: string,
+      additive = false,
+      source: ResearchSelection["source"] = "graph",
+    ) => {
+      const paper = papersById.get(paperId);
+      if (!paper) return;
+      if (
+        additive ||
+        activePaperId !== paperId ||
+        collected.papers.length !== 1 ||
+        collected.papers[0]?.id !== paperId ||
+        relationshipEvidence ||
+        selectedExternalNode
+      )
+        recordGraph();
+      dispatchSelection({
+        type: additive ? "toggle" : "replace",
+        paper,
+        source,
+      });
+      focusPaper(paperId);
+      if (view === "analytics") {
+        requestGraphFocus(paperId);
+      }
+      setView("graph");
+      setRelationshipEvidence(null);
+      setSelectedExternalNode(null);
+    },
+    [
+      focusPaper,
+      papersById,
+      view,
+      activePaperId,
+      collected,
+      relationshipEvidence,
+      selectedExternalNode,
+      recordGraph,
+      requestGraphFocus,
+    ],
+  );
+
+  const addToSelection = useCallback(
+    (paperId: string) => {
+      const paper = papersById.get(paperId);
+      if (paper) editSelection({ type: "add", paper, source: "inspector" });
+    },
+    [papersById, editSelection],
+  );
+
+  const clearFocus = useCallback(() => {
+    graphControls.current?.navigate();
+    setFocusRequest(null);
+    focusPaper(null);
+    setRelationshipEvidence(null);
+    setSelectedExternalNode(null);
+  }, [focusPaper]);
+
+  const clearSelection = useCallback(() => {
+    if (
+      collected.papers.length ||
+      activePaperId ||
+      relationshipEvidence ||
+      selectedExternalNode ||
+      highlightedPaperIds.length
+    )
+      recordGraph();
+    setHighlightedPaperIds([]);
+    setSeedConnections({});
+    setSelectionConnectionsOnly(false);
+    dispatchSelection({ type: "clear" });
+    clearFocus();
+  }, [
+    clearFocus,
+    collected,
+    activePaperId,
+    relationshipEvidence,
+    selectedExternalNode,
+    highlightedPaperIds,
+    recordGraph,
+  ]);
+
+  const toggleLayer = useCallback((relation: GraphRelationType) => {
+    setLayers((current) => ({
+      ...current,
+      [relation]: !current[relation],
+    }));
+  }, []);
 
   const applyProjection = useCallback(
     (projection: GraphProjection) => {
@@ -430,6 +503,9 @@ export function useWorkspace() {
     const saved = history.current.back();
     setExplorationPending(null);
     setExplorationError(null);
+    retryExploration.current = null;
+    evidenceRequest.current++;
+    setFocusRequest(null);
     if (!saved) return;
     graphControls.current?.navigate();
     Object.keys(graphSession.current).forEach(
@@ -447,6 +523,9 @@ export function useWorkspace() {
     setRestoreSerial((value) => value + 1);
     applyProjection(saved.projection);
     focusPaper(saved.activePaperId);
+    dispatchSelection({ type: "restore", state: saved.collected });
+    setRelationshipEvidence(saved.relationshipEvidence);
+    setSelectedExternalNode(saved.selectedExternalNode);
     setLayers(saved.layers);
     setActiveLensId(saved.activeLensId);
     setTemporaryLens(saved.temporaryLens);
@@ -541,7 +620,12 @@ export function useWorkspace() {
   );
 
   const findPaper = useCallback(
-    async (id: string) => {
+    async (id: string, { select = false }: { select?: boolean } = {}) => {
+      if (select && data?.graph.nodes.some((node) => node.paperId === id)) {
+        selectPaper(id, false, "search");
+        requestGraphFocus(id);
+        return;
+      }
       await runExploration(
         "Opening paper...",
         async () => {
@@ -560,20 +644,28 @@ export function useWorkspace() {
           setActiveLensId(null);
           setHighlightedPaperIds([]);
           setScopeLabel("Complete library");
+          if (select) {
+            const paper = projection.items.find((item) => item.id === id)!;
+            dispatchSelection({ type: "replace", paper, source: "search" });
+          }
           focusPaper(id);
-          setFocusRequest((previous) => ({
-            id,
-            serial: (previous?.serial ?? 0) + 1,
-          }));
+          requestGraphFocus(id);
         },
       );
     },
-    [runExploration, applyProjection, focusPaper],
+    [
+      runExploration,
+      applyProjection,
+      focusPaper,
+      data,
+      selectPaper,
+      requestGraphFocus,
+    ],
   );
 
   const focusSearchResults = useCallback(
     async (resultIds: string[], selectedId?: string) => {
-      if (selectedId) return findPaper(selectedId);
+      if (selectedId) return findPaper(selectedId, { select: true });
       if (!resultIds.length) return;
       await runExploration(
         "Opening search results...",
@@ -1035,10 +1127,9 @@ export function useWorkspace() {
     selectionNotice: collected.notice,
     canUndoSelection: collected.undo !== null,
     toggleSelectedPaper: (paper: ResearchItem) =>
-      dispatchSelection({ type: "toggle", paper, source: "search" }),
-    removeSelectedPaper: (id: string) =>
-      dispatchSelection({ type: "remove", id }),
-    undoSelection: () => dispatchSelection({ type: "undo" }),
+      editSelection({ type: "toggle", paper, source: "search" }),
+    removeSelectedPaper: (id: string) => editSelection({ type: "remove", id }),
+    undoSelection: () => editSelection({ type: "undo" }),
     clearSelection,
     clearFocus,
     toggleLayer,

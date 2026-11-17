@@ -291,7 +291,10 @@ export function App() {
                   scopeLabel={workspace.scopeLabel}
                   onSelectNode={workspace.selectGraphNode}
                   onSelectEdge={workspace.inspectRelationship}
-                  onClearSelection={workspace.clearFocus}
+                  onClearSelection={() => {
+                    workspace.clearSelection();
+                    setSelectionOpen(false);
+                  }}
                   onToggleLayer={workspace.toggleLayer}
                   onClearLens={() => workspace.activateLens(null)}
                   activePaperId={workspace.selection.activePaperId}
@@ -503,7 +506,10 @@ export function App() {
             void workspace.findPaper(id);
           }}
           onRemove={workspace.removeSelectedPaper}
-          onClear={workspace.clearSelection}
+          onClear={() => {
+            workspace.clearSelection();
+            setSelectionOpen(false);
+          }}
           onUndo={workspace.undoSelection}
           onSave={() =>
             setLensEditor({
@@ -545,7 +551,7 @@ export function App() {
         onFocusResults={(ids) => void workspace.focusSearchResults(ids)}
         onSelectPaper={(id) => {
           setSelectionOpen(false);
-          void workspace.findPaper(id);
+          void workspace.findPaper(id, { select: true });
         }}
         sourceMode={workspace.data.source.mode}
         semantic={workspace.data.semantic}

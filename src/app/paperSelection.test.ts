@@ -10,6 +10,21 @@ const selected = papers.reduce(
 );
 
 describe("collected papers", () => {
+  it("restores a history snapshot including its own Undo state", () => {
+    const saved = paperSelectionReducer(selected, {
+      type: "remove",
+      id: papers[0].id,
+    });
+    const future = paperSelectionReducer(saved, { type: "clear" });
+    const restored = paperSelectionReducer(future, {
+      type: "restore",
+      state: saved,
+    });
+    expect(restored).toEqual(saved);
+    expect(paperSelectionReducer(restored, { type: "undo" }).papers).toEqual(
+      papers,
+    );
+  });
   it("retains ordered metadata across additions and deduplicates IDs", () => {
     const duplicate = paperSelectionReducer(selected, {
       type: "add",

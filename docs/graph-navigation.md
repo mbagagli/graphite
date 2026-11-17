@@ -136,8 +136,10 @@ works are identified separately from local papers.
 
 Check search results to collect papers across queries without closing search.
 The top-bar selected count opens a list with Remove, Clear, Undo, and Save as
-Lens. Opening a search result focuses it without changing that list. Back and
-Reader navigation preserve collected papers. The working selection lasts
+Lens. Opening a search result selects that paper alone, highlights its connections,
+and centers it without the extra zoom of a double-click. If it is already
+on the canvas, the current graph scope is preserved. Use search checkboxes
+to collect multiple papers. Reader navigation preserves collected papers. Back restores the saved selection. The working selection lasts
 until you clear it, replace it with a graph selection, switch libraries, or
 restart. Save a Lens for later sessions. See the [Lens guide](lenses.md).
 
@@ -146,11 +148,15 @@ navigation after its projection loads. Show results on graph explicitly maps the
 loaded result set; Load next results remains available inside search. Canceling
 search preserves the graph, selection and camera.
 
-Back stores up to 20 successful explorations during the current session,
-including collections, lenses, paper searches and scientific neighborhoods. It
-restores the projection, active paper, scope, connection settings,
-settled layouts, mode and both cameras. Hovering, selection changes, navigation,
-visibility toggles and failed requests do not create entries. Starting another
+Back stores up to 20 navigation and selection steps during the current session,
+including paper clicks, multiple selection, clearing selection, collections,
+lenses, paper searches and scientific neighborhoods. It restores selection,
+focus, projection, scope, connection settings, layouts, mode and both cameras.
+Camera-only movement, hovering, no-op clears, visibility toggles and failed
+requests do not create entries. Empty-canvas clicks clear selection and focus
+without moving the camera; dragging the background does not clear anything.
+Clear selection also closes its panel. Undo in that panel recovers only the
+selected papers, without restoring focus or camera. Starting another
 exploration supersedes older requests; Back invalidates pending responses.
 Library/source changes and rebuilt data reset history with a short explanation.
 
@@ -198,3 +204,6 @@ For the focused browser regression, start `npm run dev` and run
 uses the browser demo and checks both popovers, scope
 persistence, collapse controls, keyboard focus, compact layout, light
 and dark themes, and reduced motion.
+
+Run `node scripts/graph-history-smoke.mjs` with `npm run dev` active to verify
+Back, clearing, Undo, camera continuity and background dragging in 2D/3D.

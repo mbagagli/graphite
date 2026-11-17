@@ -19,6 +19,8 @@ import { arch, homedir, hostname, release, tmpdir } from "node:os";
 import { basename, dirname, extname, join, relative, resolve } from "node:path";
 import process from "node:process";
 import { fileURLToPath, URL } from "node:url";
+import { assertNoCustomDynamicRuntime } from "./package-runtime-check.mjs";
+import { withMountedDmg } from "./mounted-dmg.mjs";
 import { privacyFindings } from "./privacy-check.mjs";
 
 import {
@@ -327,15 +329,6 @@ async function findSingleArtifact(directory, extension) {
   return matches[0];
 }
 
-function assertNoCustomDynamicRuntime(output, platform) {
-  const customRuntime = /(?:onnxruntime|llama|usearch|onig|sqlite3)/i;
-  assert(
-    !customRuntime.test(output),
-    `${platform} executable unexpectedly depends on a separately distributed ` +
-      "ONNX, llama.cpp, USearch, Oniguruma, or SQLite runtime.",
-  );
-}
-
 function findApplicationExecutable(entries, filename) {
   const matches = entries.filter(
     (entry) =>
@@ -535,19 +528,8 @@ async function inspectWindows(artifacts, scratchDirectory) {
   );
 }
 
-async function inspectMacos(artifacts, scratchDirectory) {
-  const mountPoint = resolve(scratchDirectory, "dmg");
-  await mkdir(mountPoint);
-  runCommand("hdiutil", [
-    "attach",
-    "-readonly",
-    "-nobrowse",
-    "-mountpoint",
-    mountPoint,
-    artifacts[0],
-  ]);
-
-  try {
+async function inspectMacos(artifacts) {
+  await withMountedDmg(artifacts[0], async (mountPoint) => {
     const entries = await listTree(mountPoint);
     await assertSafeContents(mountPoint, entries);
     await assertProjectLicense(entries);
@@ -596,9 +578,7 @@ async function inspectMacos(artifacts, scratchDirectory) {
     );
     const dynamicDependencies = runCommand("otool", ["-L", executable]);
     assertNoCustomDynamicRuntime(dynamicDependencies, "macOS");
-  } finally {
-    runCommand("hdiutil", ["detach", mountPoint]);
-  }
+  });
 }
 
 async function sha256(path) {
@@ -633,7 +613,7 @@ try {
   } else if (target === "windows-x64") {
     await inspectWindows(artifactPaths, scratchDirectory);
   } else {
-    await inspectMacos(artifactPaths, scratchDirectory);
+    await inspectMacos(artifactPaths);
   }
 } finally {
   await rm(scratchDirectory, { force: true, recursive: true });
