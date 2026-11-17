@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper01",
+  "anchors": [
+    {
+      "id": "paper01-abstract-body",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "normalized",
+        "value": "Petrophysical inversion is an important aspect of reservoir modeling."
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper01-figure-1-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [4],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Self-supervised",
+          "RW-PINN",
+          "architecture",
+          "number",
+          "time",
+          "samples"
+        ],
+        "max_gap": 18
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper01-figure-4a-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [8],
+      "matcher": {
+        "type": "normalized",
+        "value": "A few training and test set seismic traces (normalized) that are given as input to RW-PINN."
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper01-figure-9-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [12],
+      "matcher": {
+        "type": "normalized",
+        "value": "Learning curve for weakly supervised RW-PINN model."
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper01-conclusions-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [16],
+      "matcher": {
+        "type": "exact",
+        "value": "Conclusions"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper01-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [20],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Srivastava",
+          "Dropout",
+          "prevent",
+          "neural",
+          "networks",
+          "overfitting"
+        ],
+        "max_gap": 15
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

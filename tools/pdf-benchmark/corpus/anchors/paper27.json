@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper27",
+  "anchors": [
+    {
+      "id": "paper27-waveform-information",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "full",
+          "waveform",
+          "recordings",
+          "broad",
+          "information",
+          "physical",
+          "processes"
+        ],
+        "max_gap": 14
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper27-orientation-methods-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [4],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "FULL",
+          "WAVEFORM-BASED",
+          "METHODS",
+          "RELATIVE",
+          "ABSOLUTE",
+          "SENSOR",
+          "ORIENTATION"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper27-moment-tensor-fact",
+      "kind": "page_association",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [30],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "DC",
+          "point",
+          "source",
+          "model",
+          "intrinsic",
+          "ambiguity",
+          "fault",
+          "auxiliary",
+          "plane"
+        ],
+        "max_gap": 16
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper27-late-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [57],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Minson",
+          "Dreger",
+          "Stable",
+          "inversion",
+          "complete",
+          "moment",
+          "tensors"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper27-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [60],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Zhu",
+          "Ben-Zion",
+          "Parametrization",
+          "general",
+          "seismic",
+          "potency",
+          "moment",
+          "tensors",
+          "source",
+          "inversion"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper24",
+  "anchors": [
+    {
+      "id": "paper24-field-heterogeneity",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Agricultural",
+          "practices",
+          "applied",
+          "uniformly",
+          "entire",
+          "field",
+          "heterogeneous",
+          "fields",
+          "homogeneous"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper24-electromagnetic-methods-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [4],
+      "matcher": {
+        "type": "normalized",
+        "value": "2. Electromagnetic Methods"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper24-table-1-caption",
+      "kind": "table_value",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [5],
+      "matcher": {
+        "type": "normalized",
+        "value": "Table 1. Comparison between low-frequency and high-frequency electromagnetic methods."
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper24-figure-7-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [17],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Figure",
+          "7",
+          "Electromagnetic",
+          "induction",
+          "surveys",
+          "multi-coil",
+          "sensor",
+          "multi-frequency",
+          "sensor"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper24-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [36],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Ren",
+          "Lootens",
+          "Cornelis",
+          "Detecting",
+          "spatial",
+          "variability",
+          "soil",
+          "compaction",
+          "electrical",
+          "conductivity"
+        ],
+        "max_gap": 14
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

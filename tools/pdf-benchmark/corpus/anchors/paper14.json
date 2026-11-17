@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper14",
+  "anchors": [
+    {
+      "id": "paper14-unsupervised-motivation",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "get",
+          "rid",
+          "dependence",
+          "models",
+          "unsupervised",
+          "learning",
+          "methods",
+          "emerged"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper14-figure-1-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Fig",
+          "1",
+          "Surface",
+          "wave",
+          "dispersion",
+          "energy",
+          "diagram",
+          "planar",
+          "banded",
+          "distribution"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper14-connection-thresholds",
+      "kind": "formula",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [12],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "frequency",
+          "search",
+          "range",
+          "0-2",
+          "Hz",
+          "velocity",
+          "difference",
+          "10",
+          "m/s",
+          "angle",
+          "difference",
+          "30"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper14-figure-26-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [22],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Fig",
+          "26",
+          "Statistics",
+          "picking",
+          "accuracy",
+          "completeness",
+          "Hessian",
+          "method"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper14-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [24],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Zhu",
+          "Computational",
+          "Methods",
+          "Seismology",
+          "Seismological",
+          "Press",
+          "1988"
+        ],
+        "max_gap": 6
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

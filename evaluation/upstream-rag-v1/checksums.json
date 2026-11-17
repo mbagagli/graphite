@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "path": "corpus.json",
+      "sha256": "d7485add0a3210f17b225a0378cad630dcf3a2cc8de5c99c1f89706be372a98a"
+    },
+    {
+      "path": "queries.json",
+      "sha256": "bee39c1e4d9bb1a2b9ea06169d6f90076e75389d294c2e1db26713d18d999d38"
+    },
+    {
+      "path": "review-key.json",
+      "sha256": "a893c7c64925273fc1e8c06f9ad77461a7f951c9053a28eeaad90fcde6188a2c"
+    },
+    {
+      "path": "protocol.json",
+      "sha256": "bba54f35ae12e55ca4a8592a728a421b0596a40266ea099185cb448d12856170"
+    }
+  ]
+}

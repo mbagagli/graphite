@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper23",
+  "anchors": [
+    {
+      "id": "paper23-association-definition",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Seismic",
+          "phase",
+          "association",
+          "connects",
+          "earthquake",
+          "arrival-time",
+          "measurements",
+          "causative",
+          "sources"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper23-figure-1-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Figure",
+          "1",
+          "synthetic",
+          "pick",
+          "data",
+          "northern",
+          "California",
+          "station",
+          "spatial",
+          "graphs"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper23-results-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [12],
+      "matcher": { "type": "exact", "value": "RESULTS" },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper23-known-event-recovery",
+      "kind": "page_association",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [21],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "recovering",
+          "96",
+          "known",
+          "events",
+          "M",
+          "1",
+          "small",
+          "spatial",
+          "temporal",
+          "residuals"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper23-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [24],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Sheen",
+          "Friberg",
+          "Seismic",
+          "phase",
+          "association",
+          "maximum",
+          "likelihood",
+          "method"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

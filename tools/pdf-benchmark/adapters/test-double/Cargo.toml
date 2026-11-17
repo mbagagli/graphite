@@ -1,0 +1,11 @@
+[package]
+name = "graphite-pdf-benchmark-test-double"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.85"
+license = "MIT"
+publish = false
+
+[dependencies]
+graphite-pdf-benchmark-common = { path = "../../common" }
+

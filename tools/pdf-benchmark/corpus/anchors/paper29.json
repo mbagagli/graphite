@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper29",
+  "anchors": [
+    {
+      "id": "paper29-masw-method-fact",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "MASW",
+          "method",
+          "multichannel",
+          "recording",
+          "system",
+          "estimate",
+          "near-surface",
+          "S-wave",
+          "velocity",
+          "high-frequency",
+          "Rayleigh",
+          "waves"
+        ],
+        "max_gap": 14
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper29-resolution-fact",
+      "kind": "page_association",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [7],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "time-variant",
+          "RT",
+          "sparsest",
+          "results",
+          "frequency",
+          "domain",
+          "RT",
+          "directions"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper29-discussion-conclusions-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [15],
+      "matcher": {
+        "type": "normalized",
+        "value": "5. Discussion and Conclusions"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper29-olathe-figure-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [17],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Data",
+          "acquired",
+          "Olathe",
+          "Kansas",
+          "60-channel",
+          "system",
+          "high-resolution",
+          "LRT",
+          "slant",
+          "stacking"
+        ],
+        "max_gap": 18
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper29-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [20],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Xia",
+          "Xu",
+          "Chen",
+          "Kaufmann",
+          "Luo",
+          "Simple",
+          "equations",
+          "high-frequency",
+          "surface-wave"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

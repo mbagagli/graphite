@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper10",
+  "anchors": [
+    {
+      "id": "paper10-abstract-count",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "numeric_context",
+        "value": "497",
+        "unit": null,
+        "tolerance": 0,
+        "context": ["earthquakes"],
+        "window": 220
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper10-table-station",
+      "kind": "table_value",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [3],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["ACB", "Acheberg", "AG", "EB"],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper10-figure-2-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [6],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Epicenters",
+          "focal",
+          "mechanisms",
+          "earthquakes",
+          "recorded",
+          "2012"
+        ],
+        "max_gap": 18
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper10-figure-5-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [9],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["Epicenters", "earthquakes", "magnitudes", "1975", "2012"],
+        "max_gap": 15
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper10-figure-10-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [12],
+      "matcher": {
+        "type": "numeric_context",
+        "value": "21",
+        "unit": "km",
+        "tolerance": 0,
+        "context": ["accelerographs", "Lucerne"],
+        "window": 240
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper10-basel-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [14],
+      "matcher": {
+        "type": "normalized",
+        "value": "3.2.7 Seismicity associated with the former Deep Heat Mining project in Basel"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper10-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [16],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Wagner",
+          "controlled-source",
+          "seismology",
+          "local",
+          "earthquake",
+          "tomography"
+        ],
+        "max_gap": 18
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

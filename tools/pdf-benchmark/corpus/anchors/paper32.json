@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper32",
+  "anchors": [
+    {
+      "id": "paper32-title-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "normalized",
+        "value": "Картирование границ почвенных горизонтов методом георадиолокации"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper32-depth-equation",
+      "kind": "formula",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [8],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["Глубину", "отражающих", "границ", "Z", "V", "t", "2"],
+        "max_gap": 18
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper32-resolution-fact",
+      "kind": "page_association",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [17],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "вертикальная",
+          "разрешающая",
+          "способность",
+          "5",
+          "см",
+          "горизонтальная",
+          "2",
+          "см",
+          "20",
+          "см"
+        ],
+        "max_gap": 22
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper32-review-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [26],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Guo",
+          "Chen",
+          "Cui",
+          "Application",
+          "ground",
+          "penetrating",
+          "radar",
+          "coarse",
+          "root",
+          "review"
+        ],
+        "max_gap": 20
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper32-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [34],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Zhang",
+          "Lin",
+          "Doolittle",
+          "Soil",
+          "layering",
+          "preferential",
+          "flow",
+          "GPR",
+          "Geoderma",
+          "2014"
+        ],
+        "max_gap": 24
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

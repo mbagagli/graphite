@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper34",
+  "anchors": [
+    {
+      "id": "paper34-geostatic-stresses-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "normalized",
+        "value": "GEOSTATIC STRESSES"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper34-mohr-circle-equation",
+      "kind": "formula",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [4],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "tau",
+          "0.5",
+          "sigma",
+          "1",
+          "sigma",
+          "3",
+          "sin",
+          "2",
+          "theta"
+        ],
+        "max_gap": 20
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper34-stress-paths-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [6],
+      "matcher": {
+        "type": "normalized",
+        "value": "Examples of Stress Paths"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper34-elastic-distribution-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [8],
+      "matcher": {
+        "type": "normalized",
+        "value": "ELASTIC STRESS DISTRIBUTION"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper34-drained-undrained-poisson-ratio",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [10],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["Undrained", "loading", "0.5", "Drained", "loading", "1/3"],
+        "max_gap": 16
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

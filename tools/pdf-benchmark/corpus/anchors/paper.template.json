@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper01",
+  "anchors": [
+    {
+      "id": "paper01-table-value",
+      "kind": "table_value",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Candidate anchor; replace this note when human verified or rejected.",
+      "expectedPages": [7],
+      "matcher": {
+        "type": "numeric_context",
+        "value": "327",
+        "unit": "m/s",
+        "tolerance": 0,
+        "context": ["velocity"],
+        "window": 120
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

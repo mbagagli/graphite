@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper15",
+  "anchors": [
+    {
+      "id": "paper15-bedrock-depth-fact",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "depth",
+          "bedrock",
+          "ranging",
+          "5",
+          "60",
+          "m",
+          "lateral",
+          "scales"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper15-methods-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [3],
+      "matcher": { "type": "normalized", "value": "3. Methods" },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper15-low-frequency-fit",
+      "kind": "page_association",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [9],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "multiscale",
+          "strategy",
+          "body",
+          "waves",
+          "low-frequency",
+          "8-24",
+          "Hz",
+          "data",
+          "fit",
+          "reasonably",
+          "well"
+        ],
+        "max_gap": 14
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper15-figure-11-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [16],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Figure",
+          "11",
+          "histograms",
+          "depth",
+          "saprolite",
+          "intact",
+          "bedrock",
+          "FATT",
+          "FWT"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper15-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [19],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Pratt",
+          "Seismic",
+          "waveform",
+          "inversion",
+          "frequency",
+          "domain",
+          "Theory",
+          "verification",
+          "physical",
+          "scale",
+          "model"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

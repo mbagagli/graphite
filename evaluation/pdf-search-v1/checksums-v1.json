@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "evaluation_set_id": "m6-c2-retrieval-qa-v1",
+  "hash_algorithm": "sha256",
+  "hash_input": "exact raw file bytes",
+  "files": [
+    {
+      "path": "evaluation/pdf-search-v1/retrieval-queries-v1.json",
+      "sha256": "679273211fb2586c8bb3d9231ecbfd1546c37aa515fb7ee8bdabe0565f7a8171"
+    },
+    {
+      "path": "evaluation/pdf-search-v1/retrieval-evaluation-key-v1.json",
+      "sha256": "5dd9efdbfe3886e155c14008ac7cf77654facb011346f9f551eb8fd6f410c703"
+    },
+    {
+      "path": "evaluation/pdf-search-v1/qa-manifest-v1.json",
+      "sha256": "33780e0362ac021322470a6ce886f1379d3cc1c0c3081e0a2f871af5b7576d8a"
+    },
+    {
+      "path": "evaluation/pdf-search-v1/docling-subset-v1.json",
+      "sha256": "019d28faf20345765bb4f075d3745736535c195ebbfc9253a1ad9e05c46f21b9"
+    },
+    {
+      "path": "evaluation/pdf-search-v1/experiment-config-v1.json",
+      "sha256": "a86d4ecab2991e62b329b84920b84fe8edd6d2eedc087b1a8e601d08c67992f6"
+    }
+  ]
+}

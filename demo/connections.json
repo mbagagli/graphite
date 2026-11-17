@@ -1,0 +1,854 @@
+{
+  "schemaVersion": 1,
+  "manifestId": "seismology-ml-v2",
+  "reviewedAt": "2026-11-13",
+  "method": "Verified bibliography entries in unchanged source PDFs. Page numbers are one-based PDF pages. Prepublication versions and bibliographic errors are identified explicitly in notes.",
+  "usage": "Selection evidence, not injected graph edges. The desktop app extracts and resolves references from the actual PDF text. Shared-topic graph edges remain separately labelled.",
+  "originalPaperIds": [
+    "nhess-11-93-2011",
+    "gi-7-235-2018",
+    "s41598-019-45748-1",
+    "npg-26-61-2019",
+    "se-10-1989-2019",
+    "s41467-020-17841-x",
+    "se-11-1527-2020",
+    "s41467-020-17591-w",
+    "se-12-1683-2021",
+    "nhess-21-339-2021",
+    "s41467-021-21670-x",
+    "feart.2021.681869",
+    "se-12-765-2021",
+    "se-13-1721-2022",
+    "feart.2022.953007",
+    "nhess-22-947-2022",
+    "s41586-022-04672-7",
+    "feart.2022.848237",
+    "feart.2023.1283857",
+    "feart.2022.1053279",
+    "fdata.2023.1174478",
+    "gmd-16-2495-2023",
+    "se-14-1181-2023",
+    "feart.2023.1306488",
+    "nhess-23-991-2023",
+    "se-15-197-2024",
+    "se-15-877-2024",
+    "nhess-25-3713-2025",
+    "gmd-18-8751-2025",
+    "nhess-25-3827-2025"
+  ],
+  "addedPaperIds": [
+    "seismica.v4i2.1579",
+    "feart.2025.1708136",
+    "seismica.v4i2.1559",
+    "seismica.v4i1.1663",
+    "seismica.v3i1.1164",
+    "s44172-023-00099-8",
+    "access.2019.2947848",
+    "seismica.v2i1.368",
+    "seismica.v3i1.1130",
+    "s43247-025-02003-y",
+    "seismica.v4i2.1738",
+    "s41467-023-39639-3",
+    "feart.2026.1790572",
+    "feart.2022.1046258",
+    "feart.2026.1748893",
+    "s41467-023-43355-3",
+    "2021jb023405",
+    "seismica.v4i1.1431",
+    "essd-13-5509-2021",
+    "s41467-026-73965-6",
+    "npg-18-81-2011",
+    "nhess-18-383-2018",
+    "essd-14-381-2022",
+    "feart.2023.1267386",
+    "s41598-020-68630-x",
+    "s41598-023-47387-z",
+    "0320210026",
+    "esurf-7-171-2019",
+    "s00024-024-03440-0",
+    "fbuil.2024.1392113"
+  ],
+  "edges": [
+    {
+      "source": "0320210026",
+      "target": "se-11-1527-2020",
+      "sourcePdfSha256": "9ed79785bc51463cd3bde50b4c9e458b7a1228a5f6feb8c9df899dd295de3f1f",
+      "pdfPage": 8,
+      "match": "reference-doi",
+      "referenceTitle": "Deep learning for fast simulation of seismic waves in complex media"
+    },
+    {
+      "source": "2021jb023405",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "6f019670519869b44e517affb15314ced97661d5acb25abed62de7201eb4ce8e",
+      "pdfPage": 17,
+      "match": "reference-doi",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "2021jb023405",
+      "target": "essd-13-5509-2021",
+      "sourcePdfSha256": "6f019670519869b44e517affb15314ced97661d5acb25abed62de7201eb4ce8e",
+      "pdfPage": 17,
+      "match": "reference-doi",
+      "referenceTitle": "INSTANCE \u2013 the Italian seismic dataset for machine learning"
+    },
+    {
+      "source": "2021jb023405",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "6f019670519869b44e517affb15314ced97661d5acb25abed62de7201eb4ce8e",
+      "pdfPage": 17,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "access.2019.2947848",
+      "target": "s41598-019-45748-1",
+      "sourcePdfSha256": "b0088dafcf420038ba1bcca4254e226ec6ded2f6eafa7551564a9457432078d8",
+      "pdfPage": 11,
+      "match": "reference-title",
+      "referenceTitle": "CRED: A Deep Residual Network of Convolutional and Recurrent Units for Earthquake Signal Detection",
+      "note": "Reference 6 cites the 2018 arXiv version of CRED; unique full title and all authors match the later journal paper."
+    },
+    {
+      "source": "essd-13-5509-2021",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "cc0de62c9d04ce959d9008d112b9c6c27f8857ed774b56f7eb6a194f608625af",
+      "pdfPage": 34,
+      "match": "reference-doi",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "essd-13-5509-2021",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "cc0de62c9d04ce959d9008d112b9c6c27f8857ed774b56f7eb6a194f608625af",
+      "pdfPage": 34,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "essd-13-5509-2021",
+      "target": "s41467-020-17841-x",
+      "sourcePdfSha256": "cc0de62c9d04ce959d9008d112b9c6c27f8857ed774b56f7eb6a194f608625af",
+      "pdfPage": 35,
+      "match": "reference-doi",
+      "referenceTitle": "Clustering earthquake signals and background noises in continuous seismic data with unsupervised deep learning"
+    },
+    {
+      "source": "esurf-7-171-2019",
+      "target": "nhess-11-93-2011",
+      "sourcePdfSha256": "9d47ca9afb54aaa8a3630d540371047e11809baef03f9e6b1ae77976e630acf0",
+      "pdfPage": 19,
+      "match": "reference-doi",
+      "referenceTitle": "An unsupervised learning algorithm: application to the discrimination of seismic events and quarry blasts in the vicinity of Istanbul"
+    },
+    {
+      "source": "fbuil.2024.1392113",
+      "target": "gi-7-235-2018",
+      "sourcePdfSha256": "fd283ba0c92ce71d60b6b011f055c27b78bf89c1ce98c67c236c32c22006156a",
+      "pdfPage": 16,
+      "match": "reference-doi",
+      "referenceTitle": "Backpropagation neural network as earthquake early warning tool using a new modified elementary Levenberg\u2013Marquardt Algorithm to minimise backpropagation errors"
+    },
+    {
+      "source": "fdata.2023.1174478",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "10fcbff4e325031e27aab3988f364e8e64093e807c9fba39aaf98b524413ce85",
+      "pdfPage": 12,
+      "match": "reference-title",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "fdata.2023.1174478",
+      "target": "s41598-019-45748-1",
+      "sourcePdfSha256": "10fcbff4e325031e27aab3988f364e8e64093e807c9fba39aaf98b524413ce85",
+      "pdfPage": 12,
+      "match": "reference-title",
+      "referenceTitle": "CRED: A Deep Residual Network of Convolutional and Recurrent Units for Earthquake Signal Detection"
+    },
+    {
+      "source": "feart.2021.681869",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "c27dcd9b146064e6a166e4181cf98dbd114c6a1ca0d418047d6d01d08e09ca4d",
+      "pdfPage": 14,
+      "match": "reference-title",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "feart.2022.1046258",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "2aa1aaddb899bb8fc167cf03263dd88e889ee25ced0133617bbdd8aac27bedb6",
+      "pdfPage": 19,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "feart.2022.1053279",
+      "target": "s41598-019-45748-1",
+      "sourcePdfSha256": "3e964f96ee15964dd03a21bff361ddd3b5965eb7513bb2ce4a5369a3ccf287c7",
+      "pdfPage": 15,
+      "match": "reference-doi",
+      "referenceTitle": "CRED: A Deep Residual Network of Convolutional and Recurrent Units for Earthquake Signal Detection"
+    },
+    {
+      "source": "feart.2022.848237",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "94bfbc434945b0e6fdf513890061b6674cd8d3bfc3e63d76de3de8ba5ba38d4a",
+      "pdfPage": 7,
+      "match": "reference-doi",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "feart.2022.848237",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "94bfbc434945b0e6fdf513890061b6674cd8d3bfc3e63d76de3de8ba5ba38d4a",
+      "pdfPage": 7,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "feart.2022.953007",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "e784c71759abfeda599e3cd7b9ad94f8d9d9137efd98d9f4ea5036cb628d9b5b",
+      "pdfPage": 11,
+      "match": "reference-doi",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "feart.2022.953007",
+      "target": "essd-13-5509-2021",
+      "sourcePdfSha256": "e784c71759abfeda599e3cd7b9ad94f8d9d9137efd98d9f4ea5036cb628d9b5b",
+      "pdfPage": 11,
+      "match": "reference-doi",
+      "referenceTitle": "INSTANCE \u2013 the Italian seismic dataset for machine learning"
+    },
+    {
+      "source": "feart.2022.953007",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "e784c71759abfeda599e3cd7b9ad94f8d9d9137efd98d9f4ea5036cb628d9b5b",
+      "pdfPage": 11,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "feart.2023.1267386",
+      "target": "se-10-1989-2019",
+      "sourcePdfSha256": "9593862978c8cca7eb969317fbadddf3106d38b4480bba03e4d5eb2692116343",
+      "pdfPage": 18,
+      "match": "reference-doi",
+      "referenceTitle": "Prediction of seismic P-wave velocity using machine learning"
+    },
+    {
+      "source": "feart.2023.1283857",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "efe9bd762598ca7ff6ebcc583983618020bfdbf1e06ebba23d2e352c3935313b",
+      "pdfPage": 12,
+      "match": "reference-doi",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "feart.2023.1283857",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "efe9bd762598ca7ff6ebcc583983618020bfdbf1e06ebba23d2e352c3935313b",
+      "pdfPage": 11,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "feart.2023.1306488",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "49762f12cc26f29c770a53fda53c2a2c9987e61535bbe4482e5b66977dbaecd7",
+      "pdfPage": 14,
+      "match": "reference-doi",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "feart.2023.1306488",
+      "target": "essd-13-5509-2021",
+      "sourcePdfSha256": "49762f12cc26f29c770a53fda53c2a2c9987e61535bbe4482e5b66977dbaecd7",
+      "pdfPage": 14,
+      "match": "reference-doi",
+      "referenceTitle": "INSTANCE \u2013 the Italian seismic dataset for machine learning"
+    },
+    {
+      "source": "feart.2023.1306488",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "49762f12cc26f29c770a53fda53c2a2c9987e61535bbe4482e5b66977dbaecd7",
+      "pdfPage": 14,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "feart.2025.1708136",
+      "target": "s41598-019-45748-1",
+      "sourcePdfSha256": "6ad2577e112046438d9f2c5db94fcf698d893a4b4c2586ac824753860c3c06c9",
+      "pdfPage": 14,
+      "match": "reference-title",
+      "referenceTitle": "CRED: A Deep Residual Network of Convolutional and Recurrent Units for Earthquake Signal Detection",
+      "note": "Reference misstates CRED year/volume as 2020/10, but the unique full title and all four authors match CRED 2019."
+    },
+    {
+      "source": "feart.2026.1748893",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "6a10f2ac1fa80b1f22a39ad14126d0900ddbed02dcb098c65c725844a64ed524",
+      "pdfPage": 23,
+      "match": "reference-title",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "feart.2026.1748893",
+      "target": "feart.2022.953007",
+      "sourcePdfSha256": "6a10f2ac1fa80b1f22a39ad14126d0900ddbed02dcb098c65c725844a64ed524",
+      "pdfPage": 23,
+      "match": "reference-doi",
+      "referenceTitle": "EPick: Attention-based multi-scale UNet for earthquake detection and seismic phase picking"
+    },
+    {
+      "source": "feart.2026.1790572",
+      "target": "feart.2021.681869",
+      "sourcePdfSha256": "c55e539022f9ef9fe118d39fd8e8734d44ef79a65d77498871e766c3c5910789",
+      "pdfPage": 13,
+      "match": "reference-doi",
+      "referenceTitle": "Research on Deep Convolutional Neural Network Time-Frequency Domain Seismic Signal Denoising Combined With Residual Dense Blocks"
+    },
+    {
+      "source": "gmd-16-2495-2023",
+      "target": "essd-14-381-2022",
+      "sourcePdfSha256": "a5a45be7a4652a7afe2f675bd6f40ae923d03967caa126e519855b230f08cc0e",
+      "pdfPage": 18,
+      "match": "reference-doi",
+      "referenceTitle": "Into the Noddyverse: a massive data store of 3D geological models for machine learning and inversion applications"
+    },
+    {
+      "source": "gmd-18-8751-2025",
+      "target": "nhess-18-383-2018",
+      "sourcePdfSha256": "440ab0bd2b2000ee940ad9b9c462fe4e6ee74a39c0ec6bcbc86658caa9695844",
+      "pdfPage": 24,
+      "match": "reference-doi",
+      "referenceTitle": "Automatic detection of snow avalanches in continuous seismic data using hidden Markov models"
+    },
+    {
+      "source": "gmd-18-8751-2025",
+      "target": "nhess-21-339-2021",
+      "sourcePdfSha256": "440ab0bd2b2000ee940ad9b9c462fe4e6ee74a39c0ec6bcbc86658caa9695844",
+      "pdfPage": 26,
+      "match": "reference-doi",
+      "referenceTitle": "Near-real-time automated classification of seismic signals of slope failures with continuous random forests"
+    },
+    {
+      "source": "gmd-18-8751-2025",
+      "target": "s41467-020-17841-x",
+      "sourcePdfSha256": "440ab0bd2b2000ee940ad9b9c462fe4e6ee74a39c0ec6bcbc86658caa9695844",
+      "pdfPage": 25,
+      "match": "reference-doi",
+      "referenceTitle": "Clustering earthquake signals and background noises in continuous seismic data with unsupervised deep learning"
+    },
+    {
+      "source": "nhess-21-339-2021",
+      "target": "nhess-18-383-2018",
+      "sourcePdfSha256": "a06ee363c4fec50bc91e28ee67198dc676a6f2465bb6d30b2722c2bda39ea408",
+      "pdfPage": 22,
+      "match": "reference-doi",
+      "referenceTitle": "Automatic detection of snow avalanches in continuous seismic data using hidden Markov models"
+    },
+    {
+      "source": "nhess-22-947-2022",
+      "target": "s41598-020-68630-x",
+      "sourcePdfSha256": "083618216fcda79463056e2b448b7e6c3cff895e9e4d237ae873b06b1a289d53",
+      "pdfPage": 18,
+      "match": "reference-doi",
+      "referenceTitle": "Hybrid predictor for ground-motion intensity with machine learning and conventional ground motion prediction equation"
+    },
+    {
+      "source": "nhess-23-991-2023",
+      "target": "npg-18-81-2011",
+      "sourcePdfSha256": "eb0b26adcfa441c916e616c662debac5a3fdc93d4ac436744dd1207bca809a0e",
+      "pdfPage": 15,
+      "match": "reference-doi",
+      "referenceTitle": "Hidden semi-Markov Model based earthquake classification system using Weighted Finite-State Transducers"
+    },
+    {
+      "source": "nhess-25-3713-2025",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "be065284bae181c4490430c33cea1c070389d4f21f5537c6390e47754b3090ff",
+      "pdfPage": 22,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "s00024-024-03440-0",
+      "target": "nhess-11-93-2011",
+      "sourcePdfSha256": "05cebe2cc6029bd3c23e66d7a1315076553fc7aee893b05c4bf4e1c01e7cfab0",
+      "pdfPage": 12,
+      "match": "reference-title",
+      "referenceTitle": "An unsupervised learning algorithm: application to the discrimination of seismic events and quarry blasts in the vicinity of Istanbul"
+    },
+    {
+      "source": "s00024-024-03440-0",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "05cebe2cc6029bd3c23e66d7a1315076553fc7aee893b05c4bf4e1c01e7cfab0",
+      "pdfPage": 12,
+      "match": "reference-title",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "s00024-024-03440-0",
+      "target": "s41467-021-21670-x",
+      "sourcePdfSha256": "05cebe2cc6029bd3c23e66d7a1315076553fc7aee893b05c4bf4e1c01e7cfab0",
+      "pdfPage": 12,
+      "match": "reference-title",
+      "referenceTitle": "Real-time determination of earthquake focal mechanism via deep learning"
+    },
+    {
+      "source": "s41467-020-17591-w",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "a2d7487955e37ce14ae42bb3a80465453b9b70d2f9baa7ebdebeb376b4fd2296",
+      "pdfPage": 11,
+      "match": "reference-title",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "s41467-020-17591-w",
+      "target": "s41598-019-45748-1",
+      "sourcePdfSha256": "a2d7487955e37ce14ae42bb3a80465453b9b70d2f9baa7ebdebeb376b4fd2296",
+      "pdfPage": 11,
+      "match": "reference-title",
+      "referenceTitle": "CRED: A Deep Residual Network of Convolutional and Recurrent Units for Earthquake Signal Detection"
+    },
+    {
+      "source": "s41467-021-21670-x",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "62067caac5996b86e8d1ab6cb94f523af720db7bb7b170b456b4c5ab04eeb57e",
+      "pdfPage": 7,
+      "match": "reference-title",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "s41467-023-39639-3",
+      "target": "s41467-021-21670-x",
+      "sourcePdfSha256": "8ed37b24dd5ca1f0ed14c425ca6eab77182a04b4e760fd3cb1eacbaf95f06b4d",
+      "pdfPage": 8,
+      "match": "reference-title",
+      "referenceTitle": "Real-time determination of earthquake focal mechanism via deep learning"
+    },
+    {
+      "source": "s41467-023-39639-3",
+      "target": "s41467-023-43355-3",
+      "sourcePdfSha256": "8ed37b24dd5ca1f0ed14c425ca6eab77182a04b4e760fd3cb1eacbaf95f06b4d",
+      "pdfPage": 8,
+      "match": "reference-title",
+      "referenceTitle": "Seismic arrival-time picking on distributed acoustic sensing data using semi-supervised learning",
+      "note": "Reference 42 cites the arXiv version of DAS arrival-time picking; exact unique title and Zhu et al. match the later journal article."
+    },
+    {
+      "source": "s41467-023-43355-3",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "cc0c2fd2020619fc0f2b99cd84ebeaaf29c97c1677a339c4459e9a72f2236946",
+      "pdfPage": 10,
+      "match": "reference-title",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "s41467-023-43355-3",
+      "target": "essd-13-5509-2021",
+      "sourcePdfSha256": "cc0c2fd2020619fc0f2b99cd84ebeaaf29c97c1677a339c4459e9a72f2236946",
+      "pdfPage": 9,
+      "match": "reference-title",
+      "referenceTitle": "INSTANCE \u2013 the Italian seismic dataset for machine learning"
+    },
+    {
+      "source": "s41467-023-43355-3",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "cc0c2fd2020619fc0f2b99cd84ebeaaf29c97c1677a339c4459e9a72f2236946",
+      "pdfPage": 9,
+      "match": "reference-title",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "s41467-023-43355-3",
+      "target": "s41467-020-17841-x",
+      "sourcePdfSha256": "cc0c2fd2020619fc0f2b99cd84ebeaaf29c97c1677a339c4459e9a72f2236946",
+      "pdfPage": 10,
+      "match": "reference-title",
+      "referenceTitle": "Clustering earthquake signals and background noises in continuous seismic data with unsupervised deep learning"
+    },
+    {
+      "source": "s41467-023-43355-3",
+      "target": "s41467-021-21670-x",
+      "sourcePdfSha256": "cc0c2fd2020619fc0f2b99cd84ebeaaf29c97c1677a339c4459e9a72f2236946",
+      "pdfPage": 10,
+      "match": "reference-title",
+      "referenceTitle": "Real-time determination of earthquake focal mechanism via deep learning"
+    },
+    {
+      "source": "s41467-023-43355-3",
+      "target": "s41467-023-39639-3",
+      "sourcePdfSha256": "cc0c2fd2020619fc0f2b99cd84ebeaaf29c97c1677a339c4459e9a72f2236946",
+      "pdfPage": 10,
+      "match": "reference-title",
+      "referenceTitle": "Earthquake focal mechanisms with distributed acoustic sensing"
+    },
+    {
+      "source": "s41467-026-73965-6",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "67b7384b818fd6b25e6f5f26c3753d5d70f00a15be993706c64ee39462ce572f",
+      "pdfPage": 15,
+      "match": "reference-title",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "s41467-026-73965-6",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "67b7384b818fd6b25e6f5f26c3753d5d70f00a15be993706c64ee39462ce572f",
+      "pdfPage": 14,
+      "match": "reference-title",
+      "referenceTitle": "Earthquake transformer: an attentive deep-learning model for simultaneous earthquake detection and phase picking",
+      "note": "Reference 13 wraps across columns. Author, title, journal, volume 11 and article 3952 explicitly match the original paper."
+    },
+    {
+      "source": "s41467-026-73965-6",
+      "target": "seismica.v4i2.1738",
+      "sourcePdfSha256": "67b7384b818fd6b25e6f5f26c3753d5d70f00a15be993706c64ee39462ce572f",
+      "pdfPage": 15,
+      "match": "reference-title",
+      "referenceTitle": "A Global-scale Database of Seismic Phases from Cloud-based Picking at Petabyte Scale"
+    },
+    {
+      "source": "s43247-025-02003-y",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "978269824ae48a21b537c6a4c2121fe99865e66b77150e09022d6bdeb2094535",
+      "pdfPage": 12,
+      "match": "reference-title",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "s43247-025-02003-y",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "978269824ae48a21b537c6a4c2121fe99865e66b77150e09022d6bdeb2094535",
+      "pdfPage": 11,
+      "match": "reference-title",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "s44172-023-00099-8",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "99b9969010d9ff50a634b9d1605e602df290414ee2dc9957334f955f781df3dc",
+      "pdfPage": 10,
+      "match": "reference-title",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "s44172-023-00099-8",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "99b9969010d9ff50a634b9d1605e602df290414ee2dc9957334f955f781df3dc",
+      "pdfPage": 10,
+      "match": "reference-title",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "s44172-023-00099-8",
+      "target": "s41598-019-45748-1",
+      "sourcePdfSha256": "99b9969010d9ff50a634b9d1605e602df290414ee2dc9957334f955f781df3dc",
+      "pdfPage": 10,
+      "match": "reference-title",
+      "referenceTitle": "CRED: A Deep Residual Network of Convolutional and Recurrent Units for Earthquake Signal Detection"
+    },
+    {
+      "source": "se-12-1683-2021",
+      "target": "se-11-1527-2020",
+      "sourcePdfSha256": "b81d34e631338b15553324a4526f2b0ef73f2a7d3e0f9f0c5cc0a01186d2ad0a",
+      "pdfPage": 21,
+      "match": "reference-doi",
+      "referenceTitle": "Deep learning for fast simulation of seismic waves in complex media"
+    },
+    {
+      "source": "se-13-1721-2022",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "7468af120e03b5d9450e15ac81868e8cb3f0cd70542c0a2fea6597474e6246ae",
+      "pdfPage": 9,
+      "match": "reference-doi",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "se-13-1721-2022",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "7468af120e03b5d9450e15ac81868e8cb3f0cd70542c0a2fea6597474e6246ae",
+      "pdfPage": 9,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "se-15-197-2024",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "ffaa1270c17cddee1d03f7ad59f72dd5171eda9d13adcd14853dd1f21f76ca2a",
+      "pdfPage": 17,
+      "match": "reference-doi",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "se-15-197-2024",
+      "target": "essd-13-5509-2021",
+      "sourcePdfSha256": "ffaa1270c17cddee1d03f7ad59f72dd5171eda9d13adcd14853dd1f21f76ca2a",
+      "pdfPage": 17,
+      "match": "reference-doi",
+      "referenceTitle": "INSTANCE \u2013 the Italian seismic dataset for machine learning"
+    },
+    {
+      "source": "se-15-197-2024",
+      "target": "feart.2022.953007",
+      "sourcePdfSha256": "ffaa1270c17cddee1d03f7ad59f72dd5171eda9d13adcd14853dd1f21f76ca2a",
+      "pdfPage": 16,
+      "match": "reference-doi",
+      "referenceTitle": "EPick: Attention-based multi-scale UNet for earthquake detection and seismic phase picking"
+    },
+    {
+      "source": "se-15-197-2024",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "ffaa1270c17cddee1d03f7ad59f72dd5171eda9d13adcd14853dd1f21f76ca2a",
+      "pdfPage": 17,
+      "match": "reference-title",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "se-15-197-2024",
+      "target": "s41598-019-45748-1",
+      "sourcePdfSha256": "ffaa1270c17cddee1d03f7ad59f72dd5171eda9d13adcd14853dd1f21f76ca2a",
+      "pdfPage": 17,
+      "match": "reference-title",
+      "referenceTitle": "CRED: A Deep Residual Network of Convolutional and Recurrent Units for Earthquake Signal Detection"
+    },
+    {
+      "source": "se-15-197-2024",
+      "target": "se-13-1721-2022",
+      "sourcePdfSha256": "ffaa1270c17cddee1d03f7ad59f72dd5171eda9d13adcd14853dd1f21f76ca2a",
+      "pdfPage": 16,
+      "match": "reference-doi",
+      "referenceTitle": "A study on the effect of input data length on a deep-learning-based magnitude classifier"
+    },
+    {
+      "source": "se-15-877-2024",
+      "target": "s41598-023-47387-z",
+      "sourcePdfSha256": "2926ab260c8a633cdd962d7210cc751a777349a11e5886d4c8adf779013aca6d",
+      "pdfPage": 15,
+      "match": "reference-doi",
+      "referenceTitle": "Pre-earthquake anomaly extraction from borehole strain data based on machine learning"
+    },
+    {
+      "source": "seismica.v2i1.368",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "6a1bf4197d0642d1535df5f692889e3da83be02503c0c37b9452cbd770065cc5",
+      "pdfPage": 14,
+      "match": "reference-doi",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "seismica.v2i1.368",
+      "target": "essd-13-5509-2021",
+      "sourcePdfSha256": "6a1bf4197d0642d1535df5f692889e3da83be02503c0c37b9452cbd770065cc5",
+      "pdfPage": 14,
+      "match": "reference-title",
+      "referenceTitle": "INSTANCE \u2013 the Italian seismic dataset for machine learning",
+      "note": "Reference cites the May 2021 ESSD discussion version; full title and all six authors match the final INSTANCE article."
+    },
+    {
+      "source": "seismica.v2i1.368",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "6a1bf4197d0642d1535df5f692889e3da83be02503c0c37b9452cbd770065cc5",
+      "pdfPage": 14,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "seismica.v3i1.1130",
+      "target": "essd-13-5509-2021",
+      "sourcePdfSha256": "e443dddaf4926a1d3dafa0a1af4fb2b5eb4d4e8fdea49d1a86b38e282af26815",
+      "pdfPage": 14,
+      "match": "reference-doi",
+      "referenceTitle": "INSTANCE \u2013 the Italian seismic dataset for machine learning"
+    },
+    {
+      "source": "seismica.v3i1.1130",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "e443dddaf4926a1d3dafa0a1af4fb2b5eb4d4e8fdea49d1a86b38e282af26815",
+      "pdfPage": 14,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "seismica.v3i1.1164",
+      "target": "essd-13-5509-2021",
+      "sourcePdfSha256": "6c6b492e6f17a17c6321ffd68e613fca2140ae21a810adc38e73d5f08e357d77",
+      "pdfPage": 22,
+      "match": "reference-doi",
+      "referenceTitle": "INSTANCE \u2013 the Italian seismic dataset for machine learning"
+    },
+    {
+      "source": "seismica.v3i1.1164",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "6c6b492e6f17a17c6321ffd68e613fca2140ae21a810adc38e73d5f08e357d77",
+      "pdfPage": 22,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "seismica.v3i1.1164",
+      "target": "s41598-019-45748-1",
+      "sourcePdfSha256": "6c6b492e6f17a17c6321ffd68e613fca2140ae21a810adc38e73d5f08e357d77",
+      "pdfPage": 22,
+      "match": "reference-doi",
+      "referenceTitle": "CRED: A Deep Residual Network of Convolutional and Recurrent Units for Earthquake Signal Detection"
+    },
+    {
+      "source": "seismica.v3i1.1164",
+      "target": "seismica.v2i1.368",
+      "sourcePdfSha256": "6c6b492e6f17a17c6321ffd68e613fca2140ae21a810adc38e73d5f08e357d77",
+      "pdfPage": 22,
+      "match": "reference-doi",
+      "referenceTitle": "Curated Pacific Northwest AI-ready Seismic Dataset"
+    },
+    {
+      "source": "seismica.v4i1.1431",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "ddd61ef13f4facd7ec588c4174aab1e9694399152045a73d8c6cf7013fb1769f",
+      "pdfPage": 11,
+      "match": "reference-doi",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "seismica.v4i1.1431",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "ddd61ef13f4facd7ec588c4174aab1e9694399152045a73d8c6cf7013fb1769f",
+      "pdfPage": 11,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "seismica.v4i1.1431",
+      "target": "seismica.v2i1.368",
+      "sourcePdfSha256": "ddd61ef13f4facd7ec588c4174aab1e9694399152045a73d8c6cf7013fb1769f",
+      "pdfPage": 11,
+      "match": "reference-doi",
+      "referenceTitle": "Curated Pacific Northwest AI-ready Seismic Dataset"
+    },
+    {
+      "source": "seismica.v4i1.1663",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "28384000be517b60917e264540a32aa316acf0e63da4e2f55b3928dbfccf2bd4",
+      "pdfPage": 8,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "seismica.v4i1.1663",
+      "target": "seismica.v3i1.1130",
+      "sourcePdfSha256": "28384000be517b60917e264540a32aa316acf0e63da4e2f55b3928dbfccf2bd4",
+      "pdfPage": 8,
+      "match": "reference-doi",
+      "referenceTitle": "PyOcto: A high-throughput seismic phase associator"
+    },
+    {
+      "source": "seismica.v4i2.1559",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "8930b5b30ff2ddd5b3f5cb65f70cfb43644a9cb3db51507d48add3383fe51d4d",
+      "pdfPage": 18,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "seismica.v4i2.1559",
+      "target": "s41598-019-45748-1",
+      "sourcePdfSha256": "8930b5b30ff2ddd5b3f5cb65f70cfb43644a9cb3db51507d48add3383fe51d4d",
+      "pdfPage": 18,
+      "match": "reference-doi",
+      "referenceTitle": "CRED: A Deep Residual Network of Convolutional and Recurrent Units for Earthquake Signal Detection"
+    },
+    {
+      "source": "seismica.v4i2.1559",
+      "target": "seismica.v3i1.1130",
+      "sourcePdfSha256": "8930b5b30ff2ddd5b3f5cb65f70cfb43644a9cb3db51507d48add3383fe51d4d",
+      "pdfPage": 18,
+      "match": "reference-doi",
+      "referenceTitle": "PyOcto: A high-throughput seismic phase associator"
+    },
+    {
+      "source": "seismica.v4i2.1579",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "f8ef62fba3f4a6111cba0a293132c76939ba472c07b67522995cf7900326212c",
+      "pdfPage": 16,
+      "match": "reference-doi",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "seismica.v4i2.1579",
+      "target": "essd-13-5509-2021",
+      "sourcePdfSha256": "f8ef62fba3f4a6111cba0a293132c76939ba472c07b67522995cf7900326212c",
+      "pdfPage": 16,
+      "match": "reference-doi",
+      "referenceTitle": "INSTANCE \u2013 the Italian seismic dataset for machine learning"
+    },
+    {
+      "source": "seismica.v4i2.1579",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "f8ef62fba3f4a6111cba0a293132c76939ba472c07b67522995cf7900326212c",
+      "pdfPage": 16,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "seismica.v4i2.1579",
+      "target": "seismica.v3i1.1130",
+      "sourcePdfSha256": "f8ef62fba3f4a6111cba0a293132c76939ba472c07b67522995cf7900326212c",
+      "pdfPage": 16,
+      "match": "reference-doi",
+      "referenceTitle": "PyOcto: A high-throughput seismic phase associator"
+    },
+    {
+      "source": "seismica.v4i2.1738",
+      "target": "access.2019.2947848",
+      "sourcePdfSha256": "6913476dfb39e5d28abaffcfd103015ce15976fc50656f0b5677218c7fcbba70",
+      "pdfPage": 8,
+      "match": "reference-doi",
+      "referenceTitle": "STanford EArthquake Dataset (STEAD): A Global Data Set of Seismic Signals for AI"
+    },
+    {
+      "source": "seismica.v4i2.1738",
+      "target": "essd-13-5509-2021",
+      "sourcePdfSha256": "6913476dfb39e5d28abaffcfd103015ce15976fc50656f0b5677218c7fcbba70",
+      "pdfPage": 8,
+      "match": "reference-doi",
+      "referenceTitle": "INSTANCE \u2013 the Italian seismic dataset for machine learning"
+    },
+    {
+      "source": "seismica.v4i2.1738",
+      "target": "s41467-020-17591-w",
+      "sourcePdfSha256": "6913476dfb39e5d28abaffcfd103015ce15976fc50656f0b5677218c7fcbba70",
+      "pdfPage": 8,
+      "match": "reference-doi",
+      "referenceTitle": "Earthquake transformer\u2014an attentive deep-learning model for simultaneous earthquake detection and phase picking"
+    },
+    {
+      "source": "seismica.v4i2.1738",
+      "target": "s41598-019-45748-1",
+      "sourcePdfSha256": "6913476dfb39e5d28abaffcfd103015ce15976fc50656f0b5677218c7fcbba70",
+      "pdfPage": 8,
+      "match": "reference-doi",
+      "referenceTitle": "CRED: A Deep Residual Network of Convolutional and Recurrent Units for Earthquake Signal Detection"
+    },
+    {
+      "source": "seismica.v4i2.1738",
+      "target": "seismica.v2i1.368",
+      "sourcePdfSha256": "6913476dfb39e5d28abaffcfd103015ce15976fc50656f0b5677218c7fcbba70",
+      "pdfPage": 9,
+      "match": "reference-doi",
+      "referenceTitle": "Curated Pacific Northwest AI-ready Seismic Dataset"
+    },
+    {
+      "source": "seismica.v4i2.1738",
+      "target": "seismica.v3i1.1130",
+      "sourcePdfSha256": "6913476dfb39e5d28abaffcfd103015ce15976fc50656f0b5677218c7fcbba70",
+      "pdfPage": 8,
+      "match": "reference-doi",
+      "referenceTitle": "PyOcto: A high-throughput seismic phase associator"
+    }
+  ]
+}

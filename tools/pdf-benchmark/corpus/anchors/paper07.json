@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper07",
+  "anchors": [
+    {
+      "id": "paper07-introduction-transit-time",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from inspection of the current paper07 replacement; human verification is required before scoring.",
+      "expectedPages": [9],
+      "matcher": {
+        "type": "normalized",
+        "value": "The position along the fibre can then be found from the two-way transit time."
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper07-equation-3-1-1-meaning",
+      "kind": "formula",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from inspection of the current paper07 replacement; human verification is required before scoring.",
+      "expectedPages": [20],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "averaged",
+          "strain",
+          "rate",
+          "differencing",
+          "ground",
+          "velocity",
+          "ends",
+          "gauge",
+          "length"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper07-regional-wavefield-fact",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from inspection of the current paper07 replacement; human verification is required before scoring.",
+      "expectedPages": [69],
+      "matcher": {
+        "type": "normalized",
+        "value": "We first consider the near-regional regime out to 500 km or so, where the wavefield tends to be dominated by multiple crustal reflections of P and S waves."
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper07-das-array-response-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from inspection of the current paper07 replacement; human verification is required before scoring.",
+      "expectedPages": [105],
+      "matcher": {
+        "type": "exact",
+        "value": "DAS array response"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper07-figure-9-2-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from inspection of the current paper07 replacement; human verification is required before scoring.",
+      "expectedPages": [110],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Figure",
+          "9.2",
+          "Simulation",
+          "array",
+          "responses",
+          "DAS",
+          "cable",
+          "orientation",
+          "effects",
+          "4",
+          "Hz"
+        ],
+        "max_gap": 6
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper07-figure-9-2-following-text",
+      "kind": "reading_order_pair",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from inspection of the current paper07 replacement; human verification is required before scoring.",
+      "expectedPages": [110],
+      "matcher": {
+        "type": "normalized",
+        "value": "For surface waves, which already have a large slowness, the distortion introduced by the DAS array stacking is much less"
+      },
+      "expectedAfter": "paper07-figure-9-2-caption",
+      "expectedBefore": null
+    },
+    {
+      "id": "paper07-late-orientation-fact",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from inspection of the current paper07 replacement; human verification is required before scoring.",
+      "expectedPages": [119],
+      "matcher": {
+        "type": "normalized",
+        "value": "In this work I have concentrated on the use of horizontal DAS fibre configurations, and have demonstrated the way in which the orientation of the waves relative to the fibre has a strong control on the response."
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper07-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from inspection of the current paper07 replacement; human verification is required before scoring.",
+      "expectedPages": [128],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Zhu",
+          "Shen",
+          "Martin",
+          "2021",
+          "Sensing",
+          "Earth",
+          "environment",
+          "dynamics",
+          "telecommunication",
+          "sensors"
+        ],
+        "max_gap": 4
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

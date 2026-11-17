@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper03",
+  "anchors": [
+    {
+      "id": "paper03-contents-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [10],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["VI", "Graph", "Algorithms"],
+        "max_gap": 3
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper03-recurrence-body",
+      "kind": "formula",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [100],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["recurrence", "running", "time", "matrix-multiplication"],
+        "max_gap": 35
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper03-hash-pseudocode",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [300],
+      "matcher": {
+        "type": "alternatives",
+        "values": ["CHAINED-HASH-INSERT", "Chained-Hash-Insert"]
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper03-strong-components-lemma",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [600],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "distinct",
+          "strongly",
+          "connected",
+          "components",
+          "directed",
+          "graph"
+        ],
+        "max_gap": 18
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper03-polynomial-example",
+      "kind": "formula",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [900],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["polynomials", "degree-bound", "product", "degree-bound"],
+        "max_gap": 28
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper03-counting-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [1200],
+      "matcher": {
+        "type": "normalized",
+        "value": "C.1 Counting"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper03-tail-index",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [1310],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["topological", "sort", "573", "576"],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

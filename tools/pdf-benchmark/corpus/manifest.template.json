@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "corpusId": "graphite-scientific-pdf-smoke-v1",
+  "documents": [
+    {
+      "id": "paper01",
+      "file": "local/paper01.pdf",
+      "sha256": "REPLACE_WITH_LOWERCASE_SHA256",
+      "sourceUrl": null,
+      "license": "Record the document license or local evaluation basis",
+      "redistributable": false,
+      "categories": ["native", "two-column"],
+      "language": "en",
+      "expectedPages": null,
+      "textLayer": "native",
+      "expectedOcrPages": [],
+      "anchors": "anchors/paper01.json",
+      "anchorsSha256": "REPLACE_WITH_LOWERCASE_SHA256",
+      "zoteroBaseline": "local/paper01.zotero.json",
+      "zoteroBaselineSha256": "REPLACE_WITH_LOWERCASE_SHA256"
+    }
+  ]
+}

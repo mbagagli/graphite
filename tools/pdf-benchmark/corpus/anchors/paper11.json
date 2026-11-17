@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper11",
+  "anchors": [
+    {
+      "id": "paper11-association-purpose",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "association",
+          "phase",
+          "picks",
+          "form",
+          "events",
+          "fundamental",
+          "components"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper11-association-methods-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": { "type": "exact", "value": "Methods of Association" },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper11-figure-3-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [6],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Figure",
+          "3",
+          "Examples",
+          "associated",
+          "phase",
+          "arrivals",
+          "each",
+          "dataset"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper11-window-tradeoff",
+      "kind": "page_association",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [9],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Expanding",
+          "window",
+          "more",
+          "associated",
+          "picks",
+          "increases",
+          "chances",
+          "errant",
+          "picks"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper11-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [12],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Ringdal",
+          "Kvaerna",
+          "multi-channel",
+          "processing",
+          "real",
+          "time",
+          "network",
+          "detection",
+          "phase",
+          "association"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

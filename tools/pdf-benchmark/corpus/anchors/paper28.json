@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper28",
+  "anchors": [
+    {
+      "id": "paper28-consistent-algorithms",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "verify",
+          "two",
+          "algorithms",
+          "consistent",
+          "results",
+          "phase",
+          "velocity"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper28-travel-time-equation",
+      "kind": "formula",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["td", "cos", "theta", "v", "omega"],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper28-figure-2-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [6],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Figure",
+          "2",
+          "Numerical",
+          "test",
+          "interstation",
+          "distance",
+          "500",
+          "km",
+          "wave",
+          "speed",
+          "3",
+          "km"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper28-figure-6-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [10],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Figure",
+          "6",
+          "phase-velocity",
+          "dispersion",
+          "measurements",
+          "frequency-domain",
+          "station",
+          "pairs"
+        ],
+        "max_gap": 20
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper28-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [13],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Shapiro",
+          "Campillo",
+          "Stehly",
+          "Ritzwoller",
+          "High-resolution",
+          "surface-wave",
+          "tomography",
+          "ambient",
+          "seismic",
+          "noise"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

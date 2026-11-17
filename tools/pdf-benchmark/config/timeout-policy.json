@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "ordinaryMs": 90000,
+  "scannedOcrMs": 120000,
+  "extremeStressMs": 120000,
+  "extremePageThreshold": 500,
+  "scannedOcrPageRatio": {
+    "numerator": 1,
+    "denominator": 2
+  }
+}

@@ -1,0 +1,79 @@
+minimum_pre_commit_version: "4.7.0"
+default_install_hook_types: [pre-push]
+default_stages: [pre-push]
+fail_fast: true
+
+repos:
+  - repo: local
+    hooks:
+      - id: graphite-prettier
+        name: Check formatting of pushed files
+        entry: node node_modules/prettier/bin/prettier.cjs --check --ignore-unknown
+        language: unsupported
+        files: '\.(?:[cm]?js|jsx|ts|tsx|json|jsonc|css|html|md|ya?ml)$'
+        require_serial: true
+
+      - id: graphite-hygiene
+        name: Check repository hygiene
+        entry: npm run check:hygiene
+        language: unsupported
+        pass_filenames: false
+        always_run: true
+
+      - id: graphite-version
+        name: Check version consistency
+        entry: npm run version:check
+        language: unsupported
+        pass_filenames: false
+        always_run: true
+
+      - id: graphite-packaging
+        name: Check packaging configuration
+        entry: npm run package:check
+        language: unsupported
+        pass_filenames: false
+        always_run: true
+
+      - id: graphite-eslint
+        name: Run ESLint
+        entry: npm run lint
+        language: unsupported
+        pass_filenames: false
+        always_run: true
+
+      - id: graphite-frontend-tests
+        name: Run frontend and contract tests
+        entry: npm test
+        language: unsupported
+        pass_filenames: false
+        always_run: true
+
+      - id: graphite-frontend-build
+        name: Check TypeScript and build frontend
+        entry: npm run build
+        language: unsupported
+        pass_filenames: false
+        always_run: true
+
+      - id: graphite-rustfmt
+        name: Check Rust formatting
+        entry: cargo fmt --manifest-path src-tauri/Cargo.toml --check
+        language: unsupported
+        pass_filenames: false
+        always_run: true
+
+      - id: graphite-clippy
+        name: Run Clippy
+        entry: >-
+          cargo clippy --manifest-path src-tauri/Cargo.toml
+          --locked --all-targets -- -D warnings
+        language: unsupported
+        pass_filenames: false
+        always_run: true
+
+      - id: graphite-native-tests
+        name: Run native tests
+        entry: cargo test --manifest-path src-tauri/Cargo.toml --locked
+        language: unsupported
+        pass_filenames: false
+        always_run: true

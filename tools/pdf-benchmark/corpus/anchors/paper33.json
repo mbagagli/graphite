@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper33",
+  "anchors": [
+    {
+      "id": "paper33-title-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "normalized",
+        "value": "Soil horizon variation: A review"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper33-figure-2-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [7],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Fig",
+          "2",
+          "Soil",
+          "profile",
+          "changes",
+          "landscape",
+          "time",
+          "land",
+          "use"
+        ],
+        "max_gap": 16
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper33-rotated-table-2-row",
+      "kind": "table_value",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [18],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "1923",
+          "Spodosol",
+          "Horizon",
+          "description",
+          "thickness",
+          "16",
+          "USA",
+          "McCool"
+        ],
+        "max_gap": 20
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper33-figure-16-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [35],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Fig",
+          "16",
+          "soil",
+          "property",
+          "variation",
+          "Mollisol",
+          "Wisconsin",
+          "samples",
+          "horizon"
+        ],
+        "max_gap": 18
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper33-rotated-figure-23-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [47],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Fig",
+          "23",
+          "coefficients",
+          "variation",
+          "soil",
+          "properties",
+          "horizon",
+          "thickness"
+        ],
+        "max_gap": 18
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper33-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [61],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Zhang",
+          "Hartemink",
+          "2019b",
+          "automated",
+          "soil",
+          "horizon",
+          "delineation",
+          "digital",
+          "images",
+          "Geoderma"
+        ],
+        "max_gap": 20
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

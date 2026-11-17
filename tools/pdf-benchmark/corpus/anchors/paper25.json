@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper25",
+  "anchors": [
+    {
+      "id": "paper25-summary-fact",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Deep-learning",
+          "processing",
+          "seismic",
+          "data",
+          "incorporation",
+          "domain",
+          "knowledge",
+          "new",
+          "capabilities",
+          "insights",
+          "seismology"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper25-figure-1-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Fig",
+          "1",
+          "surge",
+          "interest",
+          "deep-learning",
+          "applications",
+          "seismology",
+          "Cumulative",
+          "number",
+          "published"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper25-ground-truth-limitation",
+      "kind": "page_association",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [6],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "unavailability",
+          "genuine",
+          "ground",
+          "truth",
+          "scarcity",
+          "large",
+          "events",
+          "earthquakes"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper25-generalization-fact",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [9],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "what",
+          "worked",
+          "why",
+          "deep-learning",
+          "approaches",
+          "lead",
+          "better",
+          "performance"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper25-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [12],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Liu",
+          "Deep-learning",
+          "seismic",
+          "full-waveform",
+          "inversion",
+          "realistic",
+          "structural",
+          "models"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

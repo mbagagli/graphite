@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper06",
+  "anchors": [
+    {
+      "id": "paper06-abstract-body",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "preprocess",
+          "3-component",
+          "seismograms",
+          "characteristic",
+          "functions",
+          "multi-band",
+          "picker"
+        ],
+        "max_gap": 24
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper06-figure-2-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [5],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Example",
+          "processing",
+          "picking",
+          "results",
+          "INSTANCE",
+          "NANO2"
+        ],
+        "max_gap": 14
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper06-workflow-step",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [9],
+      "matcher": {
+        "type": "numeric_context",
+        "value": "100",
+        "unit": "Hz",
+        "tolerance": 0,
+        "context": ["sampling", "rate"],
+        "window": 180
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper06-figure-8-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [13],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Comparison",
+          "PhaseNet",
+          "DKPN",
+          "testing",
+          "ETHZ",
+          "dataset"
+        ],
+        "max_gap": 15
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper06-figure-11-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [17],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["Histograms", "pick", "residuals", "ETHZ", "dataset"],
+        "max_gap": 20
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper06-data-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [21],
+      "matcher": {
+        "type": "normalized",
+        "value": "6 Data and code availability"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper06-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [23],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Zhu",
+          "Beroza",
+          "PhaseNet",
+          "Deep-Neural-Network",
+          "Arrival",
+          "Picking"
+        ],
+        "max_gap": 18
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

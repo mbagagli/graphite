@@ -1,0 +1,11 @@
+graphics_theme/
+M*_*.md
+.cache/
+artifacts/
+
+# Local release task instructions
+GOAL.md
+dist-site/
+
+# Local design inspection state
+/.impeccable/live/

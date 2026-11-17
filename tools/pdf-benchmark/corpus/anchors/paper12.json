@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper12",
+  "anchors": [
+    {
+      "id": "paper12-volcanic-tremor-fact",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "volcanic",
+          "tremor",
+          "linked",
+          "subsurface",
+          "magmatic",
+          "hydrothermal",
+          "fluids",
+          "key",
+          "indicator",
+          "pending",
+          "volcanic",
+          "eruption"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper12-data-methods-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [3],
+      "matcher": { "type": "normalized", "value": "2 DATA AND METHODS" },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper12-figure-7-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [13],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Figure",
+          "7",
+          "Generalized",
+          "VOISS-Net",
+          "Trident",
+          "Volcano",
+          "December",
+          "4",
+          "2023"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper12-conclusions-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [21],
+      "matcher": { "type": "normalized", "value": "5 CONCLUSIONS" },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper12-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [27],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Zhong",
+          "Tan",
+          "Deep-Learning-Based",
+          "Phase",
+          "Picking",
+          "Volcano-Tectonic",
+          "Long-Period",
+          "Earthquakes"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

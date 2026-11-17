@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">
+  <title>Graphite logo</title>
+  <desc>Open book merging into a three-node knowledge graph.</desc>
+  <g fill="none" stroke="#292B2E" stroke-linecap="butt" stroke-linejoin="miter">
+    <path d="M170 160 H355
+             C430 160 480 195 500 250
+             C520 195 570 160 645 160
+             H830 V455 H690
+             C595 455 535 500 500 565
+             C465 500 405 455 310 455
+             H170 Z"
+          stroke-width="42"/>
+    <path d="M260 255 H350
+             C425 255 475 292 500 350
+             C525 292 575 255 650 255
+             H740"
+          stroke-width="38"/>
+    <path d="M260 350 H350
+             C425 350 475 388 500 445
+             C525 388 575 350 650 350
+             H740"
+          stroke-width="38"/>
+    <g stroke-linecap="round" stroke-linejoin="round">
+      <path d="M500 438 V788" stroke-width="40"/>
+      <path d="M500 610 C490 670 440 710 375 742 C350 755 332 767 317 780"
+            stroke-width="40"/>
+      <path d="M500 610 C510 670 560 710 625 742 C650 755 668 767 683 780"
+            stroke-width="40"/>
+    </g>
+    <circle cx="270" cy="835" r="72" stroke-width="40"/>
+    <circle cx="500" cy="850" r="62" stroke-width="40"/>
+    <circle cx="730" cy="835" r="72" stroke-width="40"/>
+  </g>
+</svg>

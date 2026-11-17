@@ -1,0 +1,17 @@
+[package]
+name = "graphite-pdf-benchmark-docling"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.88"
+license = "MIT"
+publish = false
+
+[features]
+default = []
+ocr = ["docling/pdf"]
+
+[dependencies]
+docling = { version = "=1.16.0", default-features = false, features = ["pdf-text"] }
+graphite-pdf-benchmark-common = { path = "../../common" }
+serde_json = "1"
+

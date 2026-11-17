@@ -1,0 +1,229 @@
+name: Unsigned package and installed runtime smoke
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_demo_archive:
+        description: Build the optional 60-paper offline PDF demo archive
+        type: boolean
+        default: false
+  workflow_call:
+    inputs:
+      build_demo_archive:
+        description: Build the optional 60-paper offline PDF demo archive
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: package-smoke-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_INCREMENTAL: "0"
+  CARGO_PROFILE_RELEASE_DEBUG: "0"
+  CARGO_TERM_COLOR: always
+
+jobs:
+  package:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Unsigned package (Linux x64)
+            platform: linux-x64
+            runner: ubuntu-24.04
+          - name: Unsigned package (macOS ARM64)
+            platform: macos-arm64
+            runner: macos-15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up pinned Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .node-version
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install Linux packaging prerequisites
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes \
+            build-essential \
+            clang \
+            cmake \
+            curl \
+            file \
+            libayatana-appindicator3-dev \
+            libclang-dev \
+            libfuse2t64 \
+            librsvg2-dev \
+            libssl-dev \
+            libwebkit2gtk-4.1-dev \
+            libxdo-dev \
+            pkg-config \
+            xvfb \
+            wget
+          echo "APPIMAGE_EXTRACT_AND_RUN=1" >> "$GITHUB_ENV"
+
+      - name: Configure the macOS build environment
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          test "$(uname -m)" = arm64
+          xcrun --find clang
+          xcrun --show-sdk-version
+          echo "MACOSX_DEPLOYMENT_TARGET=11.0" >> "$GITHUB_ENV"
+
+      - name: Activate the repository Rust toolchain
+        run: rustup show active-toolchain
+
+      - name: Set up pinned npm
+        run: npm install --global npm@11.17.0
+
+      - name: Report build tool versions
+        run: |
+          node --version
+          npm --version
+          rustc --version
+          cargo --version
+          cmake --version
+          clang --version
+
+      - name: Install JavaScript dependencies
+        run: npm ci
+
+      - name: Check production packaging configuration
+        run: npm run package:check
+
+      - name: Check source privacy
+        run: npm run check:publication && npm run check:privacy
+
+      - name: Validate version and frontend
+        run: |
+          npm run version:check
+          npm run check
+          npm run test:unit
+
+      - name: Read release version
+        id: version
+        shell: bash
+        run: echo "value=$(node -p 'require("./package.json").version')" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare isolated pinned CUDA build toolkit
+        if: runner.os == 'Linux'
+        run: npm run cuda:prepare
+
+      - name: Build unsigned native packages
+        run: npm run package:build
+
+      - name: Inspect and stage unsigned packages
+        id: inspect_packages
+        run: npm run package:smoke -- ${{ matrix.platform }}
+
+      - name: Install, launch, remove, and reinstall package
+        run: npm run package:installed-smoke -- ${{ matrix.platform }}
+
+      - name: Upload unsigned smoke packages
+        if: ${{ !cancelled() && steps.inspect_packages.outcome == 'success' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: graphite-${{ steps.version.outputs.value }}-unsigned-${{ matrix.platform }}
+          path: artifacts/package-smoke/${{ matrix.platform }}/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
+          include-hidden-files: false
+
+  candidate:
+    name: Assemble unsigned release candidate
+    needs: package
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up pinned Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .node-version
+
+      - name: Read release version
+        id: version
+        shell: bash
+        run: echo "value=$(node -p 'require("./package.json").version')" >> "$GITHUB_OUTPUT"
+
+      - name: Download verified native packages
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          pattern: graphite-${{ steps.version.outputs.value }}-unsigned-*
+          path: artifacts/package-downloads/
+          merge-multiple: false
+
+      - name: Verify and assemble unsigned release candidate
+        run: npm run package:release-candidate
+
+      - name: Upload unsigned release candidate
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: graphite-${{ steps.version.outputs.value }}-unsigned-release-candidate
+          path: artifacts/release-candidate/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
+          include-hidden-files: false
+
+  demo-archive:
+    name: Build optional offline paper archive
+    if: inputs.build_demo_archive
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up pinned Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .node-version
+
+      - name: Set up pinned npm and check archive prerequisite
+        run: |
+          npm install --global npm@11.17.0
+          python3 --version
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Retrieve and verify reviewed publisher PDFs
+        run: npm run demo:prepare -- --download
+
+      - name: Build and verify deterministic offline archive
+        run: npm run demo:archive
+
+      - name: Upload optional offline demo
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: graphite-demo-seismology-ml-v2
+          path: artifacts/demo-archive/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 0
+          include-hidden-files: false

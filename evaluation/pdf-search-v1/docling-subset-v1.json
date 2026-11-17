@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "subset_id": "m6-c2-docling-flat-v1",
+  "profile": "experimental-docling-flat",
+  "provider_profile": "docling/1.16.0/recommended-auto/7f8de88e860e289c42873922bd888cd50815ef26",
+  "selection_rule": "Preselected only from frozen representative-manifest categories before experimental retrieval results are inspected.",
+  "maximum_documents": 3,
+  "documents": [
+    {
+      "document_id": "paper16",
+      "frozen_categories": [
+        "native",
+        "ordinary-recent",
+        "two-column",
+        "moderate-tables",
+        "moderate-equations"
+      ],
+      "reason": "Exercises typed table and equation preservation in an ordinary two-column paper."
+    },
+    {
+      "document_id": "paper21",
+      "frozen_categories": [
+        "native",
+        "ordinary-recent",
+        "single-column",
+        "long-normal",
+        "complex-layout",
+        "figure-heavy",
+        "figure-only-pages"
+      ],
+      "reason": "Exercises a long, complex-layout, figure-heavy document with late supplementary content."
+    },
+    {
+      "document_id": "paper25",
+      "frozen_categories": [
+        "native",
+        "ordinary-recent",
+        "complex-multi-column",
+        "figure-heavy"
+      ],
+      "reason": "Exercises complex multi-column reading order and figure-heavy structure."
+    }
+  ]
+}

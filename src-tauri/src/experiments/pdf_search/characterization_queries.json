@@ -1,0 +1,28 @@
+[
+  {
+    "id": "characterization-data-analysis",
+    "query": "data analysis",
+    "itemIds": []
+  },
+  {
+    "id": "characterization-results-method",
+    "query": "results method",
+    "itemIds": []
+  },
+  {
+    "id": "characterization-model-observations",
+    "query": "model observations",
+    "itemIds": []
+  },
+  {
+    "id": "characterization-measurements",
+    "query": "measurements",
+    "itemIds": []
+  },
+  {
+    "id": "characterization-conclusions",
+    "query": "conclusions",
+    "itemIds": []
+  },
+  { "id": "characterization-reference", "query": "reference", "itemIds": [] }
+]

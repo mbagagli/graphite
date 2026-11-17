@@ -1,0 +1,318 @@
+{
+  "schema_version": 1,
+  "evaluation_set_id": "m6-c2-retrieval-qa-v1",
+  "entries": [
+    {
+      "qa_id": "m6c2-qa01",
+      "query_id": "m6c2-q01",
+      "question": "How are phase picks used to construct seismic events?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "Association groups phase picks so that their fundamental components form events.",
+      "acceptable_deterministic_alternatives": [
+        "Phase picks are associated into events."
+      ],
+      "required_anchor_ids": ["paper11-association-purpose"],
+      "required_evidence": [
+        "Evidence must connect association of phase picks with event formation."
+      ],
+      "acceptable_document_ids": ["paper11"],
+      "numeric_values": [],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa02",
+      "query_id": "m6c2-q02",
+      "question": "Why can volcanic tremor indicate an impending eruption?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "Volcanic tremor is linked to subsurface magmatic and hydrothermal fluids and can be a key indicator of a pending eruption.",
+      "acceptable_deterministic_alternatives": [
+        "It reflects subsurface magmatic or hydrothermal fluid activity associated with eruption unrest."
+      ],
+      "required_anchor_ids": ["paper12-volcanic-tremor-fact"],
+      "required_evidence": [
+        "Evidence must mention subsurface fluids and its eruption-indicator role."
+      ],
+      "acceptable_document_ids": ["paper12"],
+      "numeric_values": [],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa03",
+      "query_id": "m6c2-q03",
+      "question": "How do differential-time and single-event earthquake-location methods compare?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "Differential-time location methods provide superior accuracy and precision compared with single-event location methods.",
+      "acceptable_deterministic_alternatives": [
+        "Differential-time methods are more accurate and precise than single-event methods."
+      ],
+      "required_anchor_ids": ["paper13-differential-location-fact"],
+      "required_evidence": [
+        "Evidence must make the comparative accuracy or precision claim."
+      ],
+      "acceptable_document_ids": ["paper13"],
+      "numeric_values": [],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa04",
+      "query_id": "m6c2-q04",
+      "question": "What thresholds are used to connect dispersion-energy points?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "The thresholds are a 0-2 Hz frequency search range, a 10 m/s velocity difference, and a 30 degree angle difference.",
+      "acceptable_deterministic_alternatives": [
+        "0 to 2 Hz, 10 m/s, and 30 degrees."
+      ],
+      "required_anchor_ids": ["paper14-connection-thresholds"],
+      "required_evidence": [
+        "Evidence must contain all three threshold quantities."
+      ],
+      "acceptable_document_ids": ["paper14"],
+      "numeric_values": [
+        { "value": "0-2", "unit": "Hz" },
+        { "value": "10", "unit": "m/s" },
+        { "value": "30", "unit": "degrees" }
+      ],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa05",
+      "query_id": "m6c2-q05",
+      "question": "Which low-frequency band was used for the multiscale body-wave fit?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "The low-frequency band was 8-24 Hz.",
+      "acceptable_deterministic_alternatives": ["8 to 24 Hz."],
+      "required_anchor_ids": ["paper15-low-frequency-fit"],
+      "required_evidence": [
+        "Evidence must associate the range with the body-wave fitting strategy."
+      ],
+      "acceptable_document_ids": ["paper15"],
+      "numeric_values": [{ "value": "8-24", "unit": "Hz" }],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa06",
+      "query_id": "m6c2-q06",
+      "question": "Which three values occur together in the relevant Table 1 row?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "The values are 0.7190, 0.7729, and -7.0.",
+      "acceptable_deterministic_alternatives": ["0.7190; 0.7729; -7.0"],
+      "required_anchor_ids": ["paper16-table-1-row"],
+      "required_evidence": [
+        "Evidence must retain the three values in one table-row context."
+      ],
+      "acceptable_document_ids": ["paper16"],
+      "numeric_values": [
+        { "value": "0.7190", "unit": null },
+        { "value": "0.7729", "unit": null },
+        { "value": "-7.0", "unit": null }
+      ],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa07",
+      "query_id": "m6c2-q07",
+      "question": "Which five values are reported together in Table 2?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "The values are 7.38, 7.87, 10.13, 1.40, and 0.80.",
+      "acceptable_deterministic_alternatives": [
+        "7.38; 7.87; 10.13; 1.40; 0.80"
+      ],
+      "required_anchor_ids": ["paper17-table-2-values"],
+      "required_evidence": [
+        "Evidence must retain all five values in Table 2 context."
+      ],
+      "acceptable_document_ids": ["paper17"],
+      "numeric_values": [
+        { "value": "7.38", "unit": null },
+        { "value": "7.87", "unit": null },
+        { "value": "10.13", "unit": null },
+        { "value": "1.40", "unit": null },
+        { "value": "0.80", "unit": null }
+      ],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa08",
+      "query_id": "m6c2-q08",
+      "question": "What do nodes and their feature vectors represent in the seismic graph?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "The nodes represent seismic stations, and their feature vectors contain corresponding location and seismogram information.",
+      "acceptable_deterministic_alternatives": [
+        "Stations are graph nodes whose features encode station location and seismogram data."
+      ],
+      "required_anchor_ids": ["paper18-graph-node-fact"],
+      "required_evidence": [
+        "Evidence must identify stations, feature vectors, locations, and seismograms."
+      ],
+      "acceptable_document_ids": ["paper18"],
+      "numeric_values": [],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa09",
+      "query_id": "m6c2-q10",
+      "question": "Which optical constants are used in the PNC formulation?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "The constants are 190.7 THz and 204.2 x 10^6 m/s.",
+      "acceptable_deterministic_alternatives": [
+        "190.7 THz; 204.2 million metres per second."
+      ],
+      "required_anchor_ids": ["paper20-optical-constants"],
+      "required_evidence": ["Evidence must preserve both values and units."],
+      "acceptable_document_ids": ["paper20"],
+      "numeric_values": [
+        { "value": "190.7", "unit": "THz" },
+        { "value": "204.2 x 10^6", "unit": "m/s" }
+      ],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa10",
+      "query_id": "m6c2-q12",
+      "question": "What wave speed is reported for the analogue-model experiment?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "The reported wave speed is 350 m/s.",
+      "acceptable_deterministic_alternatives": ["350 m s-1."],
+      "required_anchor_ids": ["paper22-wave-speed-value"],
+      "required_evidence": [
+        "Evidence must place 350 next to the wave-speed unit and context."
+      ],
+      "acceptable_document_ids": ["paper22"],
+      "numeric_values": [{ "value": "350", "unit": "m/s" }],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa11",
+      "query_id": "m6c2-q13",
+      "question": "What does seismic phase association connect?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "It connects earthquake arrival-time measurements to their causative sources.",
+      "acceptable_deterministic_alternatives": [
+        "It links seismic phase arrivals with the earthquakes that caused them."
+      ],
+      "required_anchor_ids": ["paper23-association-definition"],
+      "required_evidence": [
+        "Evidence must state both arrival-time measurements and causative sources."
+      ],
+      "acceptable_document_ids": ["paper23"],
+      "numeric_values": [],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa12",
+      "query_id": "m6c2-q15",
+      "question": "Which two factors limit genuine ground truth for earthquake deep learning?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "The limitations are the unavailability of genuine ground truth and the scarcity of large earthquake events.",
+      "acceptable_deterministic_alternatives": [
+        "Genuine labels are unavailable and large earthquakes are scarce."
+      ],
+      "required_anchor_ids": ["paper25-ground-truth-limitation"],
+      "required_evidence": ["Evidence must include both limitations."],
+      "acceptable_document_ids": ["paper25"],
+      "numeric_values": [],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa13",
+      "query_id": "m6c2-q16",
+      "question": "How many realizations were considered sufficient for the study?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "The study used 250 realizations.",
+      "acceptable_deterministic_alternatives": ["N = 250."],
+      "required_anchor_ids": ["paper26-realization-count"],
+      "required_evidence": [
+        "Evidence must associate N = 250 with adequate study performance."
+      ],
+      "acceptable_document_ids": ["paper26"],
+      "numeric_values": [{ "value": "250", "unit": "realizations" }],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa14",
+      "query_id": "m6c2-q17",
+      "question": "What intrinsic ambiguity affects a double-couple point-source model?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "The model cannot intrinsically distinguish the fault plane from the auxiliary plane.",
+      "acceptable_deterministic_alternatives": [
+        "It has a fault-plane versus auxiliary-plane ambiguity."
+      ],
+      "required_anchor_ids": ["paper27-moment-tensor-fact"],
+      "required_evidence": [
+        "Evidence must name both the fault and auxiliary planes."
+      ],
+      "acceptable_document_ids": ["paper27"],
+      "numeric_values": [],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa15",
+      "query_id": "m6c2-q18",
+      "question": "Which variables are present in the interstation travel-time equation?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "The equation includes t_d, cos(theta), v, and omega.",
+      "acceptable_deterministic_alternatives": [
+        "td, cosine theta, velocity v, and angular frequency omega."
+      ],
+      "required_anchor_ids": ["paper28-travel-time-equation"],
+      "required_evidence": [
+        "Evidence must preserve the four variables in equation context."
+      ],
+      "acceptable_document_ids": ["paper28"],
+      "numeric_values": [],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa16",
+      "query_id": "m6c2-q19",
+      "question": "What does MASW estimate, and what observations does it use?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "MASW uses multichannel recordings of high-frequency Rayleigh waves to estimate near-surface S-wave velocity.",
+      "acceptable_deterministic_alternatives": [
+        "It estimates shallow shear-wave velocity from multichannel high-frequency Rayleigh-wave data."
+      ],
+      "required_anchor_ids": ["paper29-masw-method-fact"],
+      "required_evidence": [
+        "Evidence must connect MASW, multichannel recordings, Rayleigh waves, and S-wave velocity."
+      ],
+      "acceptable_document_ids": ["paper29"],
+      "numeric_values": [],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa17",
+      "query_id": "m6c2-q20",
+      "question": "How many independent parameters does a symmetric second-rank stress tensor contain?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "It contains six independent parameters.",
+      "acceptable_deterministic_alternatives": ["Six."],
+      "required_anchor_ids": ["paper30-stress-tensor-fact"],
+      "required_evidence": [
+        "Evidence must associate six independent parameters with the symmetric second-rank stress tensor."
+      ],
+      "acceptable_document_ids": ["paper30"],
+      "numeric_values": [{ "value": "6", "unit": "parameters" }],
+      "abstention_acceptable": false
+    },
+    {
+      "qa_id": "m6c2-qa18",
+      "query_id": "m6c2-q21",
+      "question": "Which representative papers provide complementary explanations of seismic phase association?",
+      "verification_status": "suggested-unverified",
+      "expected_answer": "paper11 explains association as grouping phase picks into events, while paper23 defines it as connecting arrival-time measurements to causative sources.",
+      "acceptable_deterministic_alternatives": [
+        "paper11 and paper23, covering event construction and arrival-to-source association respectively."
+      ],
+      "required_anchor_ids": [
+        "paper11-association-purpose",
+        "paper23-association-definition"
+      ],
+      "required_evidence": [
+        "Evidence must support both paper11 and paper23 and distinguish their two descriptions."
+      ],
+      "acceptable_document_ids": ["paper11", "paper23"],
+      "numeric_values": [],
+      "abstention_acceptable": false
+    }
+  ]
+}

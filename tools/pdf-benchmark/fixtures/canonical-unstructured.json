@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "canonical-document-v1",
+  "artifactId": "benchmark-artifact-contract",
+  "artifactRevisionId": 1,
+  "extractionProfileId": "benchmark-contract-v1",
+  "metadata": {
+    "extractedTitle": null,
+    "language": "en",
+    "reportedPageCountHint": null,
+    "documentIdentifiers": {}
+  },
+  "pages": [],
+  "blocks": [
+    {
+      "id": "benchmark-block-1",
+      "parentId": null,
+      "sourceOrder": 0,
+      "sectionPath": [],
+      "pageRange": null,
+      "regions": [],
+      "content": {
+        "kind": "other",
+        "label": "unstructured-text",
+        "text": "Line one.\n\n  Indented 3.2e-4\tvalue.\n"
+      }
+    }
+  ],
+  "readingOrder": ["benchmark-block-1"],
+  "relationships": [],
+  "assets": []
+}

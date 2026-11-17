@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "canonical-document-v1",
+  "artifactId": "benchmark-mapped-artifact",
+  "artifactRevisionId": 2,
+  "extractionProfileId": "benchmark:mapped:v1",
+  "metadata": {
+    "extractedTitle": "Mapped fixture",
+    "language": "en",
+    "reportedPageCountHint": 1,
+    "documentIdentifiers": {}
+  },
+  "pages": [
+    {
+      "id": "page-1",
+      "physicalPageNumber": 1,
+      "printedLabel": "1",
+      "width": 612.0,
+      "height": 792.0,
+      "rotationDegrees": 0,
+      "coordinateSpace": "normalized-top-left-after-rotation"
+    }
+  ],
+  "blocks": [
+    {
+      "id": "heading-1",
+      "parentId": null,
+      "sourceOrder": 0,
+      "sectionPath": [],
+      "pageRange": { "start": 1, "end": 1 },
+      "regions": [],
+      "content": { "kind": "heading", "text": "Methods", "level": 2 }
+    },
+    {
+      "id": "paragraph-1",
+      "parentId": "heading-1",
+      "sourceOrder": 1,
+      "sectionPath": ["heading-1"],
+      "pageRange": { "start": 1, "end": 1 },
+      "regions": [
+        {
+          "pageId": "page-1",
+          "boundingBox": {
+            "x": 0.1,
+            "y": 0.2,
+            "width": 0.7,
+            "height": 0.1
+          }
+        }
+      ],
+      "content": { "kind": "paragraph", "text": "Mapped paragraph." }
+    },
+    {
+      "id": "other-1",
+      "parentId": null,
+      "sourceOrder": 2,
+      "sectionPath": [],
+      "pageRange": { "start": 1, "end": 1 },
+      "regions": [],
+      "content": {
+        "kind": "other",
+        "label": "page-text",
+        "text": "Mapped page fallback."
+      }
+    }
+  ],
+  "readingOrder": ["heading-1", "paragraph-1", "other-1"],
+  "relationships": [
+    {
+      "sourceBlockId": "paragraph-1",
+      "targetBlockId": "other-1",
+      "relation": "continuation-of"
+    }
+  ],
+  "assets": []
+}

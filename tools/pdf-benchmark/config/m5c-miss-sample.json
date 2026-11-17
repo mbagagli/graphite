@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "sampleId": "m5c-stratified-miss-review-v1",
+  "description": "Neutral anchor identifiers for the local M5-C adjudication packet. Human expectations and extracted snippets are materialized only under the ignored results directory.",
+  "cases": [
+    {
+      "documentId": "paper12",
+      "anchorId": "paper12-conclusions-heading",
+      "stratum": "zotero-and-other-candidates-preserved-pdf-inspector-missed"
+    },
+    {
+      "documentId": "paper12",
+      "anchorId": "paper12-data-methods-heading",
+      "stratum": "zotero-and-other-candidates-preserved-pdf-inspector-missed"
+    },
+    {
+      "documentId": "paper15",
+      "anchorId": "paper15-bedrock-depth-fact",
+      "stratum": "zotero-and-other-candidates-preserved-xberg-missed"
+    },
+    {
+      "documentId": "paper16",
+      "anchorId": "paper16-equation-7-property",
+      "stratum": "zotero-and-other-candidates-preserved-xberg-missed"
+    },
+    {
+      "documentId": "paper20",
+      "anchorId": "paper20-figure-2-caption",
+      "stratum": "zotero-and-other-candidates-preserved-xberg-missed"
+    },
+    {
+      "documentId": "paper22",
+      "anchorId": "paper22-model-dimensions",
+      "stratum": "zotero-and-xberg-preserved-pdf-inspector-and-docling-missed"
+    },
+    {
+      "documentId": "paper24",
+      "anchorId": "paper24-table-1-caption",
+      "stratum": "zotero-and-docling-preserved-flat-candidates-missed"
+    },
+    {
+      "documentId": "paper15",
+      "anchorId": "paper15-low-frequency-fit",
+      "stratum": "docling-only"
+    },
+    {
+      "documentId": "paper25",
+      "anchorId": "paper25-summary-fact",
+      "stratum": "docling-only"
+    },
+    {
+      "documentId": "paper30",
+      "anchorId": "paper30-stress-tensor-fact",
+      "stratum": "docling-only"
+    },
+    {
+      "documentId": "paper30",
+      "anchorId": "paper30-table-2-heading",
+      "stratum": "docling-only"
+    },
+    {
+      "documentId": "paper13",
+      "anchorId": "paper13-differential-location-fact",
+      "stratum": "neither-candidate-nor-zotero"
+    },
+    {
+      "documentId": "paper14",
+      "anchorId": "paper14-figure-26-caption",
+      "stratum": "neither-candidate-nor-zotero"
+    },
+    {
+      "documentId": "paper16",
+      "anchorId": "paper16-table-1-row",
+      "stratum": "neither-candidate-nor-zotero"
+    },
+    {
+      "documentId": "paper18",
+      "anchorId": "paper18-attention-mechanism",
+      "stratum": "neither-candidate-nor-zotero"
+    },
+    {
+      "documentId": "paper19",
+      "anchorId": "paper19-double-difference-purpose",
+      "stratum": "neither-candidate-nor-zotero"
+    },
+    {
+      "documentId": "paper23",
+      "anchorId": "paper23-known-event-recovery",
+      "stratum": "neither-candidate-nor-zotero"
+    },
+    {
+      "documentId": "paper28",
+      "anchorId": "paper28-tail-reference",
+      "stratum": "neither-candidate-nor-zotero"
+    }
+  ]
+}

@@ -1,0 +1,626 @@
+{
+  "schema_version": 1,
+  "evaluation_set_id": "m6-c2-retrieval-qa-v1",
+  "entries": [
+    {
+      "query_id": "m6c2-q01",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper11-association-purpose"],
+      "relevant_item_ids": ["paper11"],
+      "relevant_document_ids": ["paper11"],
+      "acceptable_deterministic_alternatives": [
+        "phase-pick association into events"
+      ],
+      "required_evidence": [
+        "The evidence must connect phase picks, association, and event formation."
+      ]
+    },
+    {
+      "query_id": "m6c2-q02",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper12-volcanic-tremor-fact"],
+      "relevant_item_ids": ["paper12"],
+      "relevant_document_ids": ["paper12"],
+      "acceptable_deterministic_alternatives": [
+        "tremor as an eruption indicator"
+      ],
+      "required_evidence": [
+        "The evidence must link tremor to subsurface fluids and eruption monitoring."
+      ]
+    },
+    {
+      "query_id": "m6c2-q03",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper13-differential-location-fact"],
+      "relevant_item_ids": ["paper13"],
+      "relevant_document_ids": ["paper13"],
+      "acceptable_deterministic_alternatives": [
+        "differential-time location improves precision"
+      ],
+      "required_evidence": [
+        "The evidence must compare differential-time and single-event location accuracy or precision."
+      ]
+    },
+    {
+      "query_id": "m6c2-q04",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper14-connection-thresholds"],
+      "relevant_item_ids": ["paper14"],
+      "relevant_document_ids": ["paper14"],
+      "acceptable_deterministic_alternatives": ["0-2 Hz; 10 m/s; 30 degrees"],
+      "required_evidence": [
+        "The evidence must include the frequency range plus the velocity and angle differences."
+      ]
+    },
+    {
+      "query_id": "m6c2-q05",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper15-low-frequency-fit"],
+      "relevant_item_ids": ["paper15"],
+      "relevant_document_ids": ["paper15"],
+      "acceptable_deterministic_alternatives": ["8 to 24 Hz"],
+      "required_evidence": [
+        "The evidence must associate 8-24 Hz with the low-frequency body-wave fit."
+      ]
+    },
+    {
+      "query_id": "m6c2-q06",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper16-table-1-row"],
+      "relevant_item_ids": ["paper16"],
+      "relevant_document_ids": ["paper16"],
+      "acceptable_deterministic_alternatives": ["0.7190, 0.7729, -7.0"],
+      "required_evidence": [
+        "The evidence must preserve the three values as one Table 1 row context."
+      ]
+    },
+    {
+      "query_id": "m6c2-q07",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper17-table-2-values"],
+      "relevant_item_ids": ["paper17"],
+      "relevant_document_ids": ["paper17"],
+      "acceptable_deterministic_alternatives": [
+        "7.38, 7.87, 10.13, 1.40, 0.80"
+      ],
+      "required_evidence": [
+        "The evidence must preserve the five values in Table 2 context."
+      ]
+    },
+    {
+      "query_id": "m6c2-q08",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper18-graph-node-fact"],
+      "relevant_item_ids": ["paper18"],
+      "relevant_document_ids": ["paper18"],
+      "acceptable_deterministic_alternatives": [
+        "stations represented by feature vectors"
+      ],
+      "required_evidence": [
+        "The evidence must identify seismic stations and their location or seismogram information."
+      ]
+    },
+    {
+      "query_id": "m6c2-q09",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper19-figure-7-caption"],
+      "relevant_item_ids": ["paper19"],
+      "relevant_document_ids": ["paper19"],
+      "acceptable_deterministic_alternatives": [
+        "relocated Turkiye catalog comparison with station corrections"
+      ],
+      "required_evidence": [
+        "The evidence must identify Figure 7 and the relocated Turkiye catalog comparison."
+      ]
+    },
+    {
+      "query_id": "m6c2-q10",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper20-optical-constants"],
+      "relevant_item_ids": ["paper20"],
+      "relevant_document_ids": ["paper20"],
+      "acceptable_deterministic_alternatives": [
+        "190.7 THz and 204.2 x 10^6 m/s"
+      ],
+      "required_evidence": [
+        "The evidence must contain both optical constants with their units."
+      ]
+    },
+    {
+      "query_id": "m6c2-q11",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper21-tail-table-s2"],
+      "relevant_item_ids": ["paper21"],
+      "relevant_document_ids": ["paper21"],
+      "acceptable_deterministic_alternatives": ["125.0 to 300.0"],
+      "required_evidence": [
+        "The evidence must retain 125.0 and 300.0 with supplementary Table S2 and horizontal 3-D parameterization context."
+      ]
+    },
+    {
+      "query_id": "m6c2-q12",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper22-wave-speed-value"],
+      "relevant_item_ids": ["paper22"],
+      "relevant_document_ids": ["paper22"],
+      "acceptable_deterministic_alternatives": ["350 m/s", "350 m s-1"],
+      "required_evidence": [
+        "The evidence must associate 350 m/s with wave speed."
+      ]
+    },
+    {
+      "query_id": "m6c2-q13",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper23-association-definition"],
+      "relevant_item_ids": ["paper23"],
+      "relevant_document_ids": ["paper23"],
+      "acceptable_deterministic_alternatives": [
+        "connect arrivals to their causative sources"
+      ],
+      "required_evidence": [
+        "The evidence must connect seismic arrival-time measurements to causative earthquake sources."
+      ]
+    },
+    {
+      "query_id": "m6c2-q14",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper24-table-1-caption"],
+      "relevant_item_ids": ["paper24"],
+      "relevant_document_ids": ["paper24"],
+      "acceptable_deterministic_alternatives": [
+        "Table 1 compares low- and high-frequency electromagnetic methods"
+      ],
+      "required_evidence": [
+        "The evidence must identify Table 1 as the requested comparison location."
+      ]
+    },
+    {
+      "query_id": "m6c2-q15",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper25-ground-truth-limitation"],
+      "relevant_item_ids": ["paper25"],
+      "relevant_document_ids": ["paper25"],
+      "acceptable_deterministic_alternatives": [
+        "lack of genuine ground truth and scarcity of large earthquakes"
+      ],
+      "required_evidence": [
+        "The evidence must mention both genuine-ground-truth unavailability and scarcity of large events."
+      ]
+    },
+    {
+      "query_id": "m6c2-q16",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper26-realization-count"],
+      "relevant_item_ids": ["paper26"],
+      "relevant_document_ids": ["paper26"],
+      "acceptable_deterministic_alternatives": ["N = 250", "250 realizations"],
+      "required_evidence": [
+        "The evidence must state that 250 realizations performed well during the study."
+      ]
+    },
+    {
+      "query_id": "m6c2-q17",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper27-moment-tensor-fact"],
+      "relevant_item_ids": ["paper27"],
+      "relevant_document_ids": ["paper27"],
+      "acceptable_deterministic_alternatives": [
+        "fault-plane versus auxiliary-plane ambiguity"
+      ],
+      "required_evidence": [
+        "The evidence must identify the intrinsic ambiguity between the fault and auxiliary planes."
+      ]
+    },
+    {
+      "query_id": "m6c2-q18",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper28-travel-time-equation"],
+      "relevant_item_ids": ["paper28"],
+      "relevant_document_ids": ["paper28"],
+      "acceptable_deterministic_alternatives": ["t_d, cos(theta), v, omega"],
+      "required_evidence": [
+        "The evidence must preserve the travel-time equation variables together."
+      ]
+    },
+    {
+      "query_id": "m6c2-q19",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper29-masw-method-fact"],
+      "relevant_item_ids": ["paper29"],
+      "relevant_document_ids": ["paper29"],
+      "acceptable_deterministic_alternatives": [
+        "multichannel Rayleigh waves estimate near-surface S-wave velocity"
+      ],
+      "required_evidence": [
+        "The evidence must connect MASW, multichannel data, high-frequency Rayleigh waves, and near-surface S-wave velocity."
+      ]
+    },
+    {
+      "query_id": "m6c2-q20",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper30-stress-tensor-fact"],
+      "relevant_item_ids": ["paper30"],
+      "relevant_document_ids": ["paper30"],
+      "acceptable_deterministic_alternatives": ["six independent parameters"],
+      "required_evidence": [
+        "The evidence must state that the symmetric second-rank stress tensor has six independent parameters."
+      ]
+    },
+    {
+      "query_id": "m6c2-q21",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper11-association-purpose",
+        "paper23-association-definition"
+      ],
+      "relevant_item_ids": ["paper11", "paper23"],
+      "relevant_document_ids": ["paper11", "paper23"],
+      "acceptable_deterministic_alternatives": [
+        "event-building association and arrival-to-source association"
+      ],
+      "required_evidence": [
+        "The evidence set must cover both the event-building and causative-source views of phase association."
+      ]
+    },
+    {
+      "query_id": "m6c2-q22",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper13-differential-location-fact",
+        "paper19-double-difference-purpose"
+      ],
+      "relevant_item_ids": ["paper13", "paper19"],
+      "relevant_document_ids": ["paper13", "paper19"],
+      "acceptable_deterministic_alternatives": [
+        "differential-time location",
+        "double-difference relocation"
+      ],
+      "required_evidence": [
+        "The evidence set must identify both accuracy-oriented differential location and catalog-workflow double-difference relocation."
+      ]
+    },
+    {
+      "query_id": "m6c2-q23",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper14-figure-1-caption",
+        "paper26-uncertainty-propagation",
+        "paper28-consistent-algorithms",
+        "paper29-masw-method-fact"
+      ],
+      "relevant_item_ids": ["paper14", "paper26", "paper28", "paper29"],
+      "relevant_document_ids": ["paper14", "paper26", "paper28", "paper29"],
+      "acceptable_deterministic_alternatives": [
+        "dispersion imaging",
+        "surface-wave inversion",
+        "phase velocity",
+        "Rayleigh-wave MASW"
+      ],
+      "required_evidence": [
+        "At least one retrieved passage must explicitly discuss dispersion, phase velocity, surface-wave inversion, or Rayleigh-wave observations."
+      ]
+    },
+    {
+      "query_id": "m6c2-q24",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper12-tail-reference",
+        "paper18-graph-node-fact",
+        "paper25-summary-fact"
+      ],
+      "relevant_item_ids": ["paper12", "paper18", "paper25"],
+      "relevant_document_ids": ["paper12", "paper18", "paper25"],
+      "acceptable_deterministic_alternatives": [
+        "deep-learning phase picking",
+        "graph learning over stations",
+        "deep-learning seismic processing"
+      ],
+      "required_evidence": [
+        "The evidence set must identify a concrete seismic deep-learning application."
+      ]
+    },
+    {
+      "query_id": "m6c2-q25",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper20-figure-2-caption",
+        "paper27-moment-tensor-fact",
+        "paper30-stress-tensor-fact"
+      ],
+      "relevant_item_ids": ["paper20", "paper27", "paper30"],
+      "relevant_document_ids": ["paper20", "paper27", "paper30"],
+      "acceptable_deterministic_alternatives": [
+        "source inversion",
+        "moment tensor",
+        "stress tensor"
+      ],
+      "required_evidence": [
+        "Retrieved evidence must explicitly concern inversion or tensor descriptions of earthquake sources or stress."
+      ]
+    },
+    {
+      "query_id": "m6c2-q26",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper20-pnc-loop-fact",
+        "paper20-figure-1-caption"
+      ],
+      "relevant_item_ids": ["paper20"],
+      "relevant_document_ids": ["paper20"],
+      "acceptable_deterministic_alternatives": [
+        "2,123 km PNC fiber loop",
+        "fiber sensing of the M3.9 Mulhouse earthquake"
+      ],
+      "required_evidence": [
+        "The evidence must connect a long fiber loop or PNC sensing system with earthquake observation."
+      ]
+    },
+    {
+      "query_id": "m6c2-q27",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper17-zone-b-compaction",
+        "paper24-field-heterogeneity"
+      ],
+      "relevant_item_ids": ["paper17", "paper24"],
+      "relevant_document_ids": ["paper17", "paper24"],
+      "acceptable_deterministic_alternatives": [
+        "Zone B compaction",
+        "heterogeneous agricultural fields"
+      ],
+      "required_evidence": [
+        "The evidence set must concern compaction or field-scale heterogeneity."
+      ]
+    },
+    {
+      "query_id": "m6c2-q28",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper15-bedrock-depth-fact",
+        "paper26-uncertainty-propagation",
+        "paper29-masw-method-fact"
+      ],
+      "relevant_item_ids": ["paper15", "paper26", "paper29"],
+      "relevant_document_ids": ["paper15", "paper26", "paper29"],
+      "acceptable_deterministic_alternatives": [
+        "bedrock depth",
+        "Vs profile inversion",
+        "near-surface S-wave velocity"
+      ],
+      "required_evidence": [
+        "Retrieved evidence must identify a near-surface structural quantity or method."
+      ]
+    },
+    {
+      "query_id": "m6c2-q29",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper13-location-uncertainty-fact",
+        "paper20-figure-2-caption",
+        "paper26-uncertainty-propagation"
+      ],
+      "relevant_item_ids": ["paper13", "paper20", "paper26"],
+      "relevant_document_ids": ["paper13", "paper20", "paper26"],
+      "acceptable_deterministic_alternatives": [
+        "location uncertainty",
+        "prior model covariance",
+        "dispersion uncertainty propagation"
+      ],
+      "required_evidence": [
+        "The evidence must explicitly address uncertainty or covariance in location or inversion."
+      ]
+    },
+    {
+      "query_id": "m6c2-q30",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper18-graph-node-fact"],
+      "relevant_item_ids": ["paper18"],
+      "relevant_document_ids": ["paper18"],
+      "acceptable_deterministic_alternatives": [
+        "station feature vectors as graph nodes"
+      ],
+      "required_evidence": [
+        "The evidence must identify seismic stations as graph nodes."
+      ]
+    },
+    {
+      "query_id": "m6c2-q31",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper12-volcanic-tremor-fact",
+        "paper12-tail-reference"
+      ],
+      "relevant_item_ids": ["paper12"],
+      "relevant_document_ids": ["paper12"],
+      "acceptable_deterministic_alternatives": [
+        "volcanic tremor monitoring",
+        "deep-learning volcanic phase picking"
+      ],
+      "required_evidence": [
+        "The evidence must concern tremor or automated phase picking in a volcanic context."
+      ]
+    },
+    {
+      "query_id": "m6c2-q32",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper16-table-1-row", "paper17-table-2-values"],
+      "relevant_item_ids": ["paper16", "paper17"],
+      "relevant_document_ids": ["paper16", "paper17"],
+      "acceptable_deterministic_alternatives": [
+        "MEMS calibration table",
+        "soil measurement table"
+      ],
+      "required_evidence": [
+        "The evidence set must include a table-associated calibration or material-measurement value."
+      ]
+    },
+    {
+      "query_id": "m6c2-q33",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper13-figure-7-caption",
+        "paper19-figure-7-caption",
+        "paper19-tail-figure-10-caption"
+      ],
+      "relevant_item_ids": ["paper13", "paper19"],
+      "relevant_document_ids": ["paper13", "paper19"],
+      "acceptable_deterministic_alternatives": [
+        "HypoDD against ground truth",
+        "relocated catalog comparison",
+        "initial and relocated synthetic locations"
+      ],
+      "required_evidence": [
+        "The evidence must identify a figure comparing relocated locations with truth or an initial catalog."
+      ]
+    },
+    {
+      "query_id": "m6c2-q34",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper14-unsupervised-motivation",
+        "paper25-ground-truth-limitation",
+        "paper25-generalization-fact"
+      ],
+      "relevant_item_ids": ["paper14", "paper25"],
+      "relevant_document_ids": ["paper14", "paper25"],
+      "acceptable_deterministic_alternatives": [
+        "avoid model dependence",
+        "ground-truth scarcity",
+        "understand generalization"
+      ],
+      "required_evidence": [
+        "The evidence must describe at least one concrete limitation involving model dependence, ground truth, or generalization."
+      ]
+    },
+    {
+      "query_id": "m6c2-q35",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper15-tail-reference",
+        "paper20-figure-2-caption",
+        "paper26-tail-reference"
+      ],
+      "relevant_item_ids": ["paper15", "paper20", "paper26"],
+      "relevant_document_ids": ["paper15", "paper20", "paper26"],
+      "acceptable_deterministic_alternatives": [
+        "frequency-domain waveform inversion",
+        "source inversion",
+        "surface-wave inversion workflow"
+      ],
+      "required_evidence": [
+        "Retrieved evidence must concern an inversion method, result, or workflow and include late-document evidence where available."
+      ]
+    },
+    {
+      "query_id": "m6c2-q36",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper18-attention-mechanism",
+        "paper20-optical-constants",
+        "paper28-travel-time-equation"
+      ],
+      "relevant_item_ids": ["paper18", "paper20", "paper28"],
+      "relevant_document_ids": ["paper18", "paper20", "paper28"],
+      "acceptable_deterministic_alternatives": [
+        "attention matrices",
+        "optical constants",
+        "interstation travel-time variables"
+      ],
+      "required_evidence": [
+        "The evidence must preserve equation variables or numerical constants in their scientific context."
+      ]
+    },
+    {
+      "query_id": "m6c2-q37",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper18-figure-5-caption",
+        "paper20-figure-2-caption"
+      ],
+      "relevant_item_ids": ["paper18", "paper20"],
+      "relevant_document_ids": ["paper18", "paper20"],
+      "acceptable_deterministic_alternatives": [
+        "predictions with different station counts",
+        "source inversion versus prior covariance"
+      ],
+      "required_evidence": [
+        "The evidence must identify a figure comparing prediction or inversion results."
+      ]
+    },
+    {
+      "query_id": "m6c2-q38",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper11-tail-reference",
+        "paper23-tail-reference"
+      ],
+      "relevant_item_ids": ["paper11", "paper23"],
+      "relevant_document_ids": ["paper11", "paper23"],
+      "acceptable_deterministic_alternatives": [
+        "Ringdal and Kvaerna association",
+        "maximum-likelihood phase association"
+      ],
+      "required_evidence": [
+        "The evidence must identify a late reference on seismic phase association."
+      ]
+    },
+    {
+      "query_id": "m6c2-q39",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": [
+        "paper20-pnc-loop-fact",
+        "paper22-model-dimensions",
+        "paper28-figure-2-caption"
+      ],
+      "relevant_item_ids": ["paper20", "paper22", "paper28"],
+      "relevant_document_ids": ["paper20", "paper22", "paper28"],
+      "acceptable_deterministic_alternatives": [
+        "2,123 km loop",
+        "50 x 50 x 60 cm model",
+        "500 km station spacing"
+      ],
+      "required_evidence": [
+        "The evidence must retain a numerical spatial scale with the corresponding experimental geometry."
+      ]
+    },
+    {
+      "query_id": "m6c2-q40",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper27-orientation-methods-heading"],
+      "relevant_item_ids": ["paper27"],
+      "relevant_document_ids": ["paper27"],
+      "acceptable_deterministic_alternatives": [
+        "full waveform methods for relative and absolute sensor orientation"
+      ],
+      "required_evidence": [
+        "The evidence must preserve the full section heading or an unambiguous equivalent."
+      ]
+    },
+    {
+      "query_id": "m6c2-q41",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper05-abstract-body"],
+      "relevant_item_ids": ["paper05"],
+      "relevant_document_ids": ["paper05"],
+      "acceptable_deterministic_alternatives": [
+        "inversion of local earthquake data for three-dimensional velocity"
+      ],
+      "required_evidence": [
+        "The evidence must connect local earthquake data, inversion, and three-dimensional velocity."
+      ]
+    },
+    {
+      "query_id": "m6c2-q42",
+      "verification_status": "suggested-unverified",
+      "relevant_anchor_ids": ["paper05-interpretation-heading"],
+      "relevant_item_ids": ["paper05"],
+      "relevant_document_ids": ["paper05"],
+      "acceptable_deterministic_alternatives": [
+        "Interpretation of Three-Dimensional P Wave Velocity Fields"
+      ],
+      "required_evidence": [
+        "The evidence must preserve the late interpretation-section heading."
+      ]
+    }
+  ]
+}

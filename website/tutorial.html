@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#292b2e" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'"
+    />
+    <link rel="stylesheet" href="__BASE__style.css" />
+    <title>Your first investigation - Graphite</title>
+    <meta
+      name="description"
+      content="Explore 60 real seismology papers with a guided Graphite tutorial, from the Zenodo demo archive to checking a cited answer."
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="brand" href="__BASE__"
+        >Graphite<span>Discover Knowledge</span></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="__BASE__">Overview</a
+        ><a href="__BASE__tutorial.html">Tutorial</a
+        ><a href="__BASE__manual.html">Manual</a
+        ><a href="__BASE__#install">Install</a>
+      </nav>
+    </header>
+
+    <main id="main" class="wrap guide">
+      <div class="guide-intro">
+        <h1>Your first<br /><em>investigation.</em></h1>
+        <p>
+          Follow a connection through 60 real papers on seismology and machine
+          learning. Then ask a focused question and check the answer against its
+          source.
+        </p>
+        <p class="small">
+          You need Graphite Desktop. No Zotero account is needed. The Zenodo PDF
+          archive is about 412 MB; optional AI models are separate downloads.
+        </p>
+      </div>
+      <nav class="guide-toc" aria-label="Tutorial steps">
+        <a href="#prepare">1. Prepare</a><a href="#explore">2. Explore</a
+        ><a href="#read">3. Read</a><a href="#ask">4. Ask and verify</a>
+        <a href="#keep">5. Keep your investigation</a>
+      </nav>
+      <section class="guide-step" id="prepare">
+        <div>
+          <span class="step-number">1</span>
+          <h2>Make the demo yours.</h2>
+        </div>
+        <div>
+          <p>
+            Open <strong>Data Source</strong> (shown as
+            <strong>Demo source</strong> when the demo is active), then choose
+            <strong>Use demo data</strong>. The 60-paper metadata collection is
+            available immediately.
+          </p>
+          <ol>
+            <li>
+              Choose <strong>Prepare library for AI</strong>. Review the archive
+              size and choose <strong>Download and prepare</strong> to get the
+              PDF ZIP from the
+              <a href="__DEMO_RECORD__">published Zenodo record</a>.
+            </li>
+            <li>
+              Already have the Zenodo archive? Choose
+              <strong>Already downloaded?</strong> and select the ZIP directly.
+              Keep it zipped.
+            </li>
+            <li>
+              Watch preparation beneath the button. Graphite verifies the PDFs
+              and prepares searchable text and citation connections.
+            </li>
+            <li>
+              If <strong>Embedding model needed</strong> appears, use
+              <strong>Install embedding model</strong>, then
+              <strong>Resume preparation</strong>.
+            </li>
+          </ol>
+          <p class="checkpoint">
+            <strong>Checkpoint:</strong> Review
+            <strong>Library prepared</strong> and any items needing attention.
+            An answer model is a separate step; you can explore and read now.
+          </p>
+          <p>
+            Using your own library? In Zotero Desktop, open
+            <strong>Settings &gt; Advanced</strong> and enable
+            <strong
+              >Allow other applications on this computer to communicate with
+              Zotero</strong
+            >
+            (<a href="https://www.zotero.org/support/dev/web_api/v3/local_api"
+              >official setup</a
+            >). Keep Zotero running, then choose
+            <strong>Data Source &gt; Use Zotero</strong> in Graphite.
+          </p>
+          <details>
+            <summary>The download is unavailable in my build</summary>
+            <p>
+              Download the <a href="__DEMO_DOWNLOAD__">verified ZIP</a> in your
+              browser and import it with <strong>Already downloaded?</strong>.
+              Use the archive supplied for this demo version; Graphite verifies
+              its contents.
+            </p>
+          </details>
+        </div>
+      </section>
+      <section class="guide-step" id="explore">
+        <div>
+          <span class="step-number">2</span>
+          <h2>Find a paper<br />through its year.</h2>
+        </div>
+        <div>
+          <p>
+            Open <strong>Analytics</strong> and select <strong>2011</strong> in
+            the publication-year chart. You should see two papers. Select a
+            title to return to the graph with that paper in focus.
+          </p>
+          <figure>
+            <div class="focus-capture">
+              <img
+                src="__BASE__assets/real-demo.png"
+                width="1440"
+                height="814"
+                alt="Focused view of the 2011 popup listing two real papers on seismic event classification"
+                loading="lazy"
+              />
+            </div>
+            <figcaption>
+              The actual demo's 2011 selection. This metadata screenshot does
+              not show PDF or model readiness.
+              <a href="__BASE__assets/real-demo.png">Open the full screenshot</a
+              >.
+            </figcaption>
+          </figure>
+          <p>
+            Switch between <strong>3D</strong> and <strong>2D</strong>. Use
+            <strong>Fit graph</strong> to recover the overview. Select a paper
+            to inspect it; double-click to move closer.
+          </p>
+          <p class="checkpoint">
+            <strong>Checkpoint:</strong> The selected paper stays your focus
+            when you change views. Shared-topic connections indicate curated
+            subject overlap, not a paper citing another paper. Automatic topic
+            colors require semantic library preparation. Before that, nodes are
+            neutral and existing relationships still work. After preparation,
+            open TOPIC MAP to inspect coverage, then Group By Topic to arrange
+            the discovered groups. Labels are suggestions from source text, not
+            verified scientific classifications.
+          </p>
+        </div>
+      </section>
+      <section class="guide-step" id="read">
+        <div>
+          <span class="step-number">3</span>
+          <h2>Go back<br />to the paper.</h2>
+        </div>
+        <div>
+          <p>
+            In <strong>Search library</strong>, look for
+            <strong
+              >Deep learning for fast simulation of seismic waves in complex
+              media</strong
+            >. Select it and choose <strong>Open paper</strong> in the
+            inspector.
+          </p>
+          <p>
+            Use the Reader's page navigation, zoom, and find controls to inspect
+            the methods. Return to the graph when you need the surrounding
+            context.
+          </p>
+          <p>
+            Try <strong>Explore citations</strong> on a prepared paper and
+            inspect the underlying reference evidence. Extraction can miss
+            references; use the PDF to check them. Graph distance and semantic
+            similarity are not scientific proof.
+          </p>
+          <p class="checkpoint">
+            <strong>Checkpoint:</strong> You can open the original PDF. If it is
+            unavailable, return to preparation and review coverage. Metadata
+            alone does not mean that a PDF is ready.
+          </p>
+        </div>
+      </section>
+      <section class="guide-step" id="ask">
+        <div>
+          <span class="step-number">4</span>
+          <h2>Ask. Inspect.<br />Decide.</h2>
+        </div>
+        <div>
+          <p>
+            Open <strong>TYRION &gt; Setup</strong>, keep
+            <strong>Built-in model</strong> selected and install an answer
+            model. Review the download size first. Graphite finds relevant
+            passages; the answer model uses them to write a response.
+          </p>
+          <p>
+            Already running a model in Ollama or LM Studio on this computer? You
+            can reuse it through
+            <strong
+              >Advanced: answer model &gt; Another app on this computer</strong
+            >. Keep that app's local server running. This option does not
+            connect directly to a LAN server, VPS, GPT or Claude cloud service.
+          </p>
+          <p>
+            With the wave-simulation paper selected and indexed, limit TYRION's
+            context to that paper and ask:
+          </p>
+          <blockquote>
+            Which neural-network architectures does this paper use?
+          </blockquote>
+          <p>
+            Open each inline source citation. Read the supplied passage and,
+            when available, its Reader page. Check that the paper supports the
+            claim and that the answer stays within the selected scope.
+          </p>
+          <p class="checkpoint">
+            <strong>Checkpoint:</strong> You can trace each supported claim back
+            to a passage. Answers vary with the model and evidence; an
+            insufficient-evidence response is appropriate when the paper does
+            not support the question.
+          </p>
+          <p>
+            Try an unrelated question next. A useful assistant should
+            acknowledge missing evidence. A fluent answer alone is not a
+            successful result.
+          </p>
+        </div>
+      </section>
+      <section class="guide-step" id="keep">
+        <div>
+          <span class="step-number">5</span>
+          <h2>Pick up where you left off.</h2>
+        </div>
+        <div>
+          <p>
+            With a demo paper selected, choose
+            <strong>Save selection as Lens</strong> in the sidebar. Name it
+            <strong>Wave simulation methods</strong> and save your research
+            question with it.
+          </p>
+          <p>
+            Quit and reopen Graphite, return to the demo library, and click your
+            saved Lens. Its papers and question remain available.
+          </p>
+          <p>
+            To remove a saved Lens, choose <strong>Edit</strong>, then
+            <strong>Delete Lens</strong> and
+            <strong>Confirm delete Lens</strong>.
+            <strong>Keep Lens</strong> returns to editing. Deletion keeps the
+            papers and PDFs.
+          </p>
+          <p>
+            To expand the investigation, return to <strong>All papers</strong>,
+            select another paper, then choose <strong>Edit</strong> beside your
+            Lens and <strong>Add selected papers</strong>. Save the revised
+            membership.
+          </p>
+          <p>
+            Open the Lens and choose <strong>Ask about this Lens</strong>. Check
+            that TYRION shows <strong>This Lens only</strong> before sending
+            your question. Use at most 64 available papers for this explicit AI
+            scope.
+          </p>
+          <p class="checkpoint">
+            <strong>Checkpoint:</strong> The saved Lens survives restarting the
+            app. Its membership changes only when you edit it, and answer
+            citations come from the chosen set. You can also save a
+            <strong>Temporary Lens</strong> created from TYRION's source papers.
+          </p>
+          <p><a href="__BASE__manual.html#lenses">Read the Lens manual</a></p>
+        </div>
+      </section>
+      <div class="guide-next">
+        <h2>Bring your own question.</h2>
+        <p>
+          Connect your Zotero library, prepare its available papers, and repeat
+          the same workflow.
+        </p>
+        <a class="button" href="__BASE__manual.html#setup">Connect Zotero</a>
+        <a href="__BASE__demo-guide.txt">Collection details and attribution</a>
+      </div>
+    </main>
+    <footer class="site-footer wrap">
+      <a class="brand" href="__BASE__">Graphite</a>
+      <p>Your library. Your evidence.</p>
+      <nav aria-label="Footer">
+        <a href="__BASE__manual.html">Manual</a
+        ><a href="__BASE__privacy.txt">Privacy</a
+        ><a href="__BASE__LICENSE.txt">GNU GPLv3</a>
+      </nav>
+    </footer>
+  </body>
+</html>

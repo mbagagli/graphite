@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "protocolId": "graphite-scientific-pdf-smoke-protocol-v1.1",
+  "frozenOn": "2026-08-28",
+  "status": "m5b-hardening-rerun-frozen",
+  "candidates": [
+    {
+      "id": "zotero",
+      "version": "graphite-source-text-v1",
+      "revision": "frozen-m0-m4-contract"
+    },
+    {
+      "id": "xberg",
+      "version": "1.0.14",
+      "revision": "b6660a759d31089075dd89112b77b918f872879a"
+    },
+    {
+      "id": "pdf-inspector",
+      "version": "1.15.0",
+      "revision": "ca6d66714683f71d1b1cd447f766a2b287bea751"
+    },
+    {
+      "id": "docling",
+      "version": "1.16.0",
+      "revision": "7f8de88e860e289c42873922bd888cd50815ef26"
+    }
+  ],
+  "profiles": ["native", "recommended-auto", "forced-ocr"],
+  "fidelity": {
+    "requiredAnchorTruth": "human-verified-only",
+    "matcherRules": "unchanged-from-m5a",
+    "grossCoverageInspectionBand": {
+      "minimum": 0.65,
+      "maximum": 1.6
+    },
+    "llmJudgeAllowed": false
+  },
+  "canonicalSchemaVersion": "canonical-document-v1",
+  "productionExtractionQualityProfile": "extraction-quality-v1.1",
+  "lockedFiles": [
+    {
+      "role": "candidate-asset-and-version-lock",
+      "path": "tools/pdf-benchmark/config/assets.lock.json",
+      "sha256": "7037094d78faaf59af169816c029079d34929fb1646fd5f269abe0ac1bb881c2"
+    },
+    {
+      "role": "benchmark-profiles",
+      "path": "tools/pdf-benchmark/config/profiles.json",
+      "sha256": "808c166a39a0869a9bd0246842bc61478051c40c737429a5cd6f6f03389a5f71"
+    },
+    {
+      "role": "xberg-dependency-lock",
+      "path": "tools/pdf-benchmark/adapters/xberg/Cargo.lock",
+      "sha256": "316a56fecd7d7f6b3f3650925c7036c0c7877fd65ced742ecad6f7bdfca2d720"
+    },
+    {
+      "role": "pdf-inspector-dependency-lock",
+      "path": "tools/pdf-benchmark/adapters/pdf-inspector/Cargo.lock",
+      "sha256": "686ba4ee8eae8ceb47d2b4dafa7b0dc7c97309fb30b57e07879da8d2ff02a16c"
+    },
+    {
+      "role": "docling-dependency-lock",
+      "path": "tools/pdf-benchmark/adapters/docling/Cargo.lock",
+      "sha256": "6fdf6b80f0674c1de4f69a5f8408cedbf18e7bed3f8493ddc852a9465baf6638"
+    },
+    {
+      "role": "benchmark-contract-and-anchor-schema",
+      "path": "tools/pdf-benchmark/common/src/model.rs",
+      "sha256": "b4fffe22b2223fb2d4e330688f1551d31b5f2053d1bf696d739c1a3fd6c4441e"
+    },
+    {
+      "role": "anchor-matching-and-fidelity-thresholds",
+      "path": "tools/pdf-benchmark/common/src/metrics.rs",
+      "sha256": "2e032247493849e496d344acf6283f621ab2d3c99240d2ac4ff26801963340df"
+    },
+    {
+      "role": "production-canonical-contract",
+      "path": "src-tauri/src/extraction/model.rs",
+      "sha256": "e6e8feb1c179958631080faaaaa17b12a882cb83a0156f16f7215167facde7cd"
+    },
+    {
+      "role": "production-canonical-projection",
+      "path": "src-tauri/src/extraction/projection.rs",
+      "sha256": "7a37916145c4014fbf6882c98a88d3280ef058bc05560260f4ad320368ad21be"
+    },
+    {
+      "role": "production-extraction-quality",
+      "path": "src-tauri/src/extraction/quality.rs",
+      "sha256": "9f20ef70d45973709ab3b75368e7fe76c1c2aa9d384fae51df321b1c0aa540d2"
+    },
+    {
+      "role": "production-extraction-selection",
+      "path": "src-tauri/src/extraction/router.rs",
+      "sha256": "9e3c9916621473528fd774c04086f6533a68915d8f97f33bbdae9cd1b9cbc8c3"
+    },
+    {
+      "role": "frozen-timeout-policy",
+      "path": "tools/pdf-benchmark/config/timeout-policy.json",
+      "sha256": "36169049086db6299e463123dde042ecfa55b90106e143541942d85948832415"
+    },
+    {
+      "role": "production-chunking-profile",
+      "path": "src-tauri/src/semantic/chunking.rs",
+      "sha256": "c7ce78e8f6315e07f0a09d27a433a3036baa60c91acc5f240bcb628532e7e480"
+    },
+    {
+      "role": "benchmark-canonical-mapping",
+      "path": "tools/pdf-benchmark/common/src/canonical.rs",
+      "sha256": "ef6d1af207120ea0b38dac762e38dad33d6d1882b114597ff3555333bb281876"
+    },
+    {
+      "role": "zotero-benchmark-adapter",
+      "path": "tools/pdf-benchmark/adapters/zotero/src/main.rs",
+      "sha256": "e45b3ac07f03923359171ba088f47f744a893354b30ba31b11e8ac144bfebb1b"
+    },
+    {
+      "role": "xberg-benchmark-adapter",
+      "path": "tools/pdf-benchmark/adapters/xberg/src/main.rs",
+      "sha256": "a697069a2fa2d153b7a2a7aad59b1f7885daf14175270808ff70786391db0d44"
+    },
+    {
+      "role": "pdf-inspector-benchmark-adapter",
+      "path": "tools/pdf-benchmark/adapters/pdf-inspector/src/main.rs",
+      "sha256": "6bab71132f8832c6cd3fba0fc02824fe41ed8b56a253f30c01e7dae181ca33f6"
+    },
+    {
+      "role": "docling-benchmark-adapter",
+      "path": "tools/pdf-benchmark/adapters/docling/src/main.rs",
+      "sha256": "178db1374edae484d6ac91c23c76469a8c050e38c85e8e5d630b6c3871eff163"
+    },
+    {
+      "role": "benchmark-runner",
+      "path": "tools/pdf-benchmark/runner/src/main.rs",
+      "sha256": "911cc21c453e69806b2b0e9fd4f5429d97bb929dc4d7c059393a14288e6fc08d"
+    },
+    {
+      "role": "production-quality-oracle",
+      "path": "tools/pdf-benchmark/quality-oracle/src/main.rs",
+      "sha256": "a7059cfe16b24cd2a7fd2796a7dd9fc0e4376ccc10db07896381529ac993a78f"
+    },
+    {
+      "role": "production-rag-oracle",
+      "path": "tools/pdf-benchmark/quality-oracle/src/bin/rag.rs",
+      "sha256": "afd56181e22e3b4d33270614df4696c20497ed2069fd5f4bd5b9292e10ac75f8"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "id": "upstream-rag-v1",
+  "scoredRunAllowed": true,
+  "arms": ["graphite-zotero", "docling-graphite", "rag-anything-lightrag"],
+  "installedArms": ["graphite-zotero", "docling-graphite"],
+  "executionStatus": "evidence-handoff-v3-local-answer-comparison-complete; answer-reliability-gate-not-met",
+  "queryOrder": [
+    "q01",
+    "q02",
+    "q03",
+    "q04",
+    "q05",
+    "q06",
+    "q07",
+    "q08",
+    "q09",
+    "q10",
+    "q11",
+    "q12",
+    "q13",
+    "q14",
+    "q15",
+    "q16",
+    "q17",
+    "q18"
+  ],
+  "switchSequence": ["q13", "q14", "q15"],
+  "switchPolicy": "Same process and persistent corpus index; new scope per request; no reindexing on selection change. Reset answer context or enforce scope on all history.",
+  "primaryDocumentIds": ["paper11", "paper16", "paper20", "paper23", "paper30"],
+  "ocrAdjunctDocumentIds": ["paper05"],
+  "controls": [
+    "offline-processing",
+    "changed-document-invalidation",
+    "document-deletion",
+    "interrupted-indexing-recovery",
+    "unselected-decoy-present"
+  ],
+  "rules": [
+    "All six documents indexed before querying; selection filters applied before context assembly.",
+    "Retriever receives queries and corpus only, never review-key.",
+    "Physical PDF pages are one-based; unknown pages stay null and cannot pass exact-evidence checks.",
+    "Same supported embedding/answer models and budgets across arms; record all differences.",
+    "No claims of answer correctness from citation presence, token matching or model self-ratings.",
+    "Record every failure and abstention. Report OCR adjunct separately.",
+    "Do not merge proposed questions with frozen M5/M6 scores.",
+    "Pin exact software/model revisions and cache roots before execution."
+  ],
+  "metrics": [
+    "human-supported-answer",
+    "correct-document-and-page",
+    "retrieval-scope-leakage",
+    "context-scope-leakage",
+    "citation-scope-leakage",
+    "abstention",
+    "cold-and-warm-latency",
+    "peak-memory",
+    "disk-and-model-bytes",
+    "selection-reindex-count"
+  ],
+  "reviewCompletedOn": "2026-10-25",
+  "scopeMode": "Explicit selected-only mode; broader search remains the product default.",
+  "answerAssessmentStatus": "assistant assessment against human-approved references; generated answers not human-reviewed",
+  "measuredRunDeviations": [
+    "Zotero baseline indexes five papers; q10/q11 have no baseline text and remain unavailable.",
+    "Identifier-only fixture metadata is used in both arms.",
+    "Answer passes were serialized; timings are diagnostic, not controlled performance measurements.",
+    "Page references are preserved in disposable comparison storage; production parser activation is not included."
+  ]
+}

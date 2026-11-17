@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Explore your research library, read the evidence, and ask grounded questions with Graphite, a local-first desktop companion to Zotero."
+    />
+    <meta name="theme-color" content="#292b2e" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'"
+    />
+    <title>Graphite - Discover Knowledge</title>
+    <link rel="stylesheet" href="__BASE__style.css" />
+  </head>
+  <body>
+    <!--
+    THESIS: Follow relationships in a library back to the evidence.
+    OWN-WORLD: Graphite charcoal, Instrument Teal, Evidence Gold, bundled Inter.
+    STORY: See the workspace, understand the local data flow, try the demo.
+    FIRST VIEWPORT: Compact navigation, paired title and purpose, wide app view.
+    FORM: Extend the existing Graphite design and Trolley product-site pattern.
+    FINISH: Inspect desktop/mobile, verify links, retain honest gate status.
+    -->
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="brand" href="__BASE__" aria-label="Graphite home"
+        >Graphite<span>Discover Knowledge</span></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="#workspace">Workspace</a>
+        <a href="__BASE__tutorial.html">Tutorial</a>
+        <a href="__BASE__manual.html">Manual</a>
+        <a href="#install">Install</a>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <h1 id="hero-title">
+          See the connections.<br /><em>Return to the evidence.</em>
+        </h1>
+        <div class="hero-copy">
+          <p>
+            Explore relationships, read the source, and ask questions with
+            traceable evidence. Graphite brings your Zotero library into one
+            local research workspace.
+          </p>
+          <a class="button" href="#install">Get Graphite</a>
+          <a class="secondary-action" href="__BASE__tutorial.html"
+            >Try the guided demo</a
+          >
+          <p class="small">
+            Version __VERSION__ &middot; GNU GPLv3 &middot; Linux and macOS
+          </p>
+        </div>
+      </section>
+      <section
+        class="workspace wrap"
+        id="workspace"
+        aria-labelledby="workspace-title"
+      >
+        <div class="section-heading">
+          <h2 id="workspace-title">Keep the evidence in view.</h2>
+          <span>Graph / Search / Reader / Analytics</span>
+        </div>
+        <figure class="graph-showcase">
+          <img
+            src="__BASE__assets/workspace.png"
+            width="1440"
+            height="814"
+            alt="Graphite's dark workspace with all 60 real demo papers and verified local citation links"
+            fetchpriority="high"
+          />
+          <figcaption>
+            The real 60-paper demo after PDF preparation and citation indexing.
+            Captured in the current interface using verified native demo data.
+            Topic colors appear after semantic indexing; no model answer is
+            shown here.
+          </figcaption>
+        </figure>
+        <div class="workflow">
+          <article>
+            <h3>Follow a connection</h3>
+            <p>
+              Move between papers, citation evidence, and semantic neighbours
+              while keeping your research context.
+            </p>
+          </article>
+          <article>
+            <h3>Read what supports it</h3>
+            <p>
+              Search your cached text, open the PDF, and inspect the passages
+              supplied to an answer. Similarity alone is not evidence.
+            </p>
+          </article>
+          <article>
+            <h3>See the collection</h3>
+            <p>
+              Browse publication years and open the exact papers represented in
+              the current Analytics view.
+            </p>
+          </article>
+        </div>
+        <div class="research-stages" aria-label="Search and reading workflows">
+          <figure>
+            <a
+              href="__BASE__assets/search.png"
+              aria-label="Open full search screenshot"
+            >
+              <img
+                src="__BASE__assets/search.png"
+                width="1440"
+                height="814"
+                alt="Keyword search finds a real paper about Bayesian microseismic event location"
+                loading="lazy"
+              />
+            </a>
+            <figcaption>
+              <strong>Find the paper behind an idea.</strong>
+              Search real bibliographic metadata, collect papers and return to
+              their place in the graph. Shown in the light theme.
+              <a href="__BASE__assets/search.png">View full size</a>.
+            </figcaption>
+          </figure>
+          <figure>
+            <a
+              href="__BASE__assets/reader.png"
+              aria-label="Open full PDF reader screenshot"
+            >
+              <img
+                src="__BASE__assets/reader.png"
+                width="1440"
+                height="814"
+                alt="Graphite PDF reader showing an actual open-access paper, its contents and page thumbnails"
+                loading="lazy"
+              />
+            </a>
+            <figcaption>
+              <strong>Keep the original within reach.</strong>
+              Read the actual open-access PDF with contents and thumbnails. This
+              browser capture uses a verified demo PDF; local AI and PDF editing
+              run in Graphite Desktop.
+              <a href="__BASE__assets/reader.png">View full size</a>.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="local-section" aria-labelledby="local-title">
+        <div class="wrap local-layout">
+          <div>
+            <h2 id="local-title">Your research<br />stays with you.</h2>
+            <p>
+              Graphite owns its indexes. Zotero remains the bibliographic source
+              of truth.
+            </p>
+          </div>
+          <dl>
+            <div>
+              <dt>Read-only Zotero connection</dt>
+              <dd>
+                Graphite reads through Zotero's local API. It does not edit
+                Zotero's database or attachments.
+              </dd>
+            </div>
+            <div>
+              <dt>Local retrieval and generation</dt>
+              <dd>
+                Keyword search works without a model. Optional search and answer
+                models are explicitly downloaded, then run locally.
+              </dd>
+            </div>
+            <div>
+              <dt>Visible limits</dt>
+              <dd>
+                Source passages and citations can be inspected. An answer is not
+                proof; check claims against the paper. Missing evidence should
+                remain visible.
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+      <section class="demo wrap" id="demo" aria-labelledby="demo-title">
+        <div class="section-intro">
+          <h2 id="demo-title">Your first investigation<br />starts here.</h2>
+          <div>
+            <p>
+              A reproducible collection of __DEMO_COUNT__ real articles connects
+              methods, datasets, and earthquake research across publication
+              years.
+            </p>
+            <p class="small">
+              Explore real paper metadata immediately. Prepare library for AI
+              guides the optional PDF download and local indexing. Already
+              downloaded? accepts the demo ZIP directly.
+            </p>
+          </div>
+        </div>
+        __DEMO_STATUS__
+        <p class="demo-invitation">
+          Seismology meets machine learning: 60 papers, original PDFs, and a
+          question you can check against the source.
+        </p>
+        <ol class="demo-steps">
+          <li>
+            <strong>Prepare the real demo.</strong> Choose Use demo data, then
+            Prepare library for AI. Review the size, then choose Download and
+            prepare, or select a demo ZIP already on your computer. Follow the
+            progress beneath the button.
+          </li>
+          <li>
+            <strong>Find a year and a method.</strong> Open Analytics, select a
+            publication year, then search for a method in the collection.
+          </li>
+          <li>
+            <strong>Check an answer.</strong> Install the search and answer
+            models separately when prompted, then resume preparation. Select a
+            prepared paper and ask a focused question. Compare each citation
+            with the source.
+          </li>
+        </ol>
+        <p>
+          <a class="button" href="__DEMO_DOWNLOAD__"
+            >Download demo ZIP (412 MB)</a
+          >
+          <a href="__DEMO_RECORD__">Dataset record and checksums on Zenodo</a>
+        </p>
+        <p>
+          <a class="button" href="__BASE__tutorial.html"
+            >Start the visual tutorial</a
+          >
+          <a href="__BASE__library-preparation.txt"
+            >Prepare the demo or your Zotero library for AI</a
+          >
+        </p>
+        <details class="attribution">
+          <summary>Collection sources and attribution</summary>
+          __ATTRIBUTION__
+        </details>
+      </section>
+      <section
+        class="documentation wrap"
+        id="documentation"
+        aria-labelledby="documentation-title"
+      >
+        <div class="section-intro">
+          <h2 id="documentation-title">
+            A clear route<br />from curious to confident.
+          </h2>
+          <p>
+            Start with a guided investigation, then keep the manual nearby.
+            Every workflow leads back to the papers and the evidence behind
+            them.
+          </p>
+        </div>
+        <div class="doc-links">
+          <a href="__BASE__tutorial.html"
+            ><strong>New to Graphite?</strong>
+            <span
+              >Follow the real-data tutorial: prepare, explore, read,
+              verify.</span
+            ></a
+          >
+          <a href="__BASE__manual.html"
+            ><strong>Open the user manual</strong>
+            <span
+              >Setup, graph navigation, search, PDFs, local AI, and
+              recovery.</span
+            ></a
+          >
+        </div>
+      </section>
+      <section
+        class="install wrap"
+        id="install"
+        aria-labelledby="install-title"
+      >
+        <div class="section-intro">
+          <h2 id="install-title">Try Graphite<br />on your desktop.</h2>
+          <div>
+            <p>
+              Candidate __VERSION__ is being verified. The links below describe
+              the planned release; downloads become available after owner
+              publication.
+            </p>
+            <p class="small">
+              Windows is currently unavailable. We are working on support.
+              Platform installation and launch checks must pass before the
+              release is published.
+            </p>
+          </div>
+        </div>
+        __DOWNLOADS__
+        <div class="install-notes">
+          <div>
+            <h3>Linux x86_64</h3>
+            <p>
+              Install the Debian package with your package manager, or make the
+              AppImage executable and launch it. Use the distribution and
+              runtime requirements in the installation notes.
+            </p>
+            <pre><code>chmod +x Graphite___VERSION___amd64.AppImage
+./Graphite___VERSION___amd64.AppImage</code></pre>
+          </div>
+          <div>
+            <h3>macOS Apple Silicon</h3>
+            <p>
+              Open the disk image and drag Graphite into Applications. macOS
+              releases are unsigned and unnotarized, with a local ad-hoc
+              signature. Apple does not verify the publisher.
+            </p>
+            <p>
+              Check the release source and checksum before opening. If macOS
+              blocks a trusted download, follow
+              <a href="https://support.apple.com/en-us/102445"
+                >Apple's app-specific opening instructions</a
+              >. Keep Gatekeeper enabled.
+            </p>
+          </div>
+        </div>
+        <p>
+          <a href="__BASE__installation.txt"
+            >Installation and verification notes</a
+          >
+          <span class="separator">/</span>
+          <a href="__BASE__windows.txt">Windows support status</a>
+        </p>
+        <p class="small">
+          Check the release's SHA256SUMS.txt before installation. Do not treat
+          an unverified candidate as a supported distribution.
+        </p>
+      </section>
+    </main>
+    <footer class="site-footer wrap">
+      <a class="brand" href="__BASE__">Graphite</a>
+      <p>Discover Knowledge.</p>
+      <nav aria-label="Footer">
+        <a href="__BASE__LICENSE.txt">GNU GPLv3</a
+        ><a href="__BASE__privacy.txt">Privacy</a>__SOURCE_LINK__
+      </nav>
+    </footer>
+  </body>
+</html>

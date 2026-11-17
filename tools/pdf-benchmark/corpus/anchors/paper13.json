@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper13",
+  "anchors": [
+    {
+      "id": "paper13-differential-location-fact",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "superior",
+          "accuracy",
+          "precision",
+          "differential",
+          "time-based",
+          "location",
+          "methods",
+          "single-event",
+          "location",
+          "methods"
+        ],
+        "max_gap": 14
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper13-results-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [7],
+      "matcher": { "type": "exact", "value": "Results" },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper13-figure-7-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [12],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Figure",
+          "7",
+          "Depth",
+          "profile",
+          "HypoDD",
+          "ground",
+          "truth",
+          "minimal",
+          "systematic",
+          "shift"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper13-location-uncertainty-fact",
+      "kind": "page_association",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [12],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Quantifying",
+          "uncertainties",
+          "location",
+          "results",
+          "challenging"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper13-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [15],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Waldhauser",
+          "Ellsworth",
+          "double-difference",
+          "earthquake",
+          "location",
+          "algorithm",
+          "Method",
+          "application"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

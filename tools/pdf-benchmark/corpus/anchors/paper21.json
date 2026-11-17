@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper21",
+  "anchors": [
+    {
+      "id": "paper21-upper-crust-result",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "velocity",
+          "distribution",
+          "correlate",
+          "spatially",
+          "seismicity"
+        ],
+        "max_gap": 14
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper21-introduction-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [4],
+      "matcher": { "type": "normalized", "value": "1 Introduction" },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper21-conclusions-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [34],
+      "matcher": { "type": "normalized", "value": "7 Conclusions" },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper21-figure-s19-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [70],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Figure",
+          "S19",
+          "Vertical",
+          "P-velocity",
+          "Alp01",
+          "profile",
+          "0",
+          "km",
+          "depth"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper21-tail-table-s2",
+      "kind": "table_value",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [73],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "125.0",
+          "300.0",
+          "Table",
+          "S2",
+          "horizontal",
+          "3-D",
+          "model",
+          "parameterizations"
+        ],
+        "max_gap": 16
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

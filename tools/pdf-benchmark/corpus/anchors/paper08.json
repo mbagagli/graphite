@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper08",
+  "anchors": [
+    {
+      "id": "paper08-abstract-body",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "eastern",
+          "European",
+          "Alps",
+          "indentation",
+          "Adria",
+          "Europe"
+        ],
+        "max_gap": 16
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper08-figure-2-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [5],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Simplified",
+          "geological",
+          "map",
+          "thermochronology",
+          "TRANSALP",
+          "transect"
+        ],
+        "max_gap": 20
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper08-table-1-value",
+      "kind": "table_value",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [10],
+      "matcher": {
+        "type": "numeric_context",
+        "value": "2650",
+        "unit": "kg/m^3",
+        "tolerance": 0,
+        "context": ["Crustal", "density"],
+        "window": 180
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper08-figure-7-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [15],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Comparison",
+          "time-temperature-paths",
+          "preferred",
+          "thermo-kinematic",
+          "model"
+        ],
+        "max_gap": 18
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper08-figure-12-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [20],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "AlpArray",
+          "P-wave",
+          "travel",
+          "time",
+          "tomography",
+          "slices"
+        ],
+        "max_gap": 16
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper08-limitations-body",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [25],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "lateral",
+          "extrusion",
+          "tectonics",
+          "not",
+          "implemented",
+          "modeling",
+          "approach"
+        ],
+        "max_gap": 22
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper08-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [31],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Zhao",
+          "Continuity",
+          "Alpine",
+          "slab",
+          "high-resolution",
+          "tomography"
+        ],
+        "max_gap": 22
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

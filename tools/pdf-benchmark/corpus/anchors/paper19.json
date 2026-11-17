@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper19",
+  "anchors": [
+    {
+      "id": "paper19-double-difference-purpose",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "double",
+          "difference",
+          "earthquake",
+          "relocation",
+          "essential",
+          "component",
+          "catalog",
+          "development",
+          "workflows"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper19-methods-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [5],
+      "matcher": { "type": "normalized", "value": "2 Methods" },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper19-results-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [10],
+      "matcher": { "type": "normalized", "value": "3 Results" },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper19-figure-7-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [31],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Figure",
+          "7",
+          "comparison",
+          "relocated",
+          "Turkiye",
+          "catalog",
+          "double-difference",
+          "station",
+          "corrections"
+        ],
+        "max_gap": 20
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper19-tail-figure-10-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [34],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Figure",
+          "10",
+          "initial",
+          "relocated",
+          "synthetic",
+          "northern",
+          "California",
+          "ground",
+          "truth",
+          "locations"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

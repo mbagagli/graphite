@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "appVersion": "0.3.3",
+  "capturedAt": "2026-11-17",
+  "manifestId": "seismology-ml-v2",
+  "manifestSha256": "8336998d2601507f73f9166c35f74f08a8402130b86575f00e9e3c665ad9c12f",
+  "viewport": {
+    "width": 1440,
+    "height": 814
+  },
+  "kind": "verified-native-data-browser-render",
+  "sha256": "9274cd475d3b98a938edbc2abaa0f00004bb4815c5b4f23796f40376cb1cad16",
+  "nativeChecks": {
+    "papers": 60,
+    "pdfsResolvedAndChecksummed": 60,
+    "citationEdges": 50
+  },
+  "views": {
+    "search.png": {
+      "kind": "browser-metadata-capture",
+      "sha256": "26aa54c677fd064518ae4908e7872a7891e27dc397eef088132db3261564be9f",
+      "appVersion": "0.3.2"
+    },
+    "reader.png": {
+      "kind": "verified-pdf-browser-render",
+      "doi": "10.5194/se-12-1683-2021",
+      "sha256": "97e6bccedfd52ca2702a134aa8c0117da3dd2d7a9db7601dfbe92ff701cd775e",
+      "appVersion": "0.3.2"
+    }
+  },
+  "note": "Workspace recaptured in the current interface using a previously verified native demo export. Search and reader views retain their recorded capture version. No model answer or packaged runtime is demonstrated."
+}

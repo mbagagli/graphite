@@ -1,0 +1,11 @@
+{
+  "theme": "Graphite light",
+  "font_family": "Inter",
+  "colors": {
+    "graphite": "#292B2E",
+    "gray": "#666A70",
+    "teal": "#668C8C",
+    "gold": "#D1B073",
+    "off_white": "#F4F3EF"
+  }
+}

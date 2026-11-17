@@ -1,0 +1,193 @@
+name: PDF benchmark isolated platform validation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pdf-benchmark-platform-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_INCREMENTAL: "0"
+  CARGO_TERM_COLOR: always
+
+jobs:
+  isolated-role:
+    name: ${{ matrix.platform }} / ${{ matrix.role }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: linux-x64
+            runner: ubuntu-24.04
+            role: xberg-native-primary
+            candidate: xberg
+            manifest: tools/pdf-benchmark/adapters/xberg/Cargo.toml
+            features: native
+            profile: native
+          - platform: linux-x64
+            runner: ubuntu-24.04
+            role: pdf-inspector-ocr
+            candidate: pdf-inspector
+            manifest: tools/pdf-benchmark/adapters/pdf-inspector/Cargo.toml
+            features: ocr
+            profile: recommended-auto
+          - platform: linux-x64
+            runner: ubuntu-24.04
+            role: docling-structure
+            candidate: docling
+            manifest: tools/pdf-benchmark/adapters/docling/Cargo.toml
+            features: ocr
+            profile: recommended-auto
+          - platform: windows-x64-msvc
+            runner: windows-2025
+            role: xberg-native-primary
+            candidate: xberg
+            manifest: tools/pdf-benchmark/adapters/xberg/Cargo.toml
+            features: native
+            profile: native
+          - platform: windows-x64-msvc
+            runner: windows-2025
+            role: pdf-inspector-ocr
+            candidate: pdf-inspector
+            manifest: tools/pdf-benchmark/adapters/pdf-inspector/Cargo.toml
+            features: ocr
+            profile: recommended-auto
+          - platform: windows-x64-msvc
+            runner: windows-2025
+            role: docling-structure
+            candidate: docling
+            manifest: tools/pdf-benchmark/adapters/docling/Cargo.toml
+            features: ocr
+            profile: recommended-auto
+          - platform: macos-arm64
+            runner: macos-15
+            role: xberg-native-primary
+            candidate: xberg
+            manifest: tools/pdf-benchmark/adapters/xberg/Cargo.toml
+            features: native
+            profile: native
+          - platform: macos-arm64
+            runner: macos-15
+            role: pdf-inspector-ocr
+            candidate: pdf-inspector
+            manifest: tools/pdf-benchmark/adapters/pdf-inspector/Cargo.toml
+            features: ocr
+            profile: recommended-auto
+          - platform: macos-arm64
+            runner: macos-15
+            role: docling-structure
+            candidate: docling
+            manifest: tools/pdf-benchmark/adapters/docling/Cargo.toml
+            features: ocr
+            profile: recommended-auto
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up pinned Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .node-version
+
+      - name: Report tools
+        shell: bash
+        run: |
+          rustc --version
+          cargo --version
+          cmake --version
+
+      - name: Fetch locked Rust sources while online
+        shell: bash
+        run: |
+          cargo fetch --locked \
+            --manifest-path tools/pdf-benchmark/runner/Cargo.toml
+          cargo fetch --locked --manifest-path "${{ matrix.manifest }}"
+
+      - name: Build preparation runner
+        shell: bash
+        run: >-
+          cargo build --release --locked --offline
+          --manifest-path tools/pdf-benchmark/runner/Cargo.toml
+
+      - name: Locate runner executable
+        shell: bash
+        run: |
+          suffix=""
+          if [[ "$RUNNER_OS" == "Windows" ]]; then suffix=".exe"; fi
+          echo "BENCH_RUNNER=$PWD/.cache/cargo-target/release/graphite-pdf-benchmark-runner${suffix}" >> "$GITHUB_ENV"
+
+      - name: Validate protocol and prepare locked candidate assets
+        shell: bash
+        run: |
+          "$BENCH_RUNNER" validate-assets \
+            tools/pdf-benchmark/config/assets.lock.json
+          "$BENCH_RUNNER" verify-protocol \
+            tools/pdf-benchmark/config/smoke-protocol.lock.json .
+          "$BENCH_RUNNER" prepare \
+            tools/pdf-benchmark/config/assets.lock.json \
+            "${{ matrix.candidate }}" "$RUNNER_TEMP/assets"
+          "$BENCH_RUNNER" verify-prepared \
+            tools/pdf-benchmark/config/assets.lock.json \
+            "${{ matrix.candidate }}" "$RUNNER_TEMP/assets"
+
+      - name: Build isolated adapter offline
+        shell: bash
+        env:
+          CARGO_NET_OFFLINE: "true"
+        run: >-
+          cargo build --release --locked --offline --no-default-features
+          --features "${{ matrix.features }}"
+          --manifest-path "${{ matrix.manifest }}"
+
+      - name: Relocate binary and assets
+        shell: bash
+        run: |
+          suffix=""
+          if [[ "$RUNNER_OS" == "Windows" ]]; then suffix=".exe"; fi
+          mkdir -p "$RUNNER_TEMP/relocated/bin"
+          mkdir -p "$RUNNER_TEMP/relocated/assets"
+          cp ".cache/cargo-target/release/graphite-pdf-benchmark-${{ matrix.candidate }}${suffix}" \
+            "$RUNNER_TEMP/relocated/bin/"
+          cp -R "$RUNNER_TEMP/assets/." "$RUNNER_TEMP/relocated/assets/"
+
+      - name: Run synthetic extraction with offline intent
+        shell: bash
+        env:
+          CARGO_NET_OFFLINE: "true"
+          HF_HUB_OFFLINE: "1"
+          GRAPHITE_PDF_BENCH_OFFLINE: "1"
+          HTTP_PROXY: http://127.0.0.1:9
+          HTTPS_PROXY: http://127.0.0.1:9
+        run: |
+          suffix=""
+          if [[ "$RUNNER_OS" == "Windows" ]]; then suffix=".exe"; fi
+          fixture_root="$RUNNER_TEMP/fixtures"
+          run_root="$RUNNER_TEMP/run"
+          "$BENCH_RUNNER" fixtures "$fixture_root"
+          GRAPHITE_PDF_BENCH_ASSET_ROOT="$RUNNER_TEMP/relocated/assets" \
+            "$BENCH_RUNNER" run "$fixture_root/synthetic-manifest.json" \
+            "$run_root" tools/pdf-benchmark/config/timeout-policy.json \
+            "${{ matrix.candidate }}=$RUNNER_TEMP/relocated/bin/graphite-pdf-benchmark-${{ matrix.candidate }}${suffix}"
+          node tools/pdf-benchmark/scripts/m5c-runtime-verdict.mjs \
+            --run "$run_root" --candidate "${{ matrix.candidate }}" \
+            --profile "${{ matrix.profile }}"
+
+      - name: Record dynamic dependencies and sizes
+        shell: bash
+        run: |
+          suffix=""
+          if [[ "$RUNNER_OS" == "Windows" ]]; then suffix=".exe"; fi
+          binary="$RUNNER_TEMP/relocated/bin/graphite-pdf-benchmark-${{ matrix.candidate }}${suffix}"
+          ls -l "$binary"
+          du -sk "$RUNNER_TEMP/relocated/assets"
+          if [[ "$RUNNER_OS" == "Linux" ]]; then ldd "$binary"; fi
+          if [[ "$RUNNER_OS" == "macOS" ]]; then otool -L "$binary"; fi
+          if [[ "$RUNNER_OS" == "Windows" ]]; then objdump -p "$binary" | grep 'DLL Name' || true; fi

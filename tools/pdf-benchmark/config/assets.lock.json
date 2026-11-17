@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 1,
+  "candidates": [
+    {
+      "candidateId": "zotero",
+      "version": "graphite-source-text-v1",
+      "revision": "frozen-m0-m4-contract",
+      "license": "Graphite compatibility baseline",
+      "rustVersion": null,
+      "crate": null,
+      "features": ["source-provided-text"],
+      "assets": [],
+      "relevantIssues": []
+    },
+    {
+      "candidateId": "xberg",
+      "version": "1.0.14",
+      "revision": "b6660a759d31089075dd89112b77b918f872879a",
+      "license": "MIT",
+      "rustVersion": "1.91",
+      "crate": "xberg",
+      "features": ["tokio-runtime", "pdf", "ocr"],
+      "assets": [
+        {
+          "id": "tesseract-fast-eng",
+          "fileName": "tessdata/eng.traineddata",
+          "url": "https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/923915d4ced2a7235221788285785a29c4a42d4a/eng.traineddata",
+          "sha256": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2",
+          "byteCount": 4113088,
+          "license": "Apache-2.0",
+          "requiredFor": ["recommended-auto", "forced-ocr"]
+        }
+      ],
+      "relevantIssues": [
+        "https://github.com/xberg-io/xberg/issues/1223",
+        "https://github.com/xberg-io/xberg/issues/1281",
+        "https://github.com/xberg-io/xberg/issues/1078",
+        "https://github.com/xberg-io/xberg/issues/917"
+      ]
+    },
+    {
+      "candidateId": "pdf-inspector",
+      "version": "1.15.0",
+      "revision": "ca6d66714683f71d1b1cd447f766a2b287bea751",
+      "license": "MIT",
+      "rustVersion": "1.85",
+      "crate": "pdf-inspector",
+      "features": ["native", "ocr"],
+      "assets": [
+        {
+          "id": "pp-ocrv6-small-detection",
+          "fileName": "pp-ocrv6_small_det.onnx",
+          "url": "https://github.com/GreatV/oar-ocr/releases/download/v0.7.0/pp-ocrv6_small_det.onnx",
+          "sha256": "d73e0058b7a8086bbd57f3d10b8bcd4ff95363f67e06e2762b5e814fe9c9410e",
+          "byteCount": 9880512,
+          "license": "Apache-2.0",
+          "requiredFor": ["recommended-auto", "forced-ocr"]
+        },
+        {
+          "id": "pp-ocrv6-small-recognition",
+          "fileName": "pp-ocrv6_small_rec.onnx",
+          "url": "https://github.com/GreatV/oar-ocr/releases/download/v0.7.0/pp-ocrv6_small_rec.onnx",
+          "sha256": "5435fd747c9e0efe15a96d0b378d5bd157e9492ed8fd80edf08f30d02fa24634",
+          "byteCount": 21159378,
+          "license": "Apache-2.0",
+          "requiredFor": ["recommended-auto", "forced-ocr"]
+        },
+        {
+          "id": "pp-ocrv6-dictionary",
+          "fileName": "ppocrv6_dict.txt",
+          "url": "https://github.com/GreatV/oar-ocr/releases/download/v0.7.0/ppocrv6_dict.txt",
+          "sha256": "b5f2bfe2bdd9448429e3e82b51c789775d9b42f2403d082b00662eb77e401c5d",
+          "byteCount": 74947,
+          "license": "Apache-2.0",
+          "requiredFor": ["recommended-auto", "forced-ocr"]
+        },
+        {
+          "id": "pdfium-153-linux-x64",
+          "fileName": "archives/pdfium-linux-x64.tgz",
+          "url": "https://github.com/bblanchon/pdfium-binaries/releases/download/chromium/7988/pdfium-linux-x64.tgz",
+          "sha256": "7358c15e26a746cd67854887ea11b3b807c436056788eee9294fb972b8f8e0be",
+          "byteCount": null,
+          "license": "BSD-3-Clause plus bundled third-party notices",
+          "requiredFor": ["recommended-auto", "forced-ocr"],
+          "platforms": ["linux-x64"],
+          "unpackTo": "pdfium/linux-x64"
+        },
+        {
+          "id": "pdfium-153-linux-arm64",
+          "fileName": "archives/pdfium-linux-arm64.tgz",
+          "url": "https://github.com/bblanchon/pdfium-binaries/releases/download/chromium/7988/pdfium-linux-arm64.tgz",
+          "sha256": "a2926203456881efa8feca7e0e409de78a4471b9b72e62a74c820faebb3e4551",
+          "byteCount": null,
+          "license": "BSD-3-Clause plus bundled third-party notices",
+          "requiredFor": ["recommended-auto", "forced-ocr"],
+          "platforms": ["linux-arm64"],
+          "unpackTo": "pdfium/linux-arm64"
+        },
+        {
+          "id": "pdfium-153-mac-arm64",
+          "fileName": "archives/pdfium-mac-arm64.tgz",
+          "url": "https://github.com/bblanchon/pdfium-binaries/releases/download/chromium/7988/pdfium-mac-arm64.tgz",
+          "sha256": "2229b8a6ffa0fb1634aa78886ed5425a10a8a0bd01762f7f0c9244081d86a921",
+          "byteCount": null,
+          "license": "BSD-3-Clause plus bundled third-party notices",
+          "requiredFor": ["recommended-auto", "forced-ocr"],
+          "platforms": ["mac-arm64"],
+          "unpackTo": "pdfium/mac-arm64"
+        },
+        {
+          "id": "pdfium-153-mac-x64",
+          "fileName": "archives/pdfium-mac-x64.tgz",
+          "url": "https://github.com/bblanchon/pdfium-binaries/releases/download/chromium/7988/pdfium-mac-x64.tgz",
+          "sha256": "172d9b7b0fa805235c785be333c046ff95c4aa38b3538ddc2d9d21ecc99681ca",
+          "byteCount": null,
+          "license": "BSD-3-Clause plus bundled third-party notices",
+          "requiredFor": ["recommended-auto", "forced-ocr"],
+          "platforms": ["mac-x64"],
+          "unpackTo": "pdfium/mac-x64"
+        },
+        {
+          "id": "pdfium-153-win-x64",
+          "fileName": "archives/pdfium-win-x64.tgz",
+          "url": "https://github.com/bblanchon/pdfium-binaries/releases/download/chromium/7988/pdfium-win-x64.tgz",
+          "sha256": "654daf488d9357d2787cec439d0dbdb93d7e180e2cb28e5f1d41c66d2645daec",
+          "byteCount": null,
+          "license": "BSD-3-Clause plus bundled third-party notices",
+          "requiredFor": ["recommended-auto", "forced-ocr"],
+          "platforms": ["win-x64"],
+          "unpackTo": "pdfium/win-x64"
+        },
+        {
+          "id": "onnxruntime-1.28-linux-x64",
+          "fileName": "archives/onnxruntime-linux-x64-1.28.0.tgz",
+          "url": "https://github.com/microsoft/onnxruntime/releases/download/v1.28.0/onnxruntime-linux-x64-1.28.0.tgz",
+          "sha256": "a3e1b79d7bb1bf09696ce675f49e4064e6c81f6202b8225624fff0e93f8d6407",
+          "byteCount": 9125960,
+          "license": "MIT plus bundled third-party notices",
+          "requiredFor": ["recommended-auto", "forced-ocr"],
+          "platforms": ["linux-x64"],
+          "unpackTo": "onnxruntime/linux-x64"
+        },
+        {
+          "id": "onnxruntime-1.28-linux-arm64",
+          "fileName": "archives/onnxruntime-linux-aarch64-1.28.0.tgz",
+          "url": "https://github.com/microsoft/onnxruntime/releases/download/v1.28.0/onnxruntime-linux-aarch64-1.28.0.tgz",
+          "sha256": "e15ff8b5d85afe6c144d97c6fd432254bf76a219daaf17658087d6ecb3e8f0bb",
+          "byteCount": 8116278,
+          "license": "MIT plus bundled third-party notices",
+          "requiredFor": ["recommended-auto", "forced-ocr"],
+          "platforms": ["linux-arm64"],
+          "unpackTo": "onnxruntime/linux-arm64"
+        },
+        {
+          "id": "onnxruntime-1.28-mac-arm64",
+          "fileName": "archives/onnxruntime-osx-arm64-1.28.0.tgz",
+          "url": "https://github.com/microsoft/onnxruntime/releases/download/v1.28.0/onnxruntime-osx-arm64-1.28.0.tgz",
+          "sha256": "1268b359718099bde2cedb55787f182a130067bc4f31e8c88478c445b850d3d8",
+          "byteCount": 32396562,
+          "license": "MIT plus bundled third-party notices",
+          "requiredFor": ["recommended-auto", "forced-ocr"],
+          "platforms": ["mac-arm64"],
+          "unpackTo": "onnxruntime/mac-arm64"
+        }
+      ],
+      "relevantIssues": [
+        "https://github.com/firecrawl/pdf-inspector/issues/200",
+        "https://github.com/firecrawl/pdf-inspector/issues/205",
+        "https://github.com/firecrawl/pdf-inspector/issues/208",
+        "https://github.com/firecrawl/pdf-inspector/issues/210",
+        "https://github.com/firecrawl/pdf-inspector/issues/211",
+        "https://github.com/firecrawl/pdf-inspector/issues/214",
+        "https://github.com/firecrawl/pdf-inspector/issues/385"
+      ]
+    },
+    {
+      "candidateId": "docling",
+      "version": "1.16.0",
+      "revision": "7f8de88e860e289c42873922bd888cd50815ef26",
+      "license": "MIT",
+      "rustVersion": "1.88",
+      "crate": "docling",
+      "features": ["pdf-text", "pdf"],
+      "assets": [
+        {
+          "id": "docling-layout-heron",
+          "fileName": ".models/layout_heron.onnx",
+          "url": "https://github.com/docling-project/docling.rs/releases/download/models-v1/layout_heron.onnx",
+          "sha256": "2e5d4dd812c46b742a031611ab7ba061bf66937a56fdee266ada4fe1e3073764",
+          "byteCount": 172208540,
+          "license": "Apache-2.0",
+          "requiredFor": ["recommended-auto", "forced-ocr"]
+        },
+        {
+          "id": "docling-ocr-recognition",
+          "fileName": ".models/ocr_rec.onnx",
+          "url": "https://github.com/docling-project/docling.rs/releases/download/models-v1/ocr_rec.onnx",
+          "sha256": "897a3ededb38fee0dae2c1ccee38241f37df202c9509e3abca02e9217c5ee615",
+          "byteCount": 10690752,
+          "license": "Apache-2.0",
+          "requiredFor": ["recommended-auto", "forced-ocr"]
+        },
+        {
+          "id": "docling-ocr-dictionary",
+          "fileName": ".models/ppocr_keys_v1.txt",
+          "url": "https://github.com/docling-project/docling.rs/releases/download/models-v1/ppocr_keys_v1.txt",
+          "sha256": "a1c84d9bdb9ab29043c58896224d32941783eb821629618416dcb08f12886492",
+          "byteCount": 26250,
+          "license": "Apache-2.0",
+          "requiredFor": ["recommended-auto", "forced-ocr"]
+        },
+        {
+          "id": "docling-tableformer-encoder",
+          "fileName": ".models/tableformer/encoder.onnx",
+          "url": "https://github.com/docling-project/docling.rs/releases/download/models-v1/encoder.onnx",
+          "sha256": "790cb70168e66fcf77136fdd3ba6d0ff527ee366e083e62475e0339a5c811e00",
+          "byteCount": 225842279,
+          "license": "CDLA-Permissive-2.0 / Apache-2.0",
+          "requiredFor": ["recommended-auto", "forced-ocr"]
+        },
+        {
+          "id": "docling-tableformer-decoder",
+          "fileName": ".models/tableformer/decoder.onnx",
+          "url": "https://github.com/docling-project/docling.rs/releases/download/models-v1/decoder.onnx",
+          "sha256": "40e9fc2f2878cfbf25ede41e5557eeb9ef091c43c0d7176baa54d01c0b477c34",
+          "byteCount": 432917,
+          "license": "CDLA-Permissive-2.0 / Apache-2.0",
+          "requiredFor": ["recommended-auto", "forced-ocr"]
+        },
+        {
+          "id": "docling-tableformer-decoder-data",
+          "fileName": ".models/tableformer/decoder.onnx.data",
+          "url": "https://github.com/docling-project/docling.rs/releases/download/models-v1/decoder.onnx.data",
+          "sha256": "f497d191f3907a2dd0ac9b4a2562e8f52c60f7657a1a714f5a8c4e855f3e39ef",
+          "byteCount": 77856768,
+          "license": "CDLA-Permissive-2.0 / Apache-2.0",
+          "requiredFor": ["recommended-auto", "forced-ocr"]
+        },
+        {
+          "id": "docling-tableformer-bbox",
+          "fileName": ".models/tableformer/bbox.onnx",
+          "url": "https://github.com/docling-project/docling.rs/releases/download/models-v1/bbox.onnx",
+          "sha256": "65247bba792830762c89baa5f2e5f06c8df7720181e4d0088107f7d88b06f915",
+          "byteCount": 52110,
+          "license": "CDLA-Permissive-2.0 / Apache-2.0",
+          "requiredFor": ["recommended-auto", "forced-ocr"]
+        },
+        {
+          "id": "docling-tableformer-bbox-data",
+          "fileName": ".models/tableformer/bbox.onnx.data",
+          "url": "https://github.com/docling-project/docling.rs/releases/download/models-v1/bbox.onnx.data",
+          "sha256": "7610e2593bfaecd72a535370f06e8c2468f9bf208bd2abe46cc727dda0a11392",
+          "byteCount": 39649280,
+          "license": "CDLA-Permissive-2.0 / Apache-2.0",
+          "requiredFor": ["recommended-auto", "forced-ocr"]
+        },
+        {
+          "id": "docling-pdfium-linux-x64",
+          "fileName": ".pdfium/lib/libpdfium.so",
+          "url": "https://github.com/docling-project/docling.rs/releases/download/models-v1/libpdfium.so",
+          "sha256": "3019ad1cd6980e51d900bb9266f8980cb846cb8e0c1f6553c52a7a1626469020",
+          "byteCount": 7621800,
+          "license": "BSD-3-Clause plus linked third-party notices",
+          "platforms": ["linux-x64"],
+          "requiredFor": ["recommended-auto", "forced-ocr"]
+        },
+        {
+          "id": "docling-onnxruntime-1.28-linux-x64",
+          "fileName": ".runtime/onnxruntime-linux-x64-1.28.0.tgz",
+          "url": "https://github.com/microsoft/onnxruntime/releases/download/v1.28.0/onnxruntime-linux-x64-1.28.0.tgz",
+          "sha256": "a3e1b79d7bb1bf09696ce675f49e4064e6c81f6202b8225624fff0e93f8d6407",
+          "byteCount": 9125960,
+          "license": "MIT plus bundled third-party notices",
+          "requiredFor": ["recommended-auto", "forced-ocr"],
+          "platforms": ["linux-x64"],
+          "unpackTo": ".runtime/linux-x64"
+        },
+        {
+          "id": "docling-onnxruntime-1.28-linux-arm64",
+          "fileName": ".runtime/onnxruntime-linux-aarch64-1.28.0.tgz",
+          "url": "https://github.com/microsoft/onnxruntime/releases/download/v1.28.0/onnxruntime-linux-aarch64-1.28.0.tgz",
+          "sha256": "e15ff8b5d85afe6c144d97c6fd432254bf76a219daaf17658087d6ecb3e8f0bb",
+          "byteCount": 8116278,
+          "license": "MIT plus bundled third-party notices",
+          "requiredFor": ["recommended-auto", "forced-ocr"],
+          "platforms": ["linux-arm64"],
+          "unpackTo": ".runtime/linux-arm64"
+        },
+        {
+          "id": "docling-onnxruntime-1.28-mac-arm64",
+          "fileName": ".runtime/onnxruntime-osx-arm64-1.28.0.tgz",
+          "url": "https://github.com/microsoft/onnxruntime/releases/download/v1.28.0/onnxruntime-osx-arm64-1.28.0.tgz",
+          "sha256": "1268b359718099bde2cedb55787f182a130067bc4f31e8c88478c445b850d3d8",
+          "byteCount": 32396562,
+          "license": "MIT plus bundled third-party notices",
+          "requiredFor": ["recommended-auto", "forced-ocr"],
+          "platforms": ["mac-arm64"],
+          "unpackTo": ".runtime/mac-arm64"
+        }
+      ],
+      "relevantIssues": [
+        "https://github.com/docling-project/docling/issues/1225",
+        "https://github.com/docling-project/docling/issues/2963",
+        "https://github.com/docling-project/docling/issues/3263",
+        "https://github.com/docling-project/docling/issues/3473",
+        "https://github.com/docling-project/docling/issues/3780",
+        "https://github.com/docling-project/docling/issues/3887"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper35",
+  "anchors": [
+    {
+      "id": "paper35-soil-structure-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "normalized",
+        "value": "SOIL STRUCTURE AND ENVIRONMENTAL EFFECTS"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper35-cation-hydrated-radii",
+      "kind": "table_value",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [6],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Cation",
+          "Hydrated",
+          "Radii",
+          "K",
+          "9",
+          "Na",
+          "13.5",
+          "Ca",
+          "19",
+          "Mg",
+          "21.5"
+        ],
+        "max_gap": 24
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper35-hamaker-constant",
+      "kind": "formula",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [11],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["Hamaker", "Constant", "2.5", "10", "20", "J"],
+        "max_gap": 18
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper35-kaolinite-illite-friction",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [18],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["Kaolinite", "25", "30", "Illite", "16", "20"],
+        "max_gap": 20
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper35-tail-double-layer-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [22],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Double",
+          "Layer",
+          "Repulsion",
+          "van",
+          "der",
+          "Waals",
+          "Attraction",
+          "Parallel",
+          "Infinite",
+          "Plates"
+        ],
+        "max_gap": 22
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

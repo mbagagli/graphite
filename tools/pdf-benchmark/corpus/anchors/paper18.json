@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper18",
+  "anchors": [
+    {
+      "id": "paper18-graph-node-fact",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "graph",
+          "nodes",
+          "feature",
+          "vectors",
+          "seismic",
+          "stations",
+          "corresponding",
+          "information",
+          "locations",
+          "seismograms"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper18-results-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": { "type": "exact", "value": "Results" },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper18-figure-5-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [6],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Fig",
+          "5",
+          "Comparison",
+          "prediction",
+          "results",
+          "different",
+          "number",
+          "stations",
+          "Japan"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper18-attention-mechanism",
+      "kind": "formula",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [10],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "W3",
+          "W4",
+          "trainable",
+          "matrices",
+          "attention",
+          "mechanism",
+          "query",
+          "vector",
+          "key",
+          "vector"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper18-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [12],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Perol",
+          "Gharbi",
+          "Denolle",
+          "Convolutional",
+          "neural",
+          "network"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

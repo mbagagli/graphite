@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#292b2e" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; img-src 'self'; style-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'"
+    />
+    <link rel="stylesheet" href="__BASE__style.css" />
+    <title>User manual - Graphite</title>
+    <meta
+      name="description"
+      content="The Graphite user manual: setup, Zotero, graph exploration, search, Reader, local AI and troubleshooting."
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="brand" href="__BASE__"
+        >Graphite<span>Discover Knowledge</span></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="__BASE__">Overview</a
+        ><a href="__BASE__tutorial.html">Tutorial</a
+        ><a href="__BASE__manual.html">Manual</a
+        ><a href="__BASE__#install">Install</a>
+      </nav>
+    </header>
+
+    <main id="main" class="wrap guide">
+      <div class="guide-intro">
+        <h1>Your library.<br /><em>A working guide.</em></h1>
+        <p>
+          Set up Graphite, explore a research question, and keep the evidence
+          within reach. Start with the
+          <a href="__BASE__tutorial.html">real-data tutorial</a> if this is your
+          first visit.
+        </p>
+      </div>
+      <nav class="guide-toc" aria-label="Manual contents">
+        <a href="#setup">Setup</a><a href="#graph">Graph</a
+        ><a href="#search">Search</a><a href="#reader">Reader</a
+        ><a href="#ai">Local AI</a><a href="#recovery">Troubleshooting</a>
+      </nav>
+      <section class="guide-step" id="setup">
+        <h2>Set up your workspace.</h2>
+        <div>
+          <p>
+            Install the desktop app using the
+            <a href="__BASE__#install">platform notes</a>. Graphite keeps its
+            own database and indexes. Your Zotero library and original PDFs
+            remain unchanged.
+          </p>
+          <h3>Start with the demo</h3>
+          <p>
+            Choose <strong>Use demo data</strong> at the top of the
+            <strong>Data Source</strong> panel, then follow the
+            <a href="__BASE__tutorial.html">guided tutorial</a>. Real metadata
+            is included; the
+            <a href="__DEMO_RECORD__">Zenodo PDF archive</a> and models are
+            explicit downloads.
+          </p>
+          <p>Windows is currently unavailable. We are working on support.</p>
+          <p>
+            macOS releases are unsigned and unnotarized. After checking the
+            release source and checksum, follow
+            <a href="https://support.apple.com/en-us/102445"
+              >Apple's app-specific opening instructions</a
+            >
+            if a trusted download is blocked. Keep Gatekeeper enabled.
+          </p>
+          <h3>Connect Zotero</h3>
+          <ol>
+            <li>
+              In Zotero Desktop, open
+              <strong>Settings &gt; Advanced</strong> and enable
+              <strong
+                >Allow other applications on this computer to communicate with
+                Zotero</strong
+              >
+              (<a href="https://www.zotero.org/support/dev/web_api/v3/local_api"
+                >official setup</a
+              >). Keep Zotero running while connecting Graphite.
+            </li>
+            <li>
+              Make the required PDFs available locally. In Graphite, choose
+              <strong>Data Source &gt; Use Zotero</strong> and select a library.
+            </li>
+            <li>
+              Choose <strong>Prepare library for AI</strong>. Graphite
+              synchronizes metadata and available text, then prepares citations
+              and semantic passages.
+            </li>
+            <li>
+              Install the embedding model if requested, resume, and review
+              coverage. Preparation covers the selected library, not only the
+              visible collection.
+            </li>
+          </ol>
+          <p>
+            <a href="__BASE__library-preparation.txt"
+              >Detailed preparation reference</a
+            >
+          </p>
+        </div>
+      </section>
+      <section class="guide-step" id="graph">
+        <h2>Explore relationships.</h2>
+        <div>
+          <p>
+            The canvas starts with all papers in the active library. Collections
+            and Lenses show their available members; choose
+            <strong>All papers</strong> to restore the complete library. Larger
+            libraries can take longer to lay out.
+          </p>
+          <p>
+            Select a paper to focus it and open its inspector. Double-click to
+            move closer. Switch between spatial <strong>3D</strong> and flat
+            <strong>2D</strong>; use <strong>Fit graph</strong> to restore an
+            overview.
+          </p>
+          <p>
+            Small nodes also respond just outside their visible edge, so you can
+            select papers while zoomed out. Where targets overlap, the paper
+            nearest the viewer wins. Zoom in or rotate the 3D view to reach a
+            paper behind it.
+          </p>
+          <p>
+            <strong>Find similar</strong> retrieves a semantic neighborhood when
+            indexed evidence is available.
+            <strong>Explore citations</strong> follows citation relationships.
+            Use <strong>Back</strong> to return through exploration history.
+          </p>
+          <p>
+            <strong>Show connections</strong> controls visible relationship
+            types. <strong>TOPIC MAP</strong> explains category colors, and
+            <strong>Group By Topic</strong> changes the layout. Prepare the
+            library for AI first: automatic topics reuse the semantic index.
+            Until a map is available, papers stay neutral; citations remain
+            usable. Labels describe content-similarity groups, not scientific
+            proof. Topic Map shows coverage and representative titles on hover.
+            Collections reuse the library-wide map; Zotero tags are unchanged.
+          </p>
+          <p>
+            Open <strong>Analytics</strong> to inspect the current collection
+            and select a publication year to see its papers. Counts describe
+            your loaded corpus, not all published research.
+          </p>
+          <p>
+            <a href="__BASE__graph-navigation.txt"
+              >Graph navigation reference</a
+            >
+            /
+            <a href="__BASE__help-and-analytics.txt"
+              >Help and Analytics reference</a
+            >
+          </p>
+        </div>
+      </section>
+      <section class="guide-step" id="search">
+        <h2>Find the right passage.</h2>
+        <div>
+          <dl>
+            <div>
+              <dt>Keyword</dt>
+              <dd>
+                Search metadata and available indexed text without an AI model.
+              </dd>
+            </div>
+            <div>
+              <dt>Semantic</dt>
+              <dd>
+                Retrieve by meaning using the installed embedding model and
+                prepared index.
+              </dd>
+            </div>
+            <div>
+              <dt>Hybrid</dt>
+              <dd>
+                Combine lexical and semantic retrieval. Inspect the returned
+                passages and their provenance.
+              </dd>
+            </div>
+          </dl>
+          <p>
+            Use <strong>Search library</strong> in the top bar. Select a result
+            to inspect its paper and move from discovery to reading. Missing
+            text or incomplete coverage limits what retrieval can find.
+          </p>
+        </div>
+      </section>
+      <section class="guide-step" id="lenses">
+        <h2>Keep an investigation.</h2>
+        <div>
+          <p>
+            A Lens is a named, fixed set of papers with an optional research
+            question. It is saved locally for the current library and survives
+            restarting Graphite.
+          </p>
+          <ol>
+            <li>
+              Select papers and choose
+              <strong>Save selection as Lens</strong> in the sidebar. Name it,
+              review the papers, and save.
+            </li>
+            <li>
+              Click its name to reopen it. Use <strong>Edit</strong> beside the
+              name to rename it, change its question, or remove papers.
+            </li>
+            <li>
+              To add papers, return to <strong>All papers</strong>, select them,
+              then edit the target Lens and choose
+              <strong>Add selected papers</strong>.
+            </li>
+            <li>
+              Choose <strong>Ask about this Lens</strong> to open TYRION with
+              <strong>This Lens only</strong> selected. Review the question
+              before sending.
+            </li>
+          </ol>
+          <p>
+            Keep an answer's source papers by choosing
+            <strong>Temporary Lens</strong> beneath it, then
+            <strong>Save temporary Lens</strong>. Temporary Lenses disappear
+            after restarting unless saved.
+          </p>
+          <p>
+            Lenses can contain up to 1200 papers; a Lens-only AI request accepts
+            1-64 available papers and excludes earlier answers. Missing papers
+            stay in the saved membership, labeled unavailable. No evidence is
+            borrowed from the whole library when a Lens is empty.
+          </p>
+          <p>
+            Switching libraries shows separate Lens lists. Deleting a Lens opens
+            a confirmation view: choose <strong>Confirm delete Lens</strong> to
+            remove it, or <strong>Keep Lens</strong> to return to the draft.
+            Deleted Lenses stay deleted after restart; papers are kept.
+            Membership is a snapshot, not an automatically updating search;
+            graph camera positions are not saved.
+          </p>
+          <p>
+            <a href="__BASE__lenses.txt"
+              >Complete Lens guide and recovery notes</a
+            >
+          </p>
+        </div>
+      </section>
+      <section class="guide-step" id="reader">
+        <h2>Read and annotate.</h2>
+        <div>
+          <p>
+            Choose <strong>Open paper</strong> in a paper's inspector. The
+            Reader provides page navigation, zoom, text search, and multi-PDF
+            controls. Returning to the graph preserves your context.
+          </p>
+          <p>
+            <strong>Edit PDF</strong> opens a separate local copy for
+            highlights, notes, drawing, text-run replacement, and page changes.
+            Save in Graphite or export a PDF. Search and citation provenance
+            continue to use the original source text.
+          </p>
+          <p>
+            <a href="__BASE__pdf-editing.txt"
+              >PDF editing guide and format limitations</a
+            >
+          </p>
+        </div>
+      </section>
+      <section class="guide-step" id="ai">
+        <h2>Ask with a scope.</h2>
+        <div>
+          <p>
+            Install the embedding/search model in <strong>Data Source</strong>.
+            Configure an answer model separately in
+            <strong>TYRION &gt; Setup</strong>. Models run locally; initial
+            downloads require your explicit action.
+          </p>
+          <p>
+            Graphite finds passages in your papers; the answer model writes a
+            response using those passages. Keep <strong>Built-in model</strong>
+            to let Graphite download and run it for you. If you already run a
+            model in Ollama or LM Studio, choose
+            <strong
+              >Advanced: answer model &gt; Another app on this computer</strong
+            >
+            and enable that app's local server. Graphite still handles paper
+            search and citations.
+          </p>
+          <p>
+            OpenAI-compatible describes the connection format. It does not
+            connect Graphite to OpenAI. The optional API key is for the local
+            server only; direct LAN, VPS, GPT and Claude cloud connections are
+            not supported.
+          </p>
+          <p>
+            Choose the current paper, a selection, a Lens, a collection, or the
+            library as context. Start with one prepared paper and a specific
+            question. Open the answer's source citations and check the supplied
+            evidence in the Reader.
+          </p>
+          <p>
+            <strong>Library prepared</strong> and
+            <strong>Ready to ask TYRION</strong> are different states. You need
+            indexed passages and an available answer provider to ask grounded
+            questions. Neither state guarantees scientific correctness.
+          </p>
+          <p>
+            Saved conversations can be reopened, deleted, or exported as
+            Markdown. Use the
+            <a href="__BASE__tutorial.html#ask">first-question walkthrough</a>
+            to practice verification.
+          </p>
+        </div>
+      </section>
+      <section class="guide-step" id="recovery">
+        <h2>Get moving again.</h2>
+        <div>
+          <details open>
+            <summary>Preparation paused or was interrupted</summary>
+            <p>
+              Install a missing embedding model, then choose
+              <strong>Resume preparation</strong>. Cancel keeps verified PDFs
+              and completed indexing. After restarting Graphite, resume
+              manually. An interrupted ZIP download may restart.
+            </p>
+          </details>
+          <details>
+            <summary>A paper has no usable text</summary>
+            <p>
+              Check that its PDF is available. A scan may need OCR before it
+              provides passages. Graphite reports missing files and scans while
+              continuing with other papers; preparation does not install OCR
+              software.
+            </p>
+          </details>
+          <details>
+            <summary>The graph works, but PDFs or AI do not</summary>
+            <p>
+              The browser preview supports real metadata, graph navigation, and
+              keyword search. Native PDF access and model execution require
+              Graphite Desktop. In the desktop app, review preparation coverage
+              and model setup.
+            </p>
+          </details>
+          <details>
+            <summary>Zotero is closed</summary>
+            <p>
+              Previously synchronized metadata and text remain searchable. A
+              previously resolved PDF can reopen while its file remains at the
+              validated location. New synchronization requires Zotero to be
+              available.
+            </p>
+          </details>
+          <details>
+            <summary>I need to rebuild an index</summary>
+            <p>
+              <strong>Rebuild text index</strong> clears Graphite's copied text
+              and lexical index. Run <strong>Prepare library for AI</strong> to
+              regenerate available text.
+              <strong>Rebuild cache</strong> regenerates the Graphite-owned
+              Zotero partition. Neither edits Zotero.
+            </p>
+          </details>
+          <p>
+            <a href="__BASE__library-preparation.txt"
+              >Preparation states and recovery reference</a
+            >
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer wrap">
+      <a class="brand" href="__BASE__">Graphite</a>
+      <p>Your library. Your evidence.</p>
+      <nav aria-label="Footer">
+        <a href="__BASE__manual.html">Manual</a
+        ><a href="__BASE__privacy.txt">Privacy</a
+        ><a href="__BASE__LICENSE.txt">GNU GPLv3</a>
+      </nav>
+    </footer>
+  </body>
+</html>

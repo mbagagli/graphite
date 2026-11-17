@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper17",
+  "anchors": [
+    {
+      "id": "paper17-zone-b-compaction",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["Zone", "B", "0.75", "m-thick", "compaction"],
+        "max_gap": 20
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper17-materials-methods-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": { "type": "normalized", "value": "2. Materials and Methods" },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper17-figure-6-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [7],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Figure",
+          "6",
+          "Envelope",
+          "analysis",
+          "curves",
+          "mixed",
+          "reconstruction",
+          "soil",
+          "Zone",
+          "A"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper17-table-2-values",
+      "kind": "table_value",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [13],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["Table", "2", "7.38", "7.87", "10.13", "1.40", "0.80"],
+        "max_gap": 16
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper17-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [15],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Li",
+          "Tan",
+          "Mi",
+          "Chen",
+          "Evaluating",
+          "soil",
+          "quality",
+          "texture",
+          "profile"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

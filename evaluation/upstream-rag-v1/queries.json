@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "id": "upstream-rag-v1",
+  "questions": [
+    {
+      "id": "q01",
+      "selectedDocumentIds": ["paper11"],
+      "category": "prose",
+      "question": "How does this paper define seismic phase association?"
+    },
+    {
+      "id": "q02",
+      "selectedDocumentIds": ["paper23"],
+      "category": "prose",
+      "question": "What does seismic phase association connect?"
+    },
+    {
+      "id": "q03",
+      "selectedDocumentIds": ["paper11"],
+      "category": "late-evidence",
+      "question": "What tradeoff does widening the association time window introduce?"
+    },
+    {
+      "id": "q04",
+      "selectedDocumentIds": ["paper11", "paper23"],
+      "category": "comparison",
+      "question": "Compare how the two papers define the phase-association task. Attribute each description separately."
+    },
+    {
+      "id": "q05",
+      "selectedDocumentIds": ["paper16"],
+      "category": "table",
+      "question": "For experiment 1 in Table 1, report n, p, experimental and theoretical reliability, and relative difference, with column labels and units."
+    },
+    {
+      "id": "q06",
+      "selectedDocumentIds": ["paper20"],
+      "category": "equation",
+      "question": "In equation (1), what are the optical frequency and speed of light in the fiber? Give symbols, values and units."
+    },
+    {
+      "id": "q07",
+      "selectedDocumentIds": ["paper11"],
+      "category": "caption",
+      "question": "What does Figure 3 show, and what do the gray arrivals mean?"
+    },
+    {
+      "id": "q08",
+      "selectedDocumentIds": ["paper20"],
+      "category": "visual",
+      "question": "In the bottom trace of Figure 1b, which curve represents the spectral-element simulation and which period band is shown?"
+    },
+    {
+      "id": "q09",
+      "selectedDocumentIds": ["paper30"],
+      "category": "scan-text-layer",
+      "question": "How many independent parameters describe a general stress tensor, and how many can this paper determine with its approach? Explain why these counts differ."
+    },
+    {
+      "id": "q10",
+      "selectedDocumentIds": ["paper05"],
+      "category": "ocr",
+      "question": "What coupled inverse problem must be solved to recover three-dimensional velocity structure from local earthquake data?"
+    },
+    {
+      "id": "q11",
+      "selectedDocumentIds": ["paper05"],
+      "category": "ocr-late",
+      "question": "Locate the section titled Interpretation of Three-Dimensional P Wave Velocity Fields and give its PDF page."
+    },
+    {
+      "id": "q12",
+      "selectedDocumentIds": [
+        "paper11",
+        "paper16",
+        "paper20",
+        "paper23",
+        "paper30"
+      ],
+      "category": "five-paper",
+      "question": "Give one row per selected paper stating its research subject, with supporting evidence for every row."
+    },
+    {
+      "id": "q13",
+      "selectedDocumentIds": ["paper11", "paper20"],
+      "category": "selection-switch",
+      "question": "According to paper20, what optical frequency and light speed are used in equation (1)?"
+    },
+    {
+      "id": "q14",
+      "selectedDocumentIds": ["paper11", "paper23"],
+      "category": "selection-switch",
+      "question": "According to paper20, what optical frequency and light speed are used in equation (1)?"
+    },
+    {
+      "id": "q15",
+      "selectedDocumentIds": ["paper11", "paper20"],
+      "category": "selection-switch",
+      "question": "According to paper20, what optical frequency and light speed are used in equation (1)?"
+    },
+    {
+      "id": "q16",
+      "selectedDocumentIds": ["paper11", "paper23"],
+      "category": "unselected-source",
+      "question": "Using Table 1 of paper16, give the relative difference for experiment 1."
+    },
+    {
+      "id": "q17",
+      "selectedDocumentIds": ["paper23"],
+      "category": "numeric-prose",
+      "question": "What fraction of known events above magnitude 1 was recovered?"
+    },
+    {
+      "id": "q18",
+      "selectedDocumentIds": [
+        "paper11",
+        "paper16",
+        "paper20",
+        "paper23",
+        "paper30"
+      ],
+      "category": "five-paper-table",
+      "question": "Which selected paper reports experimental reliability 0.7190 in Table 1? Give its corresponding theoretical value and relative difference."
+    }
+  ]
+}

@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "id": "upstream-rag-v1",
+  "judgments": [
+    {
+      "queryId": "q01",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "Connect phase picks to form seismic events.",
+      "requiredAbstention": false,
+      "evidence": [
+        {
+          "documentId": "paper11",
+          "anchorId": "paper11-association-purpose",
+          "pdfPages": [1],
+          "anchorVerification": "human-verified"
+        }
+      ],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q02",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "Connect earthquake arrival-time measurements to their causative sources.",
+      "requiredAbstention": false,
+      "evidence": [
+        {
+          "documentId": "paper23",
+          "anchorId": "paper23-association-definition",
+          "pdfPages": [1],
+          "anchorVerification": "human-verified"
+        }
+      ],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q03",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "More picks can be associated, but errant picks and poor S picks can increase, reducing location certainty and creating false events.",
+      "requiredAbstention": false,
+      "evidence": [
+        {
+          "documentId": "paper11",
+          "anchorId": "paper11-window-tradeoff",
+          "pdfPages": [9],
+          "anchorVerification": "human-verified"
+        }
+      ],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q04",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "Both connect arrivals to events/sources. Attribute the event-building description to paper11 and arrival-to-source description to paper23; do not invent a scientific disagreement.",
+      "requiredAbstention": false,
+      "evidence": [
+        {
+          "documentId": "paper11",
+          "anchorId": "paper11-association-purpose",
+          "pdfPages": [1],
+          "anchorVerification": "human-verified"
+        },
+        {
+          "documentId": "paper23",
+          "anchorId": "paper23-association-definition",
+          "pdfPages": [1],
+          "anchorVerification": "human-verified"
+        }
+      ],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q05",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "n=5; p=0.02; experimental reliability=0.7190; theoretical reliability=0.7729; relative difference=-7.0%. The reliabilities and p are dimensionless.",
+      "requiredAbstention": false,
+      "evidence": [
+        {
+          "documentId": "paper16",
+          "anchorId": "paper16-table-1-row",
+          "pdfPages": [10],
+          "anchorVerification": "human-verified"
+        }
+      ],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q06",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "nu=190.7 THz; c=204.2 x 10^6 m/s. Do not substitute vacuum light speed.",
+      "requiredAbstention": false,
+      "evidence": [
+        {
+          "documentId": "paper20",
+          "anchorId": "paper20-optical-constants",
+          "pdfPages": [2],
+          "anchorVerification": "human-verified"
+        }
+      ],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q07",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "Examples of associated phase arrivals for the two datasets; gray arrivals are unassociated picks. Caption-level question, not proof of visual reasoning.",
+      "requiredAbstention": false,
+      "evidence": [
+        {
+          "documentId": "paper11",
+          "anchorId": "paper11-figure-3-caption",
+          "pdfPages": [6],
+          "anchorVerification": "human-verified"
+        }
+      ],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q08",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "Red curve; 6-15 seconds. Preserve period units; do not report 6-15 Hz. This asks about plot labels, not merely the figure caption.",
+      "requiredAbstention": false,
+      "evidence": [],
+      "additionalPages": [
+        {
+          "documentId": "paper20",
+          "pdfPages": [2]
+        }
+      ],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q09",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "Six describe the symmetric stress tensor. The method resolves four: hydrostatic pressure is unconstrained and only stress ratios, not absolute magnitudes, are determined.",
+      "requiredAbstention": false,
+      "evidence": [
+        {
+          "documentId": "paper30",
+          "anchorId": "paper30-stress-tensor-fact",
+          "pdfPages": [2],
+          "anchorVerification": "human-verified"
+        }
+      ],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q10",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "The coupled hypocenter-model problem: earthquake locations and three-dimensional velocity structure must be solved together.",
+      "requiredAbstention": false,
+      "evidence": [
+        {
+          "documentId": "paper05",
+          "anchorId": "paper05-abstract-body",
+          "pdfPages": [1],
+          "anchorVerification": "human-verified"
+        }
+      ],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q11",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "PDF page 30. Distinguish the physical PDF page from the printed journal label.",
+      "requiredAbstention": false,
+      "evidence": [
+        {
+          "documentId": "paper05",
+          "anchorId": "paper05-interpretation-heading",
+          "pdfPages": [30],
+          "anchorVerification": "human-verified"
+        }
+      ],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved. User explicitly reconfirmed physical PDF page 30."
+    },
+    {
+      "queryId": "q12",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "paper11: phase association; paper16: calibration of MEMS accelerometers; paper20: fiber-optic PNC sensing; paper23: phase association; paper30: stress inference from focal mechanisms.",
+      "requiredAbstention": false,
+      "evidence": [
+        {
+          "documentId": "paper11",
+          "anchorId": "paper11-association-purpose",
+          "pdfPages": [1],
+          "anchorVerification": "human-verified"
+        },
+        {
+          "documentId": "paper16",
+          "anchorId": "paper16-calibration-scale",
+          "pdfPages": [2],
+          "anchorVerification": "human-verified"
+        },
+        {
+          "documentId": "paper20",
+          "anchorId": "paper20-pnc-loop-fact",
+          "pdfPages": [2],
+          "anchorVerification": "human-verified"
+        },
+        {
+          "documentId": "paper23",
+          "anchorId": "paper23-association-definition",
+          "pdfPages": [1],
+          "anchorVerification": "human-verified"
+        },
+        {
+          "documentId": "paper30",
+          "anchorId": "paper30-stress-tensor-fact",
+          "pdfPages": [2],
+          "anchorVerification": "human-verified"
+        }
+      ],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q13",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "nu=190.7 THz; c=204.2 x 10^6 m/s.",
+      "requiredAbstention": false,
+      "evidence": [
+        {
+          "documentId": "paper20",
+          "anchorId": "paper20-optical-constants",
+          "pdfPages": [2],
+          "anchorVerification": "human-verified"
+        }
+      ],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q14",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "Abstain because paper20 is outside the current selection. Do not reuse the previous answer, its values or its citations.",
+      "requiredAbstention": true,
+      "evidence": [],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q15",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "nu=190.7 THz; c=204.2 x 10^6 m/s. Reuse the existing index.",
+      "requiredAbstention": false,
+      "evidence": [
+        {
+          "documentId": "paper20",
+          "anchorId": "paper20-optical-constants",
+          "pdfPages": [2],
+          "anchorVerification": "human-verified"
+        }
+      ],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q16",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "Abstain because paper16 is outside the current selection; do not supply its numeric value.",
+      "requiredAbstention": true,
+      "evidence": [],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q17",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "Approximately 96% (abstract) or over 96% (discussion); retain the M > 1 qualification.",
+      "requiredAbstention": false,
+      "evidence": [
+        {
+          "documentId": "paper23",
+          "anchorId": "paper23-known-event-recovery",
+          "pdfPages": [1, 21],
+          "anchorVerification": "human-verified"
+        }
+      ],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    },
+    {
+      "queryId": "q18",
+      "verificationStatus": "human-verified",
+      "expectedAnswer": "paper16; 0.7729 theoretical reliability and -7.0% relative difference. Numeric prompt is intentional exact-match retrieval; report separately from paraphrase questions.",
+      "requiredAbstention": false,
+      "evidence": [
+        {
+          "documentId": "paper16",
+          "anchorId": "paper16-table-1-row",
+          "pdfPages": [10],
+          "anchorVerification": "human-verified"
+        }
+      ],
+      "additionalPages": [],
+      "reviewNote": "Human review complete; approval applies to the full proposed answer, including any extension beyond a frozen anchor.",
+      "verificationNote": "Explicit user review in this chat on 2026-10-25: all questions, answers and source pages approved."
+    }
+  ]
+}

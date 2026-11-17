@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "profiles": [
+    {
+      "id": "native",
+      "intent": "Use only the embedded PDF text layer and deterministic native layout logic.",
+      "networkAllowed": false
+    },
+    {
+      "id": "recommended-auto",
+      "intent": "Use candidate-native page detection and OCR routing with frozen local assets.",
+      "networkAllowed": false
+    },
+    {
+      "id": "forced-ocr",
+      "intent": "OCR the complete selected document to test recovery from lying or absent text layers.",
+      "networkAllowed": false
+    }
+  ]
+}

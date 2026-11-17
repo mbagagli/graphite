@@ -1,0 +1,113 @@
+name: Release installers
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      version: ${{ steps.version.outputs.value }}
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+          ref: ${{ github.sha }}
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .node-version
+      - name: Validate the existing version tag
+        env:
+          REF_TYPE: ${{ github.ref_type }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          if [ "$REF_TYPE" != tag ]; then
+            echo "Select an existing version tag; use the package smoke workflow for branch builds."
+            exit 1
+          fi
+          node scripts/check-release-tag.mjs "$RELEASE_TAG"
+      - name: Read validated version
+        id: version
+        run: echo "value=$(node -p 'require("./package.json").version')" >> "$GITHUB_OUTPUT"
+
+  checks:
+    needs: validate
+    uses: ./.github/workflows/ci.yml
+
+  packages:
+    needs: [validate, checks]
+    uses: ./.github/workflows/package-smoke.yml
+
+  draft-release:
+    if: github.ref_type == 'tag'
+    needs: [validate, packages]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - name: Download the verified candidate from this run
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          name: graphite-${{ needs.validate.outputs.version }}-unsigned-release-candidate
+          path: artifacts/
+      - name: Verify candidate and prepare release notes
+        working-directory: artifacts/graphite-${{ needs.validate.outputs.version }}
+        env:
+          VERSION: ${{ needs.validate.outputs.version }}
+          SOURCE_REVISION: ${{ github.sha }}
+          SOURCE_REPOSITORY: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          jq -e --arg version "$VERSION" --arg revision "$SOURCE_REVISION" \
+            '.version == $version and .sourceRevision == $revision and .publicRelease == false' \
+            release-manifest.json
+          sha256sum --check --strict SHA256SUMS.txt
+          cat > release-notes.md <<'NOTES'
+          Graphite release candidate for Linux x64 and macOS Apple Silicon.
+
+          Linux includes DEB and AppImage installers. macOS includes an ad-hoc
+          signed DMG without Apple notarization. Windows is currently unavailable;
+          we are working on support. Intel Mac installers are not provided.
+
+          Review the changes, native acceptance results, license notices and
+          known limitations before publishing this draft. On a clean Mac, also
+          verify the first launch of a browser-downloaded DMG. Updates are manual.
+          SHA256SUMS.txt covers the installers; release-manifest.json records
+          the source revision and package checksums.
+          NOTES
+          printf '\nLicense: GNU GPL version 3 only (GPL-3.0-only).\nSource: https://github.com/%s/archive/refs/tags/%s.tar.gz\n' \
+            "$SOURCE_REPOSITORY" "$RELEASE_TAG" >> release-notes.md
+      - name: Create or update an unpublished release draft
+        working-directory: artifacts/graphite-${{ needs.validate.outputs.version }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+          VERSION: ${{ needs.validate.outputs.version }}
+        run: |
+          if gh release view "$RELEASE_TAG" --json isDraft > release-state.json; then
+            if ! jq -e '.isDraft == true' release-state.json > /dev/null; then
+              echo "Refusing to overwrite a published release."
+              exit 1
+            fi
+          else
+            gh release create "$RELEASE_TAG" --verify-tag --draft \
+              --title "Graphite $RELEASE_TAG" --notes-file release-notes.md
+          fi
+          gh release upload "$RELEASE_TAG" --clobber \
+            "Graphite_${VERSION}_amd64.deb" \
+            "Graphite_${VERSION}_amd64.AppImage" \
+            "Graphite_${VERSION}_aarch64.dmg" \
+            SHA256SUMS.txt release-manifest.json

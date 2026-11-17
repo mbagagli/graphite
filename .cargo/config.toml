@@ -1,0 +1,5 @@
+[build]
+target-dir = ".cache/cargo-target"
+
+[env]
+ORT_CACHE_DIR = { value = ".cache/ort", relative = true }

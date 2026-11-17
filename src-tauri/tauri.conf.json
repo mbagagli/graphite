@@ -1,0 +1,57 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Graphite",
+  "version": "../package.json",
+  "identifier": "org.graphite.research",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://127.0.0.1:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Graphite - Discover Knowledge",
+        "width": 1440,
+        "height": 900,
+        "minWidth": 1024,
+        "minHeight": 700,
+        "center": true,
+        "resizable": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; connect-src 'self' ipc: http://ipc.localhost graphite-document: http://graphite-document.localhost https://graphite-document.localhost; img-src 'self' asset: http://asset.localhost data:; style-src 'self' 'unsafe-inline'; font-src 'self' data:; worker-src 'self'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "category": "Reference",
+    "shortDescription": "A local-first visual research environment",
+    "longDescription": "Explore, read, search, and interrogate a scientific Zotero library with local retrieval and local models.",
+    "publisher": "Graphite",
+    "copyright": "Copyright (c) 2026 Graphite",
+    "license": "GPL-3.0-only",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "resources": {
+      "../LICENSE": "licenses/Graphite-LICENSE.txt",
+      "../node_modules/@embedpdf/pdfium/LICENSE": "licenses/EmbedPDF-LICENSE.txt",
+      "../node_modules/@embedpdf/pdfium/LICENSE.pdfium": "licenses/PDFium-LICENSE.txt",
+      "../src/assets/fonts/NotoSans-LICENSE.txt": "licenses/NotoSans-LICENSE.txt",
+      "licenses/llama-LICENSE.txt": "licenses/llama-LICENSE.txt"
+    },
+    "createUpdaterArtifacts": false,
+    "useLocalToolsDir": true,
+    "macOS": {
+      "minimumSystemVersion": "11.0"
+    }
+  }
+}

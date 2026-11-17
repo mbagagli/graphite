@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "evaluation_set_id": "m6-c2-retrieval-qa-v1",
+  "corpus_id": "graphite-scientific-pdf-representative-real-v1",
+  "queries": [
+    {
+      "query_id": "m6c2-q01",
+      "query_text": "How are phase picks grouped into candidate seismic events?",
+      "scope": "item",
+      "item_ids": ["paper11"],
+      "query_category": "scientific_method"
+    },
+    {
+      "query_id": "m6c2-q02",
+      "query_text": "Why is volcanic tremor useful for eruption monitoring?",
+      "scope": "item",
+      "item_ids": ["paper12"],
+      "query_category": "semantic_paraphrase"
+    },
+    {
+      "query_id": "m6c2-q03",
+      "query_text": "Why can differential-time earthquake locations outperform single-event locations?",
+      "scope": "item",
+      "item_ids": ["paper13"],
+      "query_category": "semantic_paraphrase"
+    },
+    {
+      "query_id": "m6c2-q04",
+      "query_text": "Which frequency, velocity, and angular thresholds connect dispersion-energy points?",
+      "scope": "item",
+      "item_ids": ["paper14"],
+      "query_category": "equation"
+    },
+    {
+      "query_id": "m6c2-q05",
+      "query_text": "What low-frequency band was used for multiscale body-wave fitting?",
+      "scope": "item",
+      "item_ids": ["paper15"],
+      "query_category": "scientific_method"
+    },
+    {
+      "query_id": "m6c2-q06",
+      "query_text": "Which values appear together in the Table 1 row containing a negative 7.0 entry?",
+      "scope": "item",
+      "item_ids": ["paper16"],
+      "query_category": "table"
+    },
+    {
+      "query_id": "m6c2-q07",
+      "query_text": "What numeric values are reported together in Table 2 for the evaluated soil zones?",
+      "scope": "item",
+      "item_ids": ["paper17"],
+      "query_category": "table"
+    },
+    {
+      "query_id": "m6c2-q08",
+      "query_text": "What do graph nodes represent in the seismic-station model?",
+      "scope": "item",
+      "item_ids": ["paper18"],
+      "query_category": "terminology"
+    },
+    {
+      "query_id": "m6c2-q09",
+      "query_text": "What comparison does Figure 7 make for the relocated Turkiye catalog?",
+      "scope": "item",
+      "item_ids": ["paper19"],
+      "query_category": "caption"
+    },
+    {
+      "query_id": "m6c2-q10",
+      "query_text": "What optical frequency and propagation-speed constants are used in the PNC formulation?",
+      "scope": "item",
+      "item_ids": ["paper20"],
+      "query_category": "equation"
+    },
+    {
+      "query_id": "m6c2-q11",
+      "query_text": "What range is listed for horizontal three-dimensional model parameterizations in supplementary Table S2?",
+      "scope": "item",
+      "item_ids": ["paper21"],
+      "query_category": "tail_content"
+    },
+    {
+      "query_id": "m6c2-q12",
+      "query_text": "What wave speed is associated with the analogue-model experiment?",
+      "scope": "item",
+      "item_ids": ["paper22"],
+      "query_category": "normal_prose_fact"
+    },
+    {
+      "query_id": "m6c2-q13",
+      "query_text": "How is seismic phase association defined?",
+      "scope": "item",
+      "item_ids": ["paper23"],
+      "query_category": "terminology"
+    },
+    {
+      "query_id": "m6c2-q14",
+      "query_text": "Where does the paper compare low- and high-frequency electromagnetic methods?",
+      "scope": "item",
+      "item_ids": ["paper24"],
+      "query_category": "table"
+    },
+    {
+      "query_id": "m6c2-q15",
+      "query_text": "What limits the availability of genuine ground truth for earthquake deep learning?",
+      "scope": "item",
+      "item_ids": ["paper25"],
+      "query_category": "normal_prose_fact"
+    },
+    {
+      "query_id": "m6c2-q16",
+      "query_text": "How many realizations were found sufficient during the study?",
+      "scope": "item",
+      "item_ids": ["paper26"],
+      "query_category": "equation"
+    },
+    {
+      "query_id": "m6c2-q17",
+      "query_text": "What ambiguity arises when a double-couple point-source model is used?",
+      "scope": "item",
+      "item_ids": ["paper27"],
+      "query_category": "semantic_paraphrase"
+    },
+    {
+      "query_id": "m6c2-q18",
+      "query_text": "Which variables appear in the travel-time relationship for interstation phase velocity?",
+      "scope": "item",
+      "item_ids": ["paper28"],
+      "query_category": "equation"
+    },
+    {
+      "query_id": "m6c2-q19",
+      "query_text": "What does MASW estimate, and which observations does it use?",
+      "scope": "item",
+      "item_ids": ["paper29"],
+      "query_category": "scientific_method"
+    },
+    {
+      "query_id": "m6c2-q20",
+      "query_text": "How many independent parameters describe a symmetric second-rank stress tensor?",
+      "scope": "item",
+      "item_ids": ["paper30"],
+      "query_category": "normal_prose_fact"
+    },
+    {
+      "query_id": "m6c2-q21",
+      "query_text": "Find work that defines seismic phase association and explains how picks become events.",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "cross_document_discovery"
+    },
+    {
+      "query_id": "m6c2-q22",
+      "query_text": "Which papers discuss double-difference relocation or improved earthquake-location accuracy?",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "cross_document_discovery"
+    },
+    {
+      "query_id": "m6c2-q23",
+      "query_text": "Find studies using surface-wave dispersion, phase velocity, or Rayleigh-wave observations.",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "scientific_method"
+    },
+    {
+      "query_id": "m6c2-q24",
+      "query_text": "Which papers apply deep learning to seismic monitoring, station data, or waveform processing?",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "cross_document_discovery"
+    },
+    {
+      "query_id": "m6c2-q25",
+      "query_text": "Find evidence about source inversion, moment tensors, or regional stress tensors.",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "terminology"
+    },
+    {
+      "query_id": "m6c2-q26",
+      "query_text": "Which work uses long-range fiber-optic sensing to observe earthquakes?",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "cross_document_discovery"
+    },
+    {
+      "query_id": "m6c2-q27",
+      "query_text": "Find studies concerned with soil compaction or spatially heterogeneous fields.",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "cross_document_discovery"
+    },
+    {
+      "query_id": "m6c2-q28",
+      "query_text": "Which studies estimate bedrock depth, shear-wave profiles, or near-surface S-wave velocity?",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "scientific_method"
+    },
+    {
+      "query_id": "m6c2-q29",
+      "query_text": "Find discussions of uncertainty in earthquake location or subsurface inversion.",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "semantic_paraphrase"
+    },
+    {
+      "query_id": "m6c2-q30",
+      "query_text": "Which document models seismic stations as graph nodes with feature vectors?",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "terminology"
+    },
+    {
+      "query_id": "m6c2-q31",
+      "query_text": "Find a volcanic-monitoring method based on tremor or automated phase picking.",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "scientific_method"
+    },
+    {
+      "query_id": "m6c2-q32",
+      "query_text": "Which papers contain tabulated calibration or material-measurement results?",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "table"
+    },
+    {
+      "query_id": "m6c2-q33",
+      "query_text": "Find figures that compare relocated earthquake catalogs with ground truth or initial locations.",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "caption"
+    },
+    {
+      "query_id": "m6c2-q34",
+      "query_text": "Which papers discuss model dependence, missing ground truth, or generalization limits in machine learning?",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "semantic_paraphrase"
+    },
+    {
+      "query_id": "m6c2-q35",
+      "query_text": "Find late-document references or evidence about waveform and surface-wave inversion workflows.",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "tail_content"
+    },
+    {
+      "query_id": "m6c2-q36",
+      "query_text": "Which documents contain equations or constants for attention, optical sensing, or interstation travel time?",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "equation"
+    },
+    {
+      "query_id": "m6c2-q37",
+      "query_text": "Find figures comparing prediction or inversion results under different conditions.",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "caption"
+    },
+    {
+      "query_id": "m6c2-q38",
+      "query_text": "Which late references concern seismic phase-association algorithms?",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "tail_content"
+    },
+    {
+      "query_id": "m6c2-q39",
+      "query_text": "Find studies spanning laboratory, fiber-loop, or interstation measurement geometries.",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "cross_document_discovery"
+    },
+    {
+      "query_id": "m6c2-q40",
+      "query_text": "Which document has a section devoted to full-waveform methods for relative and absolute sensor orientation?",
+      "scope": "corpus",
+      "item_ids": [],
+      "query_category": "heading"
+    },
+    {
+      "query_id": "m6c2-q41",
+      "query_text": "What does local-earthquake geotomography invert to recover?",
+      "scope": "item",
+      "item_ids": ["paper05"],
+      "query_category": "ocr_adjunct"
+    },
+    {
+      "query_id": "m6c2-q42",
+      "query_text": "Which late section interprets three-dimensional P-wave velocity fields?",
+      "scope": "item",
+      "item_ids": ["paper05"],
+      "query_category": "ocr_adjunct"
+    }
+  ]
+}

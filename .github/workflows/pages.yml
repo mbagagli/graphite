@@ -1,0 +1,73 @@
+name: Landing page preview and owner publication
+
+on:
+  pull_request:
+    paths:
+      - website/**
+      - demo/**
+      - docs/release/**
+      - LICENSE
+      - PRIVACY.md
+      - scripts/real-demo.mjs
+      - scripts/build-site*
+      - scripts/privacy-check*
+      - package.json
+      - package-lock.json
+      - .github/workflows/pages.yml
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the reviewed landing page to GitHub Pages
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm install --global npm@11.17.0
+      - run: npm ci
+      - run: npm run version:check
+      - run: npm run check:publication && npm run check:privacy
+      - run: npm run site:build
+        env:
+          SITE_BASE: /${{ github.event.repository.name }}/
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          SITE_PUBLIC: ${{ github.event_name == 'workflow_dispatch' && inputs.publish }}
+      - run: npm run test:unit -- scripts/build-site.test.mjs
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        if: github.event_name == 'workflow_dispatch' && inputs.publish
+        with:
+          path: dist-site
+
+  deploy:
+    if: github.event_name == 'workflow_dispatch' && inputs.publish && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish reviewed page
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

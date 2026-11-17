@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "appVersion": "0.3.3",
+  "capturedAt": "2026-11-17",
+  "manifestId": "seismology-ml-v2",
+  "manifestSha256": "8336998d2601507f73f9166c35f74f08a8402130b86575f00e9e3c665ad9c12f",
+  "viewport": {
+    "width": 1440,
+    "height": 814
+  },
+  "kind": "browser-metadata-capture",
+  "sha256": "dd59c9754cc0aedb0d9b046249c9ca950e0b14ca4eab8ac2d1faa9a2cbdff2e9",
+  "metadataChecks": {
+    "papers": 60,
+    "distinctDois": 60
+  },
+  "screenshotChecks": {
+    "year": 2011,
+    "exactDisplayedPaperCount": 2
+  },
+  "note": "Current real-paper browser metadata view. No native PDF import or model execution is demonstrated."
+}

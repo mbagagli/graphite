@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "experiment_config_id": "m6-c2-controlled-search-v1",
+  "evaluation_set_id": "m6-c2-retrieval-qa-v1",
+  "query_scope_id_namespace": "neutral-corpus-document-id",
+  "review_state": "suggested-unverified",
+  "scored_run_allowed": false,
+  "primary_corpus": {
+    "corpus_id": "graphite-scientific-pdf-representative-real-v1",
+    "document_ids": [
+      "paper11",
+      "paper12",
+      "paper13",
+      "paper14",
+      "paper15",
+      "paper16",
+      "paper17",
+      "paper18",
+      "paper19",
+      "paper20",
+      "paper21",
+      "paper22",
+      "paper23",
+      "paper24",
+      "paper25",
+      "paper26",
+      "paper27",
+      "paper28",
+      "paper29",
+      "paper30"
+    ],
+    "manifest_path": "tools/pdf-benchmark/corpus/representative-manifest.json",
+    "manifest_sha256": "8f2f5f3b83652c3b7adf0c9566ff33cca61f75233e1d611330069e4f065468f3"
+  },
+  "query_partitions": {
+    "primary_item_scoped": [
+      "m6c2-q01",
+      "m6c2-q02",
+      "m6c2-q03",
+      "m6c2-q04",
+      "m6c2-q05",
+      "m6c2-q06",
+      "m6c2-q07",
+      "m6c2-q08",
+      "m6c2-q09",
+      "m6c2-q10",
+      "m6c2-q11",
+      "m6c2-q12",
+      "m6c2-q13",
+      "m6c2-q14",
+      "m6c2-q15",
+      "m6c2-q16",
+      "m6c2-q17",
+      "m6c2-q18",
+      "m6c2-q19",
+      "m6c2-q20"
+    ],
+    "primary_corpus_wide": [
+      "m6c2-q21",
+      "m6c2-q22",
+      "m6c2-q23",
+      "m6c2-q24",
+      "m6c2-q25",
+      "m6c2-q26",
+      "m6c2-q27",
+      "m6c2-q28",
+      "m6c2-q29",
+      "m6c2-q30",
+      "m6c2-q31",
+      "m6c2-q32",
+      "m6c2-q33",
+      "m6c2-q34",
+      "m6c2-q35",
+      "m6c2-q36",
+      "m6c2-q37",
+      "m6c2-q38",
+      "m6c2-q39",
+      "m6c2-q40"
+    ],
+    "ocr_adjunct": ["m6c2-q41", "m6c2-q42"]
+  },
+  "modes": [
+    "production-zotero",
+    "experimental-xberg",
+    "experimental-zotero-plus-xberg",
+    "experimental-zotero-plus-xberg-ocr",
+    "experimental-docling-flat",
+    "experimental-manual-deep-read-ocr"
+  ],
+  "candidate_profiles": {
+    "xberg": "1.0.14/native/b6660a759d31089075dd89112b77b918f872879a",
+    "pdf_inspector_ocr": "1.15.0/recommended-auto/ca6d66714683f71d1b1cd447f766a2b287bea751",
+    "docling": "1.16.0/recommended-auto/7f8de88e860e289c42873922bd888cd50815ef26"
+  },
+  "evaluation_rules": {
+    "retrieval_ground_truth": "human-reviewed deterministic anchor relevance",
+    "qa_ground_truth": "human-reviewed expected answers, deterministic alternatives, required evidence, and numeric values",
+    "llm_judge_allowed_as_sole_ground_truth": false,
+    "ground_truth_available_to_retrieval_or_routing": false,
+    "retrieval_outputs_sealed_before_key_loading": true,
+    "retrieval_tuning_during_scored_run": false
+  },
+  "frozen_contracts": {
+    "chunker": {
+      "profile": "scientific-paragraph-v1/1.0.0",
+      "source_path": "src-tauri/src/semantic/chunking.rs",
+      "source_sha256": "ec4fae6b5803cb99371e8191ae40c362d600eefaa8b84e0220f3c97a341ac731"
+    },
+    "embedding": {
+      "model": "Qdrant/bge-small-en-v1.5-onnx-Q",
+      "runtime": "fastembed-5.17.4/ort-2.0.0-rc.13",
+      "dimension": 384
+    },
+    "vector_index": {
+      "profile": "usearch-hnsw-2.26.0/usearch-dense-v1",
+      "source_path": "src-tauri/src/semantic/vector_index.rs",
+      "source_sha256": "f87142a8fc2eeadde55390aff34bfcc67225d6137ecc585cef2772619909e053"
+    },
+    "retrieval": {
+      "profile": "scoped-hybrid-v1",
+      "rrf_k": 60.0,
+      "lexical_weight": 1.15,
+      "source_path": "src-tauri/src/semantic/retrieval_policy.rs",
+      "source_sha256": "fdeeb30bb78268ce833e3f66df6a6d206aebf2b42eaf569e6c806020cd0a694f"
+    },
+    "context": {
+      "profile": "bounded-diverse-context-v2",
+      "source_path": "src-tauri/src/agent/context.rs",
+      "source_sha256": "9a78eccfe65b864807c617120a037d52af8d622d3aeca02c3575df11984492b9"
+    },
+    "canonical_document": {
+      "profile": "canonical-document-v1",
+      "model_source_path": "src-tauri/src/extraction/model.rs",
+      "model_source_sha256": "e6e8feb1c179958631080faaaaa17b12a882cb83a0156f16f7215167facde7cd",
+      "projection_source_path": "src-tauri/src/extraction/projection.rs",
+      "projection_source_sha256": "7a37916145c4014fbf6882c98a88d3280ef058bc05560260f4ad320368ad21be"
+    },
+    "extraction_quality": {
+      "profile": "extraction-quality-v1.1",
+      "source_path": "src-tauri/src/extraction/quality.rs",
+      "source_sha256": "9f20ef70d45973709ab3b75368e7fe76c1c2aa9d384fae51df321b1c0aa540d2"
+    }
+  },
+  "ocr_policy": {
+    "automatic_route": "pdf-shadow-strategy-v1 observable-signal route",
+    "human_anchors_may_trigger_ocr": false,
+    "adjunct": {
+      "document_id": "paper05",
+      "aggregate": "ocr-adjunct-only",
+      "mode": "experimental-zotero-plus-xberg-ocr",
+      "smoke_manifest_path": "tools/pdf-benchmark/corpus/smoke-manifest.json",
+      "smoke_manifest_sha256": "0fb3d6a7485b648e7404169c4667456cc6fa9bcdfeda1f96f5c6f7cf6ed2ffe9"
+    },
+    "manual_deep_read_counterfactual": {
+      "document_id": "paper30",
+      "mode": "experimental-manual-deep-read-ocr",
+      "included_in_automatic_policy_aggregates": false,
+      "reason": "Frozen inadequate-text-layer case that does not trigger the automatic observable-signal route."
+    }
+  },
+  "input_files": {
+    "query_manifest": {
+      "path": "evaluation/pdf-search-v1/retrieval-queries-v1.json",
+      "sha256": "679273211fb2586c8bb3d9231ecbfd1546c37aa515fb7ee8bdabe0565f7a8171"
+    },
+    "evaluation_key": {
+      "path": "evaluation/pdf-search-v1/retrieval-evaluation-key-v1.json",
+      "sha256": "5dd9efdbfe3886e155c14008ac7cf77654facb011346f9f551eb8fd6f410c703"
+    },
+    "qa_manifest": {
+      "path": "evaluation/pdf-search-v1/qa-manifest-v1.json",
+      "sha256": "33780e0362ac021322470a6ce886f1379d3cc1c0c3081e0a2f871af5b7576d8a"
+    },
+    "docling_subset": {
+      "path": "evaluation/pdf-search-v1/docling-subset-v1.json",
+      "sha256": "019d28faf20345765bb4f075d3745736535c195ebbfc9253a1ad9e05c46f21b9"
+    },
+    "assets_lock": {
+      "path": "tools/pdf-benchmark/config/assets.lock.json",
+      "sha256": "7037094d78faaf59af169816c029079d34929fb1646fd5f269abe0ac1bb881c2"
+    },
+    "profiles": {
+      "path": "tools/pdf-benchmark/config/profiles.json",
+      "sha256": "808c166a39a0869a9bd0246842bc61478051c40c737429a5cd6f6f03389a5f71"
+    },
+    "timeout_policy": {
+      "path": "tools/pdf-benchmark/config/timeout-policy.json",
+      "sha256": "36169049086db6299e463123dde042ecfa55b90106e143541942d85948832415"
+    },
+    "m5_protocol": {
+      "path": "tools/pdf-benchmark/config/smoke-protocol.lock.json",
+      "sha256": "269e3fc955d939f6940f29eab23af948aaecb0559af495ad526b55bfddb4bee1"
+    }
+  }
+}

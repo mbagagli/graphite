@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper26",
+  "anchors": [
+    {
+      "id": "paper26-uncertainty-propagation",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "suites",
+          "Vs",
+          "profiles",
+          "accurately",
+          "capture",
+          "site",
+          "Vs",
+          "structure",
+          "propagating",
+          "dispersion",
+          "data",
+          "uncertainty"
+        ],
+        "max_gap": 14
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper26-introduction-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": { "type": "normalized", "value": "1 Introduction" },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper26-realization-count",
+      "kind": "formula",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [12],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["N", "250", "shown", "perform", "well", "course", "study"],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper26-conclusion-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [21],
+      "matcher": { "type": "normalized", "value": "6 Conclusion" },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper26-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [25],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Vantassel",
+          "Cox",
+          "SWinvert",
+          "workflow",
+          "rigorous",
+          "1-D",
+          "surface",
+          "wave",
+          "inversions"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

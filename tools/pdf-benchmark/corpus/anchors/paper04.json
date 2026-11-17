@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper04",
+  "anchors": [
+    {
+      "id": "paper04-abstract-body",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "three-grid",
+          "approach",
+          "seismic",
+          "forward",
+          "inversion",
+          "grid"
+        ],
+        "max_gap": 25
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper04-figure-1-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [3],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Schematic",
+          "example",
+          "parametrization",
+          "3-D",
+          "ray",
+          "tracers"
+        ],
+        "max_gap": 18
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper04-figure-2-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [5],
+      "matcher": {
+        "type": "normalized",
+        "value": "Three-grid approach for local earthquake seismic tomography."
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper04-figure-4-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [7],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Fat",
+          "ray",
+          "tomography",
+          "width",
+          "cell",
+          "size",
+          "damping"
+        ],
+        "max_gap": 18
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper04-rotated-figure-5-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [9],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["Synthetic", "data", "test", "non-uniform", "resolution"],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper04-conclusions-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [11],
+      "matcher": {
+        "type": "normalized",
+        "value": "6. Discussion and conclusions"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper04-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [13],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Virieux",
+          "Fara",
+          "Ray",
+          "tracing",
+          "earthquake",
+          "location"
+        ],
+        "max_gap": 18
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

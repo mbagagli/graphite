@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper09",
+  "anchors": [
+    {
+      "id": "paper09-title",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "normalized",
+        "value": "Convolutional Networks for Images, Speech, and Time-Series"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper09-encoding-classifier",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [3],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "trainable",
+          "classifier",
+          "categorizes",
+          "feature",
+          "vectors"
+        ],
+        "max_gap": 14
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper09-section-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [5],
+      "matcher": {
+        "type": "normalized",
+        "value": "2 CONVOLUTIONAL NETWORKS"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper09-figure-1-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [7],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Convolutional",
+          "Neural",
+          "Network",
+          "image",
+          "processing",
+          "handwriting",
+          "recognition"
+        ],
+        "max_gap": 16
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper09-efficiently-encoding",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [9],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "replicated",
+          "efficiently",
+          "large",
+          "variable-size",
+          "input",
+          "fields"
+        ],
+        "max_gap": 22
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper09-acknowledgements-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [11],
+      "matcher": {
+        "type": "exact",
+        "value": "Acknowledgements"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper09-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [14],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Waibel",
+          "Phoneme",
+          "Recognition",
+          "Time-Delay",
+          "Neural",
+          "Networks"
+        ],
+        "max_gap": 16
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

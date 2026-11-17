@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper05",
+  "anchors": [
+    {
+      "id": "paper05-title",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "normalized",
+        "value": "GEOTOMOGRAPHY WITH LOCAL EARTHQUAKE DATA"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper05-abstract-body",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "inversion",
+          "local",
+          "earthquake",
+          "data",
+          "three-dimensional",
+          "velocity"
+        ],
+        "max_gap": 30
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper05-figure-4-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [10],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["Ray", "density", "tensors", "Borah", "Peak", "Idaho"],
+        "max_gap": 22
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper05-formula-dw",
+      "kind": "formula",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [10],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["ordered", "eigenvalues", "ray", "density", "tensor"],
+        "max_gap": 20
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper05-figure-18-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [20],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Yellowstone",
+          "distribution",
+          "rms",
+          "travel",
+          "time",
+          "residuals"
+        ],
+        "max_gap": 24
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper05-interpretation-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [30],
+      "matcher": {
+        "type": "normalized",
+        "value": "Interpretation of Three-Dimensional P Wave Velocity Fields"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper05-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [40],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Thurber",
+          "Earthquake",
+          "locations",
+          "three-dimensional",
+          "crustal",
+          "structure"
+        ],
+        "max_gap": 20
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

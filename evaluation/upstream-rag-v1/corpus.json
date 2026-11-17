@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "id": "upstream-rag-v1",
+  "documents": [
+    {
+      "id": "paper05",
+      "manifest": "tools/pdf-benchmark/corpus/smoke-manifest.json",
+      "manifestSha256": "0fb3d6a7485b648e7404169c4667456cc6fa9bcdfeda1f96f5c6f7cf6ed2ffe9",
+      "pdfSha256": "5f7fbabbd3b61c40046e53e66071c84e14afa9e91064a98acb6e6888606c124f",
+      "anchorsSha256": "12f83ca588aa7c82f7c3b27c0707c55e08ef5d184239ac4c826d0eb1d1bcf922",
+      "expectedPages": 40,
+      "categories": [
+        "scanned",
+        "ocr",
+        "two-column",
+        "equation-heavy",
+        "figure-caption-heavy"
+      ],
+      "baselineAvailable": false,
+      "role": "ocr-adjunct"
+    },
+    {
+      "id": "paper11",
+      "manifest": "tools/pdf-benchmark/corpus/representative-manifest.json",
+      "manifestSha256": "8f2f5f3b83652c3b7adf0c9566ff33cca61f75233e1d611330069e4f065468f3",
+      "pdfSha256": "c75dd3d3f2528044a6335d2bd02a37ce866856d86c8ec156c48773cc1b77eaf1",
+      "anchorsSha256": "db6181dd4500e0d613875e3ef7413adbb3daa5a90e7750bc3a077b7e4f40e662",
+      "expectedPages": 12,
+      "categories": ["native", "ordinary-recent", "two-column", "figure-heavy"],
+      "baselineAvailable": true,
+      "role": "primary"
+    },
+    {
+      "id": "paper16",
+      "manifest": "tools/pdf-benchmark/corpus/representative-manifest.json",
+      "manifestSha256": "8f2f5f3b83652c3b7adf0c9566ff33cca61f75233e1d611330069e4f065468f3",
+      "pdfSha256": "ca3556cfb12d7412b8e2ae259303515d314d8741aefd0d2c31e101fb1911dd79",
+      "anchorsSha256": "4ae26fc406897bfdae82fbf0937858d6975c9ca97f987d20082de21a32b24d32",
+      "expectedPages": 13,
+      "categories": [
+        "native",
+        "ordinary-recent",
+        "two-column",
+        "moderate-tables",
+        "moderate-equations"
+      ],
+      "baselineAvailable": true,
+      "role": "primary"
+    },
+    {
+      "id": "paper20",
+      "manifest": "tools/pdf-benchmark/corpus/representative-manifest.json",
+      "manifestSha256": "8f2f5f3b83652c3b7adf0c9566ff33cca61f75233e1d611330069e4f065468f3",
+      "pdfSha256": "1a9cdb965dfebb7641ad150905446106a1a5ead6c4c4b2d9b75858e55d09dca8",
+      "anchorsSha256": "fca308cd42051799fe8775269adc22c9b1652e8fd26be7d88668b7f391406cb4",
+      "expectedPages": 6,
+      "categories": [
+        "native",
+        "ordinary-recent",
+        "two-column",
+        "short-report",
+        "moderate-equations",
+        "figure-heavy"
+      ],
+      "baselineAvailable": true,
+      "role": "primary"
+    },
+    {
+      "id": "paper23",
+      "manifest": "tools/pdf-benchmark/corpus/representative-manifest.json",
+      "manifestSha256": "8f2f5f3b83652c3b7adf0c9566ff33cca61f75233e1d611330069e4f065468f3",
+      "pdfSha256": "f4f7684a7d16597c8fadab2b34188526ff96e9b3d94c5220619a7b98cf3b430f",
+      "anchorsSha256": "aade8a05e2f58e477fcf02afbe3927698602c3fda24b42afa927a5a56803f2a6",
+      "expectedPages": 24,
+      "categories": [
+        "native",
+        "ordinary-recent",
+        "two-column",
+        "long-normal",
+        "figure-heavy",
+        "moderate-equations"
+      ],
+      "baselineAvailable": true,
+      "role": "primary"
+    },
+    {
+      "id": "paper30",
+      "manifest": "tools/pdf-benchmark/corpus/representative-manifest.json",
+      "manifestSha256": "8f2f5f3b83652c3b7adf0c9566ff33cca61f75233e1d611330069e4f065468f3",
+      "pdfSha256": "84da2a7bca175fc4f9e535b96f273dc182b34945605fb69091d8336949c9ec9f",
+      "anchorsSha256": "e3fd306dd39b7fa943e7a4eff2d2d305b8601d2264139950915744c648ada021",
+      "expectedPages": 16,
+      "categories": [
+        "native",
+        "older",
+        "two-column",
+        "scanned-with-text-layer",
+        "font-spacing-issues",
+        "figure-heavy"
+      ],
+      "baselineAvailable": true,
+      "role": "primary"
+    }
+  ]
+}

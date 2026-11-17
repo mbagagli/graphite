@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper02",
+  "anchors": [
+    {
+      "id": "paper02-abstract-volume",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "numeric_context",
+        "value": "35",
+        "unit": "km3",
+        "tolerance": 0,
+        "context": ["low", "velocity"],
+        "window": 240
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper02-order-left-column",
+      "kind": "reading_order_pair",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Located",
+          "central",
+          "Tuscany",
+          "Italy",
+          "Larderello-Travale"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": "paper02-order-right-column"
+    },
+    {
+      "id": "paper02-order-right-column",
+      "kind": "reading_order_pair",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [1],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["conducted", "using", "passive", "seismological", "methods"],
+        "max_gap": 5
+      },
+      "expectedAfter": "paper02-order-left-column",
+      "expectedBefore": null
+    },
+    {
+      "id": "paper02-table-1-coordinate",
+      "kind": "table_value",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [3],
+      "matcher": {
+        "type": "numeric_context",
+        "value": "10.7341",
+        "unit": null,
+        "tolerance": 0,
+        "context": ["Profile", "AA'"],
+        "window": 220
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper02-figure-3-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [5],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Synthetic",
+          "data",
+          "resolution",
+          "tests",
+          "damping",
+          "parameters"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper02-figure-5-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [7],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Resulting",
+          "tomographic",
+          "images",
+          "3D",
+          "subsurface",
+          "velocity",
+          "structure"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper02-conclusion-temperature",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-rejected",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [9],
+      "matcher": {
+        "type": "numeric_context",
+        "value": "700",
+        "unit": "C",
+        "tolerance": 0,
+        "context": ["body", "temperature"],
+        "window": 280
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper02-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from manual source inspection; human verification is required before scoring.",
+      "expectedPages": [10],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Zhang",
+          "three-dimensional",
+          "Vp",
+          "models",
+          "Coso",
+          "geothermal"
+        ],
+        "max_gap": 18
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

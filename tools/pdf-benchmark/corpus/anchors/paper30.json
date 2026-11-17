@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper30",
+  "anchors": [
+    {
+      "id": "paper30-stress-tensor-fact",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Stress",
+          "symmetric",
+          "second-rank",
+          "tensor",
+          "six",
+          "independent",
+          "parameters"
+        ],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper30-figure-1-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Fig",
+          "1",
+          "Equal-area",
+          "plot",
+          "Cartesian",
+          "coordinate",
+          "systems",
+          "stresses"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper30-figure-8-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [8],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Fig",
+          "8",
+          "Equal-area",
+          "plots",
+          "orientation",
+          "P",
+          "T",
+          "axes",
+          "76",
+          "focal",
+          "mechanisms"
+        ],
+        "max_gap": 20
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper30-table-2-heading",
+      "kind": "table_value",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [9],
+      "matcher": {
+        "type": "normalized",
+        "value": "TABLE 2. Results for Best-Fitting Stress Model"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper30-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [16],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Ellsworth",
+          "Zhonghuai",
+          "Determination",
+          "stress",
+          "tensor",
+          "focal",
+          "mechanism",
+          "data"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

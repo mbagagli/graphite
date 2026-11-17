@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper16",
+  "anchors": [
+    {
+      "id": "paper16-calibration-scale",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "calibration",
+          "100",
+          "digital",
+          "MEMS",
+          "accelerometers",
+          "Validation",
+          "results",
+          "acceptable"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper16-introduction-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [3],
+      "matcher": { "type": "normalized", "value": "1. Introduction" },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper16-equation-7-property",
+      "kind": "formula",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [6],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Equation",
+          "7",
+          "independent",
+          "n",
+          "N",
+          "depending",
+          "only"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper16-table-1-row",
+      "kind": "table_value",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [10],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["Table", "1", "0.7190", "0.7729", "-7.0"],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper16-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [13],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Bradley",
+          "1979",
+          "Bootstrap",
+          "methods",
+          "another",
+          "look",
+          "jackknife"
+        ],
+        "max_gap": 8
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper22",
+  "anchors": [
+    {
+      "id": "paper22-model-dimensions",
+      "kind": "text_fact",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["50", "50", "60", "cm3", "source"],
+        "max_gap": 14
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper22-figure-5-caption",
+      "kind": "figure_caption",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [5],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Figure",
+          "5",
+          "Dispersion",
+          "image",
+          "Fig",
+          "4",
+          "dispersion",
+          "curve",
+          "arrivals"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper22-wave-speed-value",
+      "kind": "page_association",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [5],
+      "matcher": {
+        "type": "numeric_context",
+        "value": "350",
+        "unit": "m s-1",
+        "tolerance": 0,
+        "context": ["wave", "speed"],
+        "window": 160
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper22-outlook-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [8],
+      "matcher": {
+        "type": "normalized",
+        "value": "4.1 Outlook for imaging and monitoring analogue models"
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper22-tail-reference",
+      "kind": "reference",
+      "required": true,
+      "verificationStatus": "human-verified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [11],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Simpson",
+          "van",
+          "Wijk",
+          "Adam",
+          "Smith",
+          "Laser",
+          "ultrasonic"
+        ],
+        "max_gap": 10
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}

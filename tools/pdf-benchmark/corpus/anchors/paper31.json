@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 2,
+  "documentId": "paper31",
+  "anchors": [
+    {
+      "id": "paper31-phase-relations-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [2],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["Phase", "Relations", "Definitions"],
+        "max_gap": 5
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper31-two-sheet-clay-heading",
+      "kind": "heading",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [6],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["Common", "Clay", "Minerals", "Two", "Sheets", "Layer"],
+        "max_gap": 9
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper31-uniformity-coefficient",
+      "kind": "formula",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [10],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": ["Coefficient", "Uniformity", "Cu", "D60", "D10"],
+        "max_gap": 12
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper31-common-clay-minerals-table",
+      "kind": "table_value",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [16],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "Data",
+          "Common",
+          "Clay",
+          "Minerals",
+          "Kaolinite",
+          "Halloysite",
+          "Muscovite"
+        ],
+        "max_gap": 20
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    },
+    {
+      "id": "paper31-soil-classification-chart",
+      "kind": "table_value",
+      "required": true,
+      "verificationStatus": "suggested-unverified",
+      "verificationNote": "Suggested from local source inspection; human verification is required before scoring.",
+      "expectedPages": [20],
+      "matcher": {
+        "type": "ordered_tokens",
+        "tokens": [
+          "TABLE",
+          "1",
+          "Soil",
+          "Classification",
+          "Chart",
+          "Plasticity",
+          "Chart"
+        ],
+        "max_gap": 25
+      },
+      "expectedAfter": null,
+      "expectedBefore": null
+    }
+  ]
+}
