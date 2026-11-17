@@ -2,11 +2,11 @@
 
 ## Version and license
 
-The current version **0.3.3** is authoritative in `package.json`.
+The current version **0.3.4** is authoritative in `package.json`.
 No compatibility or stable-release claim is added by retaining it.
 
 ```bash
-npm run version:set -- 0.3.3
+npm run version:set -- 0.3.4
 npm run version:check
 ```
 
@@ -28,8 +28,8 @@ third-party obligations.
 
 | Target              | Native build host | Candidate files                                             | Runtime acceptance                                    |
 | ------------------- | ----------------- | ----------------------------------------------------------- | ----------------------------------------------------- |
-| Linux x64           | Ubuntu 24.04      | `Graphite_0.3.3_amd64.deb`, `Graphite_0.3.3_amd64.AppImage` | Current package build and installed lifecycle pending |
-| macOS Apple Silicon | macOS 15          | `Graphite_0.3.3_aarch64.dmg`                                | Native build/install/launch unverified here           |
+| Linux x64           | Ubuntu 24.04      | `Graphite_0.3.4_amd64.deb`, `Graphite_0.3.4_amd64.AppImage` | Current package build and installed lifecycle pending |
+| macOS Apple Silicon | macOS 15          | `Graphite_0.3.4_aarch64.dmg`                                | Native build/install/launch unverified here           |
 
 These are candidate targets, not a claim of completed platform acceptance.
 Linux binaries inherit the build host's glibc/system-library constraints;
@@ -129,9 +129,9 @@ chosen deliberately, because its URL becomes visible in page links.
 
 1. Commit the intended public source, including the workflow files and both
    dependency lockfiles. Publication and privacy checks must pass first.
-2. Set the release version with `npm run version:set -- 0.3.3`, review the
+2. Set the release version with `npm run version:set -- 0.3.4`, review the
    versioned docs and screenshot provenance, and commit the resulting files.
-3. Create and push the matching version tag, for example `v0.3.3`. This starts
+3. Create and push the matching version tag, for example `v0.3.4`. This starts
    **Actions > Release installers**. The tag must match all app manifests.
    To retry an existing tag, rerun its workflow or dispatch Release installers
    with that tag as the ref. A branch ref is deliberately rejected; use the
@@ -163,8 +163,8 @@ and [draft release CLI options](https://cli.github.com/manual/gh_release_create)
    select **Run workflow** for the reviewed branch.
 3. The macOS job uses the native Apple Silicon `macos-15` runner, checks
    Xcode/Clang and the SDK, activates `rust-toolchain.toml`, installs the
-   pinned Node/npm dependencies and compiles `Graphite_0.3.3_aarch64.dmg`.
-4. Download `graphite-0.3.3-unsigned-macos-arm64` from the run artifacts.
+   pinned Node/npm dependencies and compiles `Graphite_0.3.4_aarch64.dmg`.
+4. Download `graphite-0.3.4-unsigned-macos-arm64` from the run artifacts.
    It contains the DMG, checksums and build metadata. Artifacts remain
    available for seven days. No Apple signing credentials are needed.
 

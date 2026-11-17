@@ -1,6 +1,6 @@
 [package]
 name = "graphite"
-version = "0.3.3"
+version = "0.3.4"
 description = "Discover Knowledge with a local-first visual research environment"
 license = "GPL-3.0-only"
 edition = "2021"

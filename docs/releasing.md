@@ -1,7 +1,7 @@
 # Packaging and installed-runtime validation
 
 The current release contract is in [Build and publication](release/BUILD.md).
-It uses version 0.3.3 and prepares Linux x64 DEB/AppImage and macOS Apple
+It uses version 0.3.4 and prepares Linux x64 DEB/AppImage and macOS Apple
 Silicon DMG candidates. Windows is currently unavailable; we are working
 on support. See the [Windows status](release/WINDOWS.md). Build and test the
 exact versioned artifacts before publishing; earlier packages do not validate
