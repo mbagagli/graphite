@@ -67,6 +67,19 @@ for (const variable of ["CFLAGS", "CXXFLAGS"]) {
     .trim();
 }
 if (process.platform === "darwin") {
+  // Metal's .m files embed __FILE__ in assertions. C/C++ flags do not
+  // apply to Objective-C; pass explicit cache entries through llama's build.
+  for (const language of ["OBJC", "OBJCXX"]) {
+    const variable = `CMAKE_${language}_FLAGS`;
+    env[variable] = [
+      process.env[variable] ?? process.env[`${language}FLAGS`] ?? "",
+      ...remaps.map(
+        ([source, target]) => `-ffile-prefix-map=${source}=${target}`,
+      ),
+    ]
+      .join(" ")
+      .trim();
+  }
   env.MACOSX_DEPLOYMENT_TARGET = "11.0";
   // Use only the configured ad-hoc signature, never ambient Apple accounts.
   for (const name of Object.keys(env)) {

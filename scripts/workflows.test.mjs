@@ -66,6 +66,7 @@ describe("release workflow trust boundaries", () => {
     expect(draft).toContain("sha256sum --check --strict SHA256SUMS.txt");
     expect(draft).toContain(".sourceRevision == $revision");
     expect(await workflow("ci")).toContain("  workflow_call:");
+    expect(await workflow("ci")).toContain("npm run site:build");
   });
 
   it("builds the offline archive only on explicit opt-in", async () => {

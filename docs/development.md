@@ -397,8 +397,11 @@ Its screenshots and receipt are browser UI evidence only; archive integrity,
 PDF extraction and model execution require the native tests. The temporary
 page is removed when the check finishes.
 
-The site build verifies screenshot hashes and the recorded app version;
-version bumps require fresh captures and matching provenance.
+The site build verifies screenshot and collection hashes, and requires a
+recorded capture version. The workspace caption displays that version
+independently of the current installer version. Version bumps do not rewrite
+capture provenance. Recapture screenshots when the illustrated interface or
+collection changes, updating their hashes and capture version together.
 
 ## Continuous integration
 

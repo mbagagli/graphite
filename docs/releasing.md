@@ -37,10 +37,17 @@ already tracked in an older checkout. Do not force-add ignored material.
 
 Then run `npm run package:smoke -- linux-x64` or
 `npm run package:smoke -- macos-arm64`. The build wrapper remaps private
-build paths in Rust and C/C++ sources. Structural inspection stages only
+build paths in Rust, C/C++, and Objective-C/Objective-C++ sources, including
+Metal assertion strings. Structural inspection stages only
 packages, checksums, and synthetic metadata below the ignored
 `artifacts/package-smoke/` directory. Raw bundles are below the ignored
 `.cache/cargo-target/release/bundle/` directory.
+
+Package privacy failures report the file and finding category (build
+identity, credential-shaped token, or private key), never the matched value.
+The macOS unit suite compiles a small Objective-C/Objective-C++ fixture to
+check path remapping before the full application build. CI also builds Pages
+so screenshot provenance problems are caught before release packaging.
 
 Both macOS smoke checks mount the DMG read-only in a dedicated temporary
 directory. They retry normal unmounting up to three times and verify that the

@@ -18,10 +18,10 @@ import {
 import { arch, homedir, hostname, release, tmpdir } from "node:os";
 import { basename, dirname, extname, join, relative, resolve } from "node:path";
 import process from "node:process";
-import { fileURLToPath, URL } from "node:url";
+import { fileURLToPath } from "node:url";
 import { assertNoCustomDynamicRuntime } from "./package-runtime-check.mjs";
 import { withMountedDmg } from "./mounted-dmg.mjs";
-import { privacyFindings } from "./privacy-check.mjs";
+import { assertNoBuildIdentity } from "./package-privacy-check.mjs";
 
 import {
   launcher,
@@ -143,42 +143,6 @@ async function listTree(root) {
   return entries;
 }
 
-async function assertNoBuildIdentity(path, packagePath) {
-  if (basename(packagePath) === "libgnutls.so.30") {
-    // Hash-reviewed upstream self-tests are public fixtures, not user keys.
-    // Inspect the whole bounded library so PEM blocks cannot span chunks.
-    assert(
-      (await stat(path)).size <= 16 * 1024 * 1024,
-      "GnuTLS exceeds the reviewed inspection size; review before release.",
-    );
-    const review = JSON.parse(
-      await readFile(
-        new URL("./public-crypto-fixtures.json", import.meta.url),
-        "utf8",
-      ),
-    );
-    const digests = new Set(review.fixtures.map((fixture) => fixture.sha256));
-    assert(
-      privacyFindings(await readFile(path), privateBuildIdentities, digests)
-        .length === 0,
-      `Package contains a private identity or credential signature: ${packagePath}`,
-    );
-    return;
-  }
-  const needles = privateBuildIdentities.map((value) => Buffer.from(value));
-  const overlap = Math.max(256, ...needles.map((value) => value.length)) - 1;
-  let tail = Buffer.alloc(0);
-  for await (const chunk of createReadStream(path)) {
-    const content = Buffer.concat([tail, chunk]);
-    assert(
-      !needles.some((needle) => content.includes(needle)) &&
-        privacyFindings(content).length === 0,
-      `Package contains a private identity or credential signature: ${packagePath}`,
-    );
-    tail = content.subarray(Math.max(0, content.length - overlap));
-  }
-}
-
 async function assertSafeContents(root, entries) {
   const forbiddenSegments = new Set([
     ".cache",
@@ -248,7 +212,11 @@ async function assertSafeContents(root, entries) {
     );
 
     if (entry.type === "file") {
-      await assertNoBuildIdentity(entry.absolutePath, entry.relativePath);
+      await assertNoBuildIdentity(
+        entry.absolutePath,
+        entry.relativePath,
+        privateBuildIdentities,
+      );
     } else if (entry.type === "link") {
       const destination = await readlink(entry.absolutePath);
       assert(

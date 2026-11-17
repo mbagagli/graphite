@@ -163,7 +163,9 @@ export async function buildSite({
     ),
   );
   if (
-    workspaceProvenance.appVersion !== metadata.version ||
+    !/^\d+\.\d+\.\d+(?:-[A-Za-z0-9.-]+)?$/.test(
+      workspaceProvenance.appVersion ?? "",
+    ) ||
     workspaceProvenance.manifestSha256 !==
       createHash("sha256").update(manifestBytes).digest("hex") ||
     workspaceProvenance.sha256 !==
@@ -226,6 +228,7 @@ export async function buildSite({
       ? `<a href="https://github.com/${escapeHtml(repository)}">Source and support</a>`
       : "",
     __VERSION__: metadata.version,
+    __WORKSPACE_VERSION__: escapeHtml(workspaceProvenance.appVersion),
     __DEMO_RECORD__: escapeHtml(demoRecord),
     __DEMO_DOWNLOAD__: safeWebLink(distribution.url),
   };

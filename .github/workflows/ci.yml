@@ -74,6 +74,9 @@ jobs:
       - name: Build frontend
         run: npm run build
 
+      - name: Build Pages and verify screenshot provenance
+        run: npm run site:build
+
   rust-linux-validation:
     name: Rust and native validation (Linux x64)
     runs-on: ubuntu-24.04

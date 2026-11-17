@@ -93,7 +93,7 @@ it("builds only allowlisted public files at the project base path", async () => 
         url: "https://zenodo.org/records/24282715/files/demo.zip",
       }),
       "website/index.html":
-        '<a href="__BASE__">Home</a>__PREVIEW____ATTRIBUTION____DOWNLOADS____VERSION____SOURCE_LINK____DEMO_STATUS__<a href="__DEMO_RECORD__">Demo</a>',
+        '<a href="__BASE__">Home</a>__PREVIEW____ATTRIBUTION____DOWNLOADS____VERSION____SOURCE_LINK____DEMO_STATUS__<a href="__DEMO_RECORD__">Demo</a>Captured in Graphite __WORKSPACE_VERSION__',
       "website/manual.html":
         '<a href="__BASE__tutorial.html">Tutorial</a><a href="__DEMO_DOWNLOAD__">ZIP</a>',
       "website/tutorial.html": '<a href="__BASE__manual.html">Manual</a>',
@@ -212,9 +212,37 @@ it("builds only allowlisted public files at the project base path", async () => 
       resolve(root, "package.json"),
       JSON.stringify({ version: "0.1.1" }),
     );
-    await expect(
-      buildSite({ root, environment: publicEnvironment }),
-    ).rejects.toThrow("Workspace screenshot provenance");
+    await buildSite({ root, environment: publicEnvironment });
+    const bumped = await readFile(
+      resolve(root, "dist-site/index.html"),
+      "utf8",
+    );
+    expect(bumped).toContain("Graphite_0.1.1_aarch64.dmg");
+    expect(bumped).toContain("Captured in Graphite 0.1.0");
+    expect(
+      await readFile(
+        resolve(root, "dist-site/assets/workspace.provenance.json"),
+        "utf8",
+      ),
+    ).toBe(files["website/assets/workspace.provenance.json"]);
+    const workspaceProvenancePath = resolve(
+      root,
+      "website/assets/workspace.provenance.json",
+    );
+    for (const appVersion of [undefined, "", "invalid", "<script>"]) {
+      const provenance = JSON.parse(
+        files["website/assets/workspace.provenance.json"],
+      );
+      provenance.appVersion = appVersion;
+      await writeFile(workspaceProvenancePath, JSON.stringify(provenance));
+      await expect(
+        buildSite({ root, environment: publicEnvironment }),
+      ).rejects.toThrow("Workspace screenshot provenance");
+    }
+    await writeFile(
+      workspaceProvenancePath,
+      files["website/assets/workspace.provenance.json"],
+    );
     await writeFile(
       resolve(root, "package.json"),
       JSON.stringify({ version: "0.1.0" }),
