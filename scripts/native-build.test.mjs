@@ -1,4 +1,4 @@
-import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, mkdir, realpath, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { resolve } from "node:path";
 import { afterEach, expect, test } from "vitest";
@@ -17,7 +17,10 @@ afterEach(async () => {
   );
 });
 async function fixture() {
-  const root = await mkdtemp(resolve(tmpdir(), "graphite-build-"));
+  // Temporary directories can have symlink aliases on macOS.
+  const root = await realpath(
+    await mkdtemp(resolve(tmpdir(), "graphite-build-")),
+  );
   roots.push(root);
   const toolkit = resolve(root, ".cache/cuda-toolkit");
   await mkdir(resolve(toolkit, "bin"), { recursive: true });

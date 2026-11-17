@@ -1,5 +1,5 @@
 import { once } from "node:events";
-import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, mkdir, realpath, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 
@@ -9,7 +9,10 @@ import { createServer } from "vite";
 import config from "../vite.config.ts";
 
 it("watches frontend edits without walking native and generated trees", async () => {
-  const root = await mkdtemp(join(tmpdir(), "graphite-vite-watch-"));
+  // Vite watches canonical paths, including macOS temporary directories.
+  const root = await realpath(
+    await mkdtemp(join(tmpdir(), "graphite-vite-watch-")),
+  );
   const excluded = [
     ".cache/cargo-target/debug/incremental",
     "target/debug",
@@ -27,6 +30,7 @@ it("watches frontend edits without walking native and generated trees", async ()
     await writeFile(source, "export const value = 1;\n");
     server = await createServer({
       ...config,
+      plugins: [],
       configFile: false,
       root,
       server: { ...config.server, middlewareMode: true, hmr: false },
