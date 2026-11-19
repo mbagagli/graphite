@@ -1,5 +1,4 @@
 import { execFileSync } from "node:child_process";
-import { createHash } from "node:crypto";
 import { lstat, readFile, readdir } from "node:fs/promises";
 import { homedir, hostname } from "node:os";
 import { dirname, resolve, relative } from "node:path";
@@ -20,11 +19,7 @@ export function containsVersionControlBackup(names) {
 }
 
 // Return categories only: a failed check must not print the sensitive value.
-export function privacyFindings(
-  content,
-  privateIdentities = identities,
-  publicPemDigests = new Set(),
-) {
+export function privacyFindings(content, privateIdentities = identities) {
   const text = content.toString();
   const findings = [];
   if (
@@ -41,16 +36,7 @@ export function privacyFindings(
   )
     findings.push("credential-shaped token");
   // Crypto libraries contain PEM labels; only flag labels with key material.
-  const pemText = text
-    .replaceAll("\\r\\n", "\n")
-    .replaceAll("\\n", "\n")
-    .replace(
-      /-----BEGIN ((?:[A-Z]+ )?PRIVATE KEY)-----[A-Za-z0-9+/= \t\r\n]+-----END \1-----/g,
-      (pem) =>
-        publicPemDigests.has(createHash("sha256").update(pem).digest("hex"))
-          ? ""
-          : pem,
-    );
+  const pemText = text.replaceAll("\\r\\n", "\n").replaceAll("\\n", "\n");
   if (
     /-----BEGIN (?:[A-Z]+ )?PRIVATE KEY-----[ \t\r\n]*(?:(?:Proc-Type|DEK-Info):[^\r\n]*\r?\n)*[ \t\r\n]*[A-Za-z0-9+/]{16}/.test(
       pemText,

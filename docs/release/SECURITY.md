@@ -21,20 +21,20 @@ A local preview must serve the built site directory, not the checkout.
 
 ## Boundary checks
 
-Linux package inspection scans shipped binaries as well as text
-for the build machine's identities and credential signatures. Token
-prefixes must begin at a value boundary, so GTK's public
-`gsk-serialization-error-quark` symbol is not treated as an API key. PEM
-labels alone are format strings; key material still triggers detection,
-including truncated, escaped and encrypted forms.
+Package inspection verifies architecture, native runtime dependencies,
+licenses and required resources. It rejects packaged databases, models,
+profiles, development resources and private configuration directories.
+Recognized text resources up to 1 MiB are checked for private paths,
+credential signatures and private-key material. Symlink destinations are
+checked for build-machine identities. Failures report categories rather
+than matched values.
 
-GnuTLS embeds public self-test keys. Only exact SHA-256 matches to the
-[upstream 3.8.9 test vectors](https://github.com/gnutls/gnutls/blob/3.8.9/lib/crypto-selftests-pk.c)
-listed in `scripts/public-crypto-fixtures.json` are permitted, and only
-during inspection of the bundled GnuTLS library. This does not exempt the
-library from identity or API-token checks. Unknown or altered keys still
-fail; tests cover those cases. No key material is copied into the review
-manifest, and no packaged library is modified to hide findings.
+Compiled binaries are not searched for arbitrary build identities or
+credential-like strings. Precompiled dependencies may contain upstream
+build paths or public cryptographic test vectors. These strings do not by
+themselves establish that Graphite packaged private data or credentials.
+Compiler path remapping remains best-effort hygiene; absence of all source
+paths in distributed binaries is not a release requirement.
 
 | Risk                                      | Likelihood                 | Impact                                   | Mitigation / evidence                                                                                      |
 | ----------------------------------------- | -------------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
@@ -43,7 +43,6 @@ manifest, and no packaged library is modified to hide findings.
 | Redirect leaves a local integration       | Plausible                  | Local request reaches unintended service | Both clients reject redirects; native tests                                                                |
 | Source text contains instructions         | Expected in arbitrary PDFs | Ungrounded output                        | Separate system/user roles, explicit untrusted-evidence rule, bounded read-only tools, citation validation |
 | Malformed or oversized PDF                | Expected                   | Parsing failure/resource load            | Native header/size checks, PDF.js parser, existing malformed/oversized regression                          |
-| Private build path in binary              | Build dependent            | Machine identity exposure                | Rust/C/C++ remaps plus byte-level inspection of the exact package                                          |
 | Workflow token or artifact exposure       | Configuration dependent    | Repository or private-file exposure      | Read-only build jobs, SHA-pinned actions, explicit artifact paths, owner-only deploy job                   |
 
 The tests verify boundaries and failure handling. They do not prove immunity
@@ -113,9 +112,9 @@ The publication check rejects tracked files excluded by the publication
 rules. Do not force-add ignored material. The privacy check rejects embedded
 Git-object backups and scans tracked files for the build directory, home
 directory, hostname, common credential signatures and private-key material.
-It reports categories without printing sensitive values. Generated site and
-package output receive separate scans; rerun them for the exact bytes being
-published.
+It reports categories without printing sensitive values. Generated site
+output and packaged text resources receive separate checks within the
+inspection boundary above. Run them for the exact outputs being published.
 
 Automated checks supplement manual review. They cannot identify every secret
 or personal detail, do not scan Git history, and do not classify scientific

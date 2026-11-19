@@ -1,11 +1,10 @@
 # Packaging and installed-runtime validation
 
 The current release contract is in [Build and publication](release/BUILD.md).
-It uses version 0.3.4 and prepares Linux x64 DEB/AppImage and macOS Apple
-Silicon DMG candidates. Windows is currently unavailable; we are working
-on support. See the [Windows status](release/WINDOWS.md). Build and test the
-exact versioned artifacts before publishing; earlier packages do not validate
-changed source.
+It uses version 0.3.4 and prepares Linux x64 DEB/AppImage, macOS Apple
+Silicon DMG and Windows x64 NSIS candidates. The first
+[Windows beta](release/WINDOWS.md) uses CPU for built-in answers.
+Build and test the exact versioned artifacts before publishing.
 
 Packages use GNU GPL version 3 (`GPL-3.0-only`) and carry the repository
 LICENSE. Metadata uses the neutral Graphite identity. The candidate workflow
@@ -23,7 +22,6 @@ Build on a native host with the repository's pinned dependencies:
 
 ```bash
 npm ci
-npm run version:check
 npm run package:check
 npm run check:publication
 npm run check:privacy
@@ -43,11 +41,22 @@ packages, checksums, and synthetic metadata below the ignored
 `artifacts/package-smoke/` directory. Raw bundles are below the ignored
 `.cache/cargo-target/release/bundle/` directory.
 
-Package privacy failures report the file and finding category (build
-identity, credential-shaped token, or private key), never the matched value.
-The macOS unit suite compiles a small Objective-C/Objective-C++ fixture to
-check path remapping before the full application build. CI also builds Pages
-so screenshot provenance problems are caught before release packaging.
+On Windows x64, use the [Windows NSIS build and inspection commands](release/WINDOWS.md).
+
+Package inspection checks formats, architecture, native dependencies, licenses,
+and the exclusion of databases, models, profiles and development resources.
+Credential and private-path checks apply to bounded text resources; compiled
+binaries are not scanned for arbitrary identity or credential-like strings.
+Upstream libraries can retain their producer's build paths. Compiler path
+remapping remains best-effort hygiene, not a release acceptance requirement.
+Text failures report categories without printing matched values.
+Windows inspection checks the executable's PE imports and rejects CUDA
+dependencies in the CPU beta.
+
+`package:check` owns version and bundle-configuration checks. CI runs the
+application and packaging tests; the Pages workflow owns `test:site` and
+screenshot provenance. Windows and Intel macOS development checks run in
+`native-compatibility.yml`, independently of release packaging.
 
 Both macOS smoke checks mount the DMG read-only in a dedicated temporary
 directory. They retry normal unmounting up to three times and verify that the
@@ -58,6 +67,7 @@ no forced unmount or skipped package check is used.
 
 macOS dependency inspection accepts Apple's system SQLite library under
 `/usr/lib/`, while still rejecting external copies of the checked runtimes.
+The DMG inspector checks the app's ad-hoc signature with `codesign`.
 Installed-startup failures include captured standard output and error output,
 including timeouts. If process termination also fails, both errors remain
 visible. A vanished unrelated volume does not prevent DMG cleanup; other

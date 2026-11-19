@@ -41,34 +41,6 @@ export function siteConfiguration(environment = process.env) {
   return { base, repository };
 }
 
-export function downloadMarkup(repository, version) {
-  if (!/^\d+\.\d+\.\d+(?:-[A-Za-z0-9.-]+)?$/.test(version)) {
-    throw new Error("The package version is not a release version.");
-  }
-  const targets = [
-    ["Linux Debian", "x86_64 / .deb", `Graphite_${version}_amd64.deb`],
-    [
-      "Linux AppImage",
-      "x86_64 / .AppImage",
-      `Graphite_${version}_amd64.AppImage`,
-    ],
-    ["macOS", "Apple Silicon / .dmg", `Graphite_${version}_aarch64.dmg`],
-  ];
-  const releaseUrl = repository
-    ? `https://github.com/${repository}/releases/download/v${version}`
-    : "";
-  const entries = targets.map(([label, architecture, file]) => {
-    const action = releaseUrl
-      ? `<a href="${escapeHtml(`${releaseUrl}/${file}`)}">Download after publication</a>`
-      : "<span>Awaiting a public release destination</span>";
-    return `<div><strong>${label}</strong><span>${architecture}</span>${action}</div>`;
-  });
-  const checksums = releaseUrl
-    ? `<p><a href="${escapeHtml(`${releaseUrl}/SHA256SUMS.txt`)}">Release checksums</a></p>`
-    : "";
-  return `<div class="downloads">${entries.join("")}</div>${checksums}`;
-}
-
 function safeWebLink(value) {
   const url = new URL(value);
   if (url.protocol !== "https:" || url.username || url.password) {
@@ -133,6 +105,9 @@ export async function buildSite({
   const metadata = JSON.parse(
     await readFile(resolve(root, "package.json"), "utf8"),
   );
+  if (!/^\d+\.\d+\.\d+(?:-[A-Za-z0-9.-]+)?$/.test(metadata.version)) {
+    throw new Error("The package version is not a release version.");
+  }
   const output = resolve(root, "dist-site");
   const manifestBytes = await readFile(resolve(root, "demo/manifest.json"));
   const manifest = JSON.parse(manifestBytes);
@@ -223,11 +198,11 @@ export async function buildSite({
       "rights evidence, and PDF checksums. See the walkthrough for executed checks " +
       "and steps still requiring desktop verification.</p>",
     __ATTRIBUTION__: attribution,
-    __DOWNLOADS__: downloadMarkup(repository, metadata.version),
+    __RELEASES__: `https://github.com/${escapeHtml(repository || "mbagagli/graphite")}/releases`,
     __SOURCE_LINK__: repository
       ? `<a href="https://github.com/${escapeHtml(repository)}">Source and support</a>`
       : "",
-    __VERSION__: metadata.version,
+    __VERSION__: escapeHtml(metadata.version),
     __WORKSPACE_VERSION__: escapeHtml(workspaceProvenance.appVersion),
     __DEMO_RECORD__: escapeHtml(demoRecord),
     __DEMO_DOWNLOAD__: safeWebLink(distribution.url),

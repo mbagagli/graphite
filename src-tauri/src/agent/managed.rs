@@ -21,7 +21,7 @@ use sha2::{Digest, Sha256};
 
 use crate::error::{AppError, AppResult};
 
-use super::hardware::{gpu_devices, preferred_gpu, RuntimeHardware};
+use super::hardware::{gpu_devices, preferred_gpu, GpuOptions, RuntimeHardware};
 use super::model::{
     ComputeDevice, ContextWindow, GenerationRequest, GenerationResult, InferenceBackend,
     ModelInstallEvent, ModelProfile,
@@ -290,6 +290,7 @@ struct ManagedRuntimeState {
     inference_completed: bool,
     cpu_fallback_reason: Option<String>,
     inference_backend: InferenceBackend,
+    gpu_options: Result<GpuOptions, String>,
     #[cfg(test)]
     fail_gpu_stage: Option<&'static str>,
 }
@@ -313,6 +314,7 @@ impl ManagedRuntime {
                 inference_completed: false,
                 cpu_fallback_reason: None,
                 inference_backend: InferenceBackend::Auto,
+                gpu_options: GpuOptions::from_env(),
                 #[cfg(test)]
                 fail_gpu_stage: None,
             })),
@@ -331,6 +333,7 @@ impl ManagedRuntime {
             state.inference_completed,
             state.cpu_fallback_reason.as_deref(),
             state.inference_backend,
+            state.gpu_options.as_ref().copied().map_err(String::as_str),
         ))
     }
 
@@ -387,36 +390,38 @@ impl GraphiteManagedProvider {
             .is_none_or(|loaded| loaded.profile_id != self.profile.id);
         if needs_load {
             state.loaded = None;
+            state.selected_device = None;
             state.inference_completed = false;
-            let devices = gpu_devices();
-            state.selected_device = if state.cpu_fallback_reason.is_none() {
-                preferred_gpu(
+            let options = if self.inference_backend == InferenceBackend::Cpu {
+                GpuOptions::default()
+            } else {
+                state.gpu_options.clone().map_err(AppError::LocalModel)?
+            };
+            let allow_fallback = options.allows_cpu_fallback(self.inference_backend);
+            if self.inference_backend != InferenceBackend::Cpu
+                && state.cpu_fallback_reason.is_none()
+            {
+                let devices = gpu_devices();
+                state.selected_device = preferred_gpu(
                     &devices,
                     self.profile.expected_bytes,
                     self.inference_backend,
-                )?
-            } else {
-                None
-            };
-            if self.inference_backend == InferenceBackend::Auto
-                && !devices.is_empty()
-                && state.selected_device.is_none()
-                && state.cpu_fallback_reason.is_none()
-            {
-                state.cpu_fallback_reason = Some(
-                    "Insufficient free GPU memory for the selected model and load reserve.".into(),
-                );
+                    options,
+                )?;
+                if allow_fallback && !devices.is_empty() && state.selected_device.is_none() {
+                    state.cpu_fallback_reason = Some(
+                        "Insufficient free GPU memory for the configured offload and load reserve."
+                            .into(),
+                    );
+                }
             }
-            let attempt = self.load_model(state);
+            let attempt = self.load_model(state, options);
             let model = match attempt {
                 Ok(model) => model,
-                Err(gpu_error)
-                    if state.selected_device.is_some()
-                        && self.inference_backend == InferenceBackend::Auto =>
-                {
+                Err(gpu_error) if state.selected_device.is_some() && allow_fallback => {
                     state.selected_device = None;
                     state.cpu_fallback_reason = Some("GPU model loading failed.".into());
-                    self.load_model(state).map_err(|cpu_error| AppError::LocalModel(
+                    self.load_model(state, options).map_err(|cpu_error| AppError::LocalModel(
                         format!("GPU model loading failed ({gpu_error}); CPU fallback also failed ({cpu_error}).")
                     ))?
                 }
@@ -570,7 +575,11 @@ impl GraphiteManagedProvider {
     }
 
     /// Pin GPU loads to one detected device; explicitly disable GPU model layers on CPU.
-    fn load_model(&self, state: &mut ManagedRuntimeState) -> AppResult<LlamaModel> {
+    fn load_model(
+        &self,
+        state: &mut ManagedRuntimeState,
+        options: GpuOptions,
+    ) -> AppResult<LlamaModel> {
         #[cfg(test)]
         if state.selected_device.is_some() && state.fail_gpu_stage == Some("load") {
             state.fail_gpu_stage = None;
@@ -584,7 +593,11 @@ impl GraphiteManagedProvider {
         let params = LlamaModelParams::default()
             .with_devices(&devices)
             .map_err(|error| AppError::LocalModel(format!("Device selection failed: {error}")))?
-            .with_n_gpu_layers(if devices.is_empty() { 0 } else { 1_000 });
+            .with_n_gpu_layers(if devices.is_empty() {
+                0
+            } else {
+                options.layers()
+            });
         LlamaModel::load_from_file(&state.backend, &self.model_path, &params).map_err(|error| {
             AppError::LocalModel(format!("The managed model could not be loaded: {error}"))
         })
@@ -643,6 +656,10 @@ impl LocalModelProvider for GraphiteManagedProvider {
             })?;
         self.ensure_loaded(&mut state)?;
         let use_gpu = state.selected_device.is_some();
+        let allow_fallback = state
+            .gpu_options
+            .as_ref()
+            .is_ok_and(|options| options.allows_cpu_fallback(self.inference_backend));
         let preparation_ms = generation_started.elapsed().as_millis() as u64;
         state.inference_completed = false;
         let mut emitted = false;
@@ -658,11 +675,7 @@ impl LocalModelProvider for GraphiteManagedProvider {
                 state.inference_completed = true;
                 Ok(result)
             }
-            Err(failure)
-                if use_gpu
-                    && failure.retryable
-                    && self.inference_backend == InferenceBackend::Auto =>
-            {
+            Err(failure) if use_gpu && failure.retryable && allow_fallback => {
                 state.loaded = None;
                 state.selected_device = None;
                 state.inference_completed = false;
@@ -867,6 +880,8 @@ mod tests {
     #[ignore = "requires an explicitly supplied existing GGUF; never downloads"]
     fn isolated_hardware_inference_and_fallback() {
         let path = std::env::var("GRAPHITE_HARDWARE_MODEL_FILE").expect("explicit GGUF path");
+        let profile =
+            std::env::var("GRAPHITE_HARDWARE_PROFILE").unwrap_or_else(|_| "balanced".into());
         let expected =
             std::env::var("GRAPHITE_HARDWARE_EXPECT").expect("expected execution status");
         let runtime = ManagedRuntime::initialize().expect("runtime");
@@ -888,10 +903,22 @@ mod tests {
             Ok("auto") | Err(_) => super::InferenceBackend::Auto,
             Ok(value) => panic!("unsupported backend: {value}"),
         };
-        let provider =
-            GraphiteManagedProvider::new(runtime.clone(), "balanced", path.clone().into())
-                .unwrap()
-                .with_preferences(preference, super::ContextWindow::Medium);
+        let provider = GraphiteManagedProvider::new(runtime.clone(), &profile, path.clone().into())
+            .unwrap()
+            .with_preferences(preference, super::ContextWindow::Medium);
+        if expected == "gpu-unavailable" {
+            let error = provider
+                .count_tokens("Require a compatible GPU.")
+                .unwrap_err();
+            assert!(error
+                .to_string()
+                .contains("no compatible device was initialized"));
+            let status = runtime.hardware_status().unwrap();
+            assert_eq!(status.status, expected);
+            assert!(!status.available);
+            assert!(runtime.state.lock().unwrap().loaded.is_none());
+            return;
+        }
         assert!(
             provider
                 .count_tokens("Verify the selected model tokenizer.")
@@ -926,10 +953,9 @@ mod tests {
         let installed_size = std::fs::metadata(&path).unwrap().len();
         runtime.unload().unwrap();
         assert_eq!(std::fs::metadata(&path).unwrap().len(), installed_size);
-        let reopened =
-            GraphiteManagedProvider::new(runtime.clone(), "balanced", path.clone().into())
-                .unwrap()
-                .with_preferences(preference, super::ContextWindow::Medium);
+        let reopened = GraphiteManagedProvider::new(runtime.clone(), &profile, path.clone().into())
+            .unwrap()
+            .with_preferences(preference, super::ContextWindow::Medium);
         assert!(
             reopened
                 .count_tokens("Reuse the installed model offline.")

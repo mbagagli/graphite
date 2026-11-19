@@ -1,0 +1,125 @@
+name: Native compatibility
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      windows_installer:
+        description: Build and test an unsigned Windows x64 CPU installer
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-compatibility-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  CARGO_INCREMENTAL: "0"
+  CARGO_PROFILE_DEV_DEBUG: "0"
+  CARGO_PROFILE_TEST_DEBUG: "0"
+  CARGO_TERM_COLOR: always
+
+jobs:
+  native-compile:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Native validation (Windows x64)
+            runner: windows-2025
+            linked: true
+          - name: Native check only (macOS Intel x64)
+            runner: macos-15-intel
+            linked: false
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+
+      - name: Set up pinned Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .node-version
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Set up pinned npm
+        run: npm install --global npm@11.17.0
+
+      - name: Report tool versions
+        run: |
+          node --version
+          npm --version
+          rustc --version
+          cargo --version
+          cmake --version
+          clang --version
+
+      - name: Configure Windows packaging tools
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $clang = Get-Command clang.exe -ErrorAction Stop
+          "LIBCLANG_PATH=$($clang.Source | Split-Path)" >> $env:GITHUB_ENV
+          $sevenZip = Join-Path $env:ProgramFiles "7-Zip"
+          if (Test-Path (Join-Path $sevenZip "7z.exe")) {
+            $sevenZip >> $env:GITHUB_PATH
+          }
+
+      - name: Configure the macOS deployment target
+        if: runner.os == 'macOS'
+        shell: bash
+        run: echo "MACOSX_DEPLOYMENT_TARGET=11.0" >> "$GITHUB_ENV"
+
+      - name: Install JavaScript dependencies
+        run: npm ci
+
+      - name: Check Windows packaging configuration
+        if: matrix.linked
+        run: npm run package:check
+
+      - name: Build frontend
+        if: ${{ !matrix.linked }}
+        run: npm run build
+
+      - name: Link development-flavor Tauri application without bundling
+        if: matrix.linked && !inputs.windows_installer
+        run: npm run tauri -- build --debug --no-bundle --ci --config src-tauri/tauri.dev.conf.json -- --locked
+
+      - name: Build unsigned Windows x64 CPU installer
+        if: matrix.linked && inputs.windows_installer
+        run: npm run tauri -- build --ci --bundles nsis -- --locked
+
+      - name: Inspect and stage Windows installer
+        id: windows_package
+        if: matrix.linked && inputs.windows_installer
+        run: npm run package:smoke -- windows-x64
+
+      - name: Validate installed Windows lifecycle
+        if: matrix.linked && inputs.windows_installer
+        run: npm run package:installed-smoke -- windows-x64
+
+      - name: Upload inspected Windows test installer
+        if: ${{ !cancelled() && steps.windows_package.outcome == 'success' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: graphite-windows-x64-unsigned-experiment
+          path: artifacts/package-smoke/windows-x64/
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Check all Rust targets without linking ONNX Runtime
+        if: ${{ !matrix.linked }}
+        env:
+          ORT_SKIP_DOWNLOAD: "1"
+        run: cargo check --manifest-path src-tauri/Cargo.toml --locked --all-targets

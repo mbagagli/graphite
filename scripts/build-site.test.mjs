@@ -4,7 +4,6 @@ import { createHash } from "node:crypto";
 import { describe, expect, it } from "vitest";
 import {
   attributionMarkup,
-  downloadMarkup,
   escapeHtml,
   siteConfiguration,
   screenshotCaption,
@@ -46,15 +45,6 @@ describe("Pages build contract", () => {
       ).toThrow();
     }
   });
-  it("derives all installer links and checksums from the same version", () => {
-    const html = downloadMarkup("research/graphite", "0.2.3-rc.1");
-    expect(html.match(/releases\/download\/v0\.2\.3-rc\.1/g)).toHaveLength(4);
-    expect(html).toContain("Graphite_0.2.3-rc.1_amd64.deb");
-    expect(html).toContain("Graphite_0.2.3-rc.1_amd64.AppImage");
-    expect(html).toContain("Graphite_0.2.3-rc.1_aarch64.dmg");
-    expect(downloadMarkup("", "0.1.0")).not.toContain("href=");
-    expect(() => downloadMarkup("research/graphite", "../bad")).toThrow();
-  });
   it("escapes publisher metadata and rejects unsafe links and incomplete collections", () => {
     expect(escapeHtml('<script>"&')).toBe("&lt;script&gt;&quot;&amp;");
     const manifest = collection();
@@ -93,9 +83,9 @@ it("builds only allowlisted public files at the project base path", async () => 
         url: "https://zenodo.org/records/24282715/files/demo.zip",
       }),
       "website/index.html":
-        '<a href="__BASE__">Home</a>__PREVIEW____ATTRIBUTION____DOWNLOADS____VERSION____SOURCE_LINK____DEMO_STATUS__<a href="__DEMO_RECORD__">Demo</a>Captured in Graphite __WORKSPACE_VERSION__',
+        '<a href="__BASE__">Home</a>__PREVIEW____ATTRIBUTION____VERSION____SOURCE_LINK____DEMO_STATUS__<a href="__RELEASES__">Find your beta</a><a href="__DEMO_RECORD__">Demo</a>Captured in Graphite __WORKSPACE_VERSION__',
       "website/manual.html":
-        '<a href="__BASE__tutorial.html">Tutorial</a><a href="__DEMO_DOWNLOAD__">ZIP</a>',
+        '<a href="__BASE__tutorial.html">Tutorial</a><a href="__DEMO_DOWNLOAD__">ZIP</a><a href="__RELEASES__">Find your beta</a>',
       "website/tutorial.html": '<a href="__BASE__manual.html">Manual</a>',
       "website/assets/workspace.png": "graph screenshot",
       "website/assets/search.png": "search screenshot",
@@ -141,6 +131,9 @@ it("builds only allowlisted public files at the project base path", async () => 
     await buildSite({ root, environment: {} });
     const html = await readFile(resolve(root, "dist-site/index.html"), "utf8");
     expect(html).toContain('href="/graphite/"');
+    expect(html).toContain(
+      'href="https://github.com/mbagagli/graphite/releases"',
+    );
     expect(
       await readFile(resolve(root, "dist-site/manual.html"), "utf8"),
     ).toContain('href="/graphite/tutorial.html"');
@@ -205,6 +198,14 @@ it("builds only allowlisted public files at the project base path", async () => 
       "utf8",
     );
     expect(published).toContain("Graphite Linux candidate");
+    expect(published).toContain(
+      'href="https://github.com/research/graphite/releases">Find your beta',
+    );
+    expect(
+      await readFile(resolve(root, "dist-site/manual.html"), "utf8"),
+    ).toContain(
+      'href="https://github.com/research/graphite/releases">Find your beta',
+    );
     expect(
       await readFile(resolve(root, "dist-site/assets/reader.png"), "utf8"),
     ).toBe("reader screenshot");
@@ -217,7 +218,10 @@ it("builds only allowlisted public files at the project base path", async () => 
       resolve(root, "dist-site/index.html"),
       "utf8",
     );
-    expect(bumped).toContain("Graphite_0.1.1_aarch64.dmg");
+    expect(bumped).toContain("0.1.1");
+    expect(bumped).toContain(
+      'href="https://github.com/research/graphite/releases"',
+    );
     expect(bumped).toContain("Captured in Graphite 0.1.0");
     expect(
       await readFile(

@@ -75,11 +75,13 @@ jobs:
             release-manifest.json
           sha256sum --check --strict SHA256SUMS.txt
           cat > release-notes.md <<'NOTES'
-          Graphite release candidate for Linux x64 and macOS Apple Silicon.
+          Graphite release candidate for Linux x64, macOS Apple Silicon,
+          and Windows x64.
 
           Linux includes DEB and AppImage installers. macOS includes an ad-hoc
-          signed DMG without Apple notarization. Windows is currently unavailable;
-          we are working on support. Intel Mac installers are not provided.
+          signed DMG without Apple notarization. The Windows x64 beta includes
+          an unsigned NSIS installer and runs built-in answer generation on CPU.
+          Intel Mac installers are not provided.
 
           Review the changes, native acceptance results, license notices and
           known limitations before publishing this draft. On a clean Mac, also
@@ -110,4 +112,5 @@ jobs:
             "Graphite_${VERSION}_amd64.deb" \
             "Graphite_${VERSION}_amd64.AppImage" \
             "Graphite_${VERSION}_aarch64.dmg" \
+            "Graphite_${VERSION}_x64-setup.exe" \
             SHA256SUMS.txt release-manifest.json

@@ -14,7 +14,6 @@ crate-type = ["staticlib", "cdylib", "rlib"]
 default = []
 agent-cuda = ["llama-cpp-2/cuda"]
 agent-metal = ["llama-cpp-2/metal"]
-agent-vulkan = ["llama-cpp-2/vulkan"]
 pdf-shadow-pilot = ["tokio/io-util", "tokio/process"]
 pdf-search-experiment = []
 

@@ -16,8 +16,12 @@ const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(scriptDirectory, "..");
 const productionIdentity = "org.graphite.research";
 const expectedPlatforms = new Map([
-  ["linux-x64", ["deb", "appimage"]],
-  ["macos-arm64", ["dmg"]],
+  [
+    "linux-x64",
+    { formats: ["deb", "appimage"], suffixes: ["amd64.deb", "amd64.AppImage"] },
+  ],
+  ["macos-arm64", { formats: ["dmg"], suffixes: ["aarch64.dmg"] }],
+  ["windows-x64", { formats: ["nsis"], suffixes: ["x64-setup.exe"] }],
 ]);
 
 function assert(condition, message) {
@@ -109,7 +113,7 @@ export async function assembleReleaseCandidate({
   const packages = [];
   const platforms = [];
   const packageNames = new Set();
-  for (const [platform, formats] of expectedPlatforms) {
+  for (const [platform, { formats, suffixes }] of expectedPlatforms) {
     const artifactRoot = resolve(
       downloadsRoot,
       `graphite-${packageVersion}-unsigned-${platform}`,
@@ -139,13 +143,9 @@ export async function assembleReleaseCandidate({
       `${platform} metadata contains no packages.`,
     );
 
-    const expectedNames =
-      platform === "linux-x64"
-        ? [
-            `Graphite_${packageVersion}_amd64.deb`,
-            `Graphite_${packageVersion}_amd64.AppImage`,
-          ]
-        : [`Graphite_${packageVersion}_aarch64.dmg`];
+    const expectedNames = suffixes.map(
+      (suffix) => `Graphite_${packageVersion}_${suffix}`,
+    );
     assert(
       arraysEqual(
         metadata.packages.map((entry) => entry.file).sort(),

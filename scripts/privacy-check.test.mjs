@@ -1,5 +1,4 @@
 import { Buffer } from "node:buffer";
-import { createHash } from "node:crypto";
 import { expect, it } from "vitest";
 import {
   containsVersionControlBackup,
@@ -41,30 +40,6 @@ it.each(["", "RSA ", "DSA ", "EC ", "OPENSSH ", "ENCRYPTED "])(
     ).toEqual(["private key"]);
   },
 );
-
-it("allows only exact reviewed PEM fixtures without hiding other findings", () => {
-  const pem =
-    "-----BEGIN " +
-    "PRIVATE KEY-----\n" +
-    "A".repeat(64) +
-    "\n-----END " +
-    "PRIVATE KEY-----";
-  const digests = new Set([createHash("sha256").update(pem).digest("hex")]);
-  expect(privacyFindings(pem, [])).toEqual(["private key"]);
-  expect(privacyFindings(pem, [], digests)).toEqual([]);
-  expect(privacyFindings(pem.replace("AAAA", "BBBB"), [], digests)).toEqual([
-    "private key",
-  ]);
-  expect(privacyFindings(pem + "\n" + pem.slice(0, 80), [], digests)).toEqual([
-    "private key",
-  ]);
-  expect(
-    privacyFindings(pem + "\nprivate-identity", ["private-identity"], digests),
-  ).toEqual(["local build identity"]);
-  expect(privacyFindings(pem + "\nsk-" + "X".repeat(32), [], digests)).toEqual([
-    "credential-shaped token",
-  ]);
-});
 
 it("does not mistake a GTK namespaced symbol for a credential", () => {
   expect(

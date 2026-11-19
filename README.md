@@ -5,7 +5,11 @@
 Explore your Zotero library as a research graph, read the original papers,
 and ask questions with traceable local evidence.
 
-[Website](https://mbagagli.github.io/graphite/) | [User manual](https://mbagagli.github.io/graphite/manual.html) | [First-use tutorial](https://mbagagli.github.io/graphite/tutorial.html) | [Installation](docs/release/BUILD.md)
+[Find your beta](https://github.com/mbagagli/graphite/releases) | [Website](https://mbagagli.github.io/graphite/) | [User manual](https://mbagagli.github.io/graphite/manual.html) | [First-use tutorial](https://mbagagli.github.io/graphite/tutorial.html)
+
+The first Windows x64 beta uses CPU for built-in answer generation.
+See the [Windows beta notes](docs/release/WINDOWS.md) for installation and
+the [installation guide](docs/release/BUILD.md) for platform requirements.
 
 ![Graphite's dark research workspace with the real 60-paper demo](website/assets/workspace.png)
 
@@ -250,17 +254,15 @@ count, and SHA-256 digest. Generation runs in the desktop process, opens no
 server port, and has no cloud fallback. Model installation is the only managed
 generation step that needs the network. Research text is never uploaded.
 
-Setup offers Auto, CPU, or GPU for built-in answer generation. Auto can
-fall back to CPU; explicit GPU reports a failure instead. GPU requires a
-compatible backend and driver. The normal `npm run desktop:dev` detects and
-reuses an existing NVIDIA CUDA toolkit on Linux, or enables Metal on macOS.
-Linux development falls back to a CPU build when the toolkit or usable NVIDIA
-driver is absent. These commands never install drivers or host libraries.
+Setup offers Auto, CPU, or GPU for built-in answer generation. Auto uses an
+eligible CUDA or Metal device, with CPU fallback. Explicit GPU reports a
+failure if a device cannot run the model. See
+[managed inference hardware](docs/development.md#managed-inference-hardware)
+for backend overrides and partial GPU offload.
 
-The standard Linux DEB/AppImage includes CUDA support and a CPU companion;
-the Apple Silicon DMG enables Metal. New installations default to Auto, which
-prefers a supported GPU and falls back to CPU. Existing CPU/GPU choices are
-preserved. End users do not need a CUDA compiler or a separate GPU installer.
+The standard Linux DEB/AppImage includes CUDA support and a CPU companion.
+The Apple Silicon DMG enables Metal. These packages need no development
+toolkit.
 
 The square context slider offers Low, Medium (default), High, and Extra-High.
 It shows the actual token limit for the selected model: Medium is 4,096 for
@@ -355,10 +357,9 @@ cargo test --manifest-path src-tauri/Cargo.toml --locked
 cargo build --manifest-path src-tauri/Cargo.toml --locked
 ```
 
-The HTTP integration tests use ephemeral loopback mock servers. GPU features
-are backend-specific: build one of `agent-cuda`, `agent-metal`, or
-`agent-vulkan` on a host with its corresponding toolkit rather than enabling
-all three together. See the [development guide](docs/development.md) for
+The HTTP integration tests use ephemeral loopback mock servers. Build
+`agent-cuda` or `agent-metal` on a host with the corresponding toolkit.
+See the [development guide](docs/development.md) for
 runtime setup and browser/native checks, and [release validation](docs/releasing.md)
 for package, publication-content and privacy checks.
 

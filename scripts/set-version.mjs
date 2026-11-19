@@ -24,6 +24,11 @@ export function validateVersion(version) {
   return version;
 }
 
+function serializeJson(source, data) {
+  const json = `${JSON.stringify(data, null, 2)}\n`;
+  return source.includes("\r\n") ? json.replaceAll("\n", "\r\n") : json;
+}
+
 export async function setVersion(root, requestedVersion, check = false) {
   const sources = await Promise.all(
     versionFiles.map((name) => readFile(resolve(root, name), "utf8")),
@@ -34,9 +39,12 @@ export async function setVersion(root, requestedVersion, check = false) {
   if (!lock.packages?.[""]) throw new Error("Package lock root is missing.");
   const manifestPattern = /^(\[package\][\s\S]*?\nversion\s*=\s*)"[^"]+"/m;
   const lockPattern =
-    /^(\[\[package\]\]\nname = "graphite"\nversion = )"[^"]+"/m;
-  if (!manifestPattern.test(sources[2]) || !lockPattern.test(sources[3])) {
-    throw new Error("Rust application version entry is missing.");
+    /^(\[\[package\]\]\r?\nname = "graphite"\r?\nversion = )"[^"]+"/m;
+  if (!manifestPattern.test(sources[2])) {
+    throw new Error("Rust application version entry is missing in Cargo.toml.");
+  }
+  if (!lockPattern.test(sources[3])) {
+    throw new Error("Rust application version entry is missing in Cargo.lock.");
   }
   const config = JSON.parse(
     await readFile(resolve(root, "src-tauri/tauri.conf.json"), "utf8"),
@@ -48,8 +56,8 @@ export async function setVersion(root, requestedVersion, check = false) {
   lock.version = version;
   lock.packages[""].version = version;
   const updated = [
-    `${JSON.stringify(metadata, null, 2)}\n`,
-    `${JSON.stringify(lock, null, 2)}\n`,
+    serializeJson(sources[0], metadata),
+    serializeJson(sources[1], lock),
     sources[2].replace(manifestPattern, `$1"${version}"`),
     sources[3].replace(lockPattern, `$1"${version}"`),
   ];

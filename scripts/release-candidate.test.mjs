@@ -71,6 +71,12 @@ async function createCandidateFixture() {
     ["dmg"],
     [["Graphite_0.1.0_aarch64.dmg", "macos-dmg"]],
   );
+  await createPlatformArtifact(
+    downloadsRoot,
+    "windows-x64",
+    ["nsis"],
+    [["Graphite_0.1.0_x64-setup.exe", "windows-nsis"]],
+  );
   return { downloadsRoot, outputRoot: resolve(root, "output") };
 }
 
@@ -91,12 +97,13 @@ describe("unsigned release candidate assembly", () => {
       sourceRevision: "a".repeat(40),
     });
 
-    expect(result.packages).toHaveLength(3);
+    expect(result.packages).toHaveLength(4);
     expect(await readdir(result.candidateRoot)).toEqual(
       expect.arrayContaining([
         "Graphite_0.1.0_amd64.AppImage",
         "Graphite_0.1.0_amd64.deb",
         "Graphite_0.1.0_aarch64.dmg",
+        "Graphite_0.1.0_x64-setup.exe",
         "SHA256SUMS.txt",
         "release-manifest.json",
       ]),
@@ -134,6 +141,22 @@ describe("unsigned release candidate assembly", () => {
         sourceRevision: "a".repeat(40),
       }),
     ).rejects.toThrow("package checksum failed");
+  });
+
+  it("requires the Windows installer alongside the other platform artifacts", async () => {
+    const fixture = await createCandidateFixture();
+    await rm(
+      resolve(fixture.downloadsRoot, "graphite-0.1.0-unsigned-windows-x64"),
+      { recursive: true },
+    );
+
+    await expect(
+      assembleReleaseCandidate({
+        ...fixture,
+        packageVersion: "0.1.0",
+        sourceRevision: "a".repeat(40),
+      }),
+    ).rejects.toThrow("graphite-0.1.0-unsigned-windows-x64");
   });
 });
 

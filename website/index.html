@@ -51,9 +51,7 @@
           <a class="secondary-action" href="__BASE__tutorial.html"
             >Try the guided demo</a
           >
-          <p class="small">
-            Version __VERSION__ &middot; GNU GPLv3 &middot; Linux and macOS
-          </p>
+          <p class="small">Version __VERSION__ &middot; GNU GPLv3</p>
         </div>
       </section>
       <section
@@ -281,18 +279,24 @@
           <h2 id="install-title">Try Graphite<br />on your desktop.</h2>
           <div>
             <p>
-              Candidate __VERSION__ is being verified. The links below describe
-              the planned release; downloads become available after owner
-              publication.
+              Check GitHub Releases for published installers, release notes, and
+              checksums. The Windows x64 beta uses CPU for built-in answers.
             </p>
-            <p class="small">
-              Windows is currently unavailable. We are working on support.
-              Platform installation and launch checks must pass before the
-              release is published.
-            </p>
+            <a class="button" href="__RELEASES__">Find your beta</a>
           </div>
         </div>
-        __DOWNLOADS__
+        <div class="downloads">
+          <div>
+            <strong>Linux</strong><span>x64 &middot; DEB or AppImage</span>
+          </div>
+          <div>
+            <strong>macOS</strong><span>Apple Silicon &middot; DMG</span>
+          </div>
+          <div>
+            <strong>Windows beta</strong
+            ><span>x64 &middot; NSIS &middot; CPU inference</span>
+          </div>
+        </div>
         <div class="install-notes">
           <div>
             <h3>Linux x86_64</h3>
@@ -325,7 +329,7 @@
             >Installation and verification notes</a
           >
           <span class="separator">/</span>
-          <a href="__BASE__windows.txt">Windows support status</a>
+          <a href="__BASE__windows.txt">Windows beta notes</a>
         </p>
         <p class="small">
           Check the release's SHA256SUMS.txt before installation. Do not treat
