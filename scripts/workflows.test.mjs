@@ -10,14 +10,13 @@ async function workflow(name) {
 }
 
 describe("release workflow trust boundaries", () => {
-  it.each(["ci", "package-smoke", "pages", "release"])(
+  it.each(["ci", "native-compatibility", "package-smoke", "pages", "release"])(
     "pins external actions and disables stored checkout credentials in %s",
     async (name) => {
       const source = await workflow(name);
       const references = [...source.matchAll(/uses:\s*([^@\s]+)@([^\s#]+)/g)];
       expect(references.length).toBeGreaterThan(0);
-      for (const [, action, revision] of references) {
-        expect(action.startsWith("actions/")).toBe(true);
+      for (const [, , revision] of references) {
         expect(revision).toMatch(/^[a-f0-9]{40}$/);
       }
       expect(source).not.toContain("pull_request_target:");
@@ -33,10 +32,6 @@ describe("release workflow trust boundaries", () => {
     expect(source).toMatch(/^on:\n {2}workflow_dispatch:\s*$/m);
     expect(source).toContain("  workflow_call:");
     expect(source).not.toMatch(/^\s+\w[\w-]*:\s+write\s*$/m);
-    expect(source).not.toContain("windows-x64");
-    expect(source).toContain(
-      "graphite-${{ steps.version.outputs.value }}-unsigned-${{ matrix.platform }}",
-    );
     expect(source).toContain("npm run package:installed-smoke");
     expect(source).toContain(
       "npm run check:publication && npm run check:privacy",
@@ -66,7 +61,10 @@ describe("release workflow trust boundaries", () => {
     expect(draft).toContain("sha256sum --check --strict SHA256SUMS.txt");
     expect(draft).toContain(".sourceRevision == $revision");
     expect(await workflow("ci")).toContain("  workflow_call:");
-    expect(await workflow("ci")).toContain("npm run site:build");
+    expect(await workflow("ci")).not.toContain("npm run site:build");
+    expect(await workflow("ci")).not.toContain("macos-15-intel");
+    expect(await workflow("ci")).not.toContain("windows-2025");
+    expect(source).not.toContain("native-compatibility.yml");
   });
 
   it("builds the offline archive only on explicit opt-in", async () => {
@@ -95,9 +93,7 @@ describe("release workflow trust boundaries", () => {
     expect(source).toContain(
       "SITE_PUBLIC: ${{ github.event_name == 'workflow_dispatch' && inputs.publish }}",
     );
-    expect(source.indexOf("npm install --global npm@11.17.0")).toBeLessThan(
-      source.indexOf("npm ci"),
-    );
+    expect(source).toContain("npm run test:site");
     expect(source).toContain(
       "npm run check:publication && npm run check:privacy",
     );

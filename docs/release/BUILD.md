@@ -54,7 +54,6 @@ npm 11.17.0, Rust 1.97.1, and the committed locks. Run:
 
 ```bash
 npm ci
-npm run version:check
 npm run package:check
 npm run check:publication
 npm run check:privacy
@@ -70,8 +69,10 @@ The manual workflow prepares its Linux toolkit with `npm run cuda:prepare`
 in the project cache. Locally, reuse an existing toolkit as described in
 [GPU packaging](../linux-cuda-package.md); no host driver changes are needed.
 The wrapper remaps home and checkout paths in Rust and C/C++ compilation.
-Inspect the final binaries and all public outputs for residual identifiers;
-a compiler remap alone is not proof of artifact privacy.
+Package validation checks native dependencies, required resources, licenses,
+installation and startup. Private-path and credential checks cover source and
+packaged text resources; arbitrary strings inside compiled binaries are not a
+release gate. See the [inspection boundary](SECURITY.md#boundary-checks).
 
 For a clean disposable Linux host, install the DEB using the native package
 manager, then start Graphite from the desktop menu. AppImage is portable:
@@ -99,6 +100,9 @@ workflows. Actions are pinned to full revisions, artifacts are temporary,
 and installers use versioned checksums. A version-tag push starts validation,
 packaging and creation of an unpublished release draft. Public publication
 remains manual. Ordinary CI and pull requests perform validation only.
+The release requires application CI and both distributed platforms. Website
+build/tests and Windows/Intel macOS compatibility checks run independently;
+they do not block creation of the Linux/Apple Silicon draft.
 
 `package-smoke.yml` runs on explicit `workflow_dispatch` or as a reusable
 workflow called by `release.yml`. It validates
@@ -117,7 +121,8 @@ rights review, and offline import flow are described in [DEMO.md](DEMO.md).
 The archive build needs Python 3's standard `zipfile` module; the installer
 build does not gain a Python runtime dependency.
 
-`pages.yml` builds pull-request previews and manual runs. Deployment requires
+`pages.yml` builds pull-request previews and manual runs, including
+`npm run test:site` and screenshot provenance checks. Deployment requires
 an explicit manual `publish=true` input on main and the `github-pages`
 environment. Only that deploy job has `pages: write` and `id-token: write`.
 The owner must configure Pages to use GitHub Actions and review environment
@@ -130,13 +135,14 @@ chosen deliberately, because its URL becomes visible in page links.
 1. Commit the intended public source, including the workflow files and both
    dependency lockfiles. Publication and privacy checks must pass first.
 2. Set the release version with `npm run version:set -- 0.3.4`, review the
-   versioned docs and screenshot provenance, and commit the resulting files.
+   versioned release docs, and commit the resulting files. Screenshot
+   provenance is validated separately by the Pages workflow.
 3. Create and push the matching version tag, for example `v0.3.4`. This starts
    **Actions > Release installers**. The tag must match all app manifests.
    To retry an existing tag, rerun its workflow or dispatch Release installers
    with that tag as the ref. A branch ref is deliberately rejected; use the
    package smoke workflow for branch-only builds.
-4. The workflow runs the full CI checks, then reuses the Linux/macOS package
+4. The workflow runs application CI, then reuses the Linux/macOS package
    and installed-runtime checks. Both platforms must succeed before it
    assembles the candidate and creates a GitHub release draft.
 5. Open the draft under **Releases**. It contains the DEB, AppImage, Apple

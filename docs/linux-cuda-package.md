@@ -71,7 +71,9 @@ can retry on CPU before any answer text is streamed; native process aborts
 remain unrecoverable. CPU and GPU controls apply to the next question.
 
 Package inspection checks both executable paths, the exact private runtime,
-architecture, loader paths, notices, and absence of private build identities.
+architecture, loader paths, notices, and exclusion of private data. Text
+resources receive the [release privacy checks](release/SECURITY.md#boundary-checks);
+compiled binary strings are outside that scan.
 The workflow's GPU-free Linux runner exercises installed CPU fallback. Native
 GPU verification still requires a suitable GPU host; macOS build and launch
 checks run on its native workflow runner.

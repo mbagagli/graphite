@@ -50,7 +50,7 @@ jobs:
           SITE_BASE: /${{ github.event.repository.name }}/
           GITHUB_REPOSITORY: ${{ github.repository }}
           SITE_PUBLIC: ${{ github.event_name == 'workflow_dispatch' && inputs.publish }}
-      - run: npm run test:unit -- scripts/build-site.test.mjs
+      - run: npm run test:site
       - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         if: github.event_name == 'workflow_dispatch' && inputs.publish
         with:

@@ -53,12 +53,12 @@ After installing the prerequisites above, run:
 
 ```bash
 npm ci
-npm run version:check
 npm run check:hygiene
 npm run package:check
 npm run check
 npm test
 npm run build
+npm run test:site
 npm run site:build
 ```
 
@@ -252,8 +252,9 @@ The configured checks reuse the existing project commands:
 
 - Prettier checks supported files in the pushed changes and respects
   `.prettierignore`. A first push can include the entire tracked tree.
-- Repository hygiene, version consistency and packaging configuration.
-- ESLint, frontend/script tests and comparison contract tests.
+- Repository hygiene and packaging configuration, including version consistency.
+- ESLint, application/packaging tests and comparison contract tests.
+  Website tests run separately with `npm run test:site` in the Pages workflow.
 - TypeScript checking and the production frontend build.
 - Rust formatting, Clippy with warnings rejected, and native tests using
   the locked dependencies and default CPU features.
@@ -416,12 +417,21 @@ without creating installers.
 The declared native coverage is:
 
 - Ubuntu 24.04 x64: full Rust validation and linked Tauri debug/no-bundle build.
-- Windows Server 2025 x64: linked Tauri debug/no-bundle build.
 - macOS 15 ARM64: linked Tauri debug/no-bundle build.
+
+`.github/workflows/native-compatibility.yml` runs independently on pushes to
+main, pull requests and manual dispatch. It is not called by the release:
+
+- Windows Server 2025 x64: linked Tauri debug/no-bundle build.
 - macOS 15 Intel x64: frontend build and native all-target Cargo check only.
 
-Windows is currently unavailable to users. We are working on support;
-the compile lane above is development coverage, not a Windows release.
+Windows is currently unavailable to users. The compatibility lane is
+development coverage, not a Windows release. See the
+[Windows enablement plan](release/WINDOWS.md).
+
+Website build, screenshot provenance and `npm run test:site` belong to the
+Pages workflow. `npm test` covers application, packaging and comparison
+contracts without running the website suite.
 
 The Intel lane is not a link, execution, packaging, or distribution claim. The
 pinned ONNX Runtime has no prebuilt Intel macOS archive, so this check explicitly

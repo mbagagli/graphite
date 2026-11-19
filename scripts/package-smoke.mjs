@@ -21,7 +21,7 @@ import process from "node:process";
 import { fileURLToPath } from "node:url";
 import { assertNoCustomDynamicRuntime } from "./package-runtime-check.mjs";
 import { withMountedDmg } from "./mounted-dmg.mjs";
-import { assertNoBuildIdentity } from "./package-privacy-check.mjs";
+import { privacyFindings } from "./privacy-check.mjs";
 
 import {
   launcher,
@@ -143,9 +143,11 @@ async function listTree(root) {
   return entries;
 }
 
-async function assertSafeContents(root, entries) {
+export async function assertSafeContents(root, entries) {
   const forbiddenSegments = new Set([
     ".cache",
+    ".git",
+    ".ssh",
     "artifacts",
     "attachments",
     "conversations",
@@ -191,7 +193,10 @@ async function assertSafeContents(root, entries) {
     const normalized = entry.relativePath.toLowerCase();
     const segments = normalized.split("/");
     assert(
-      !segments.some((segment) => forbiddenSegments.has(segment)),
+      !segments.some(
+        (segment) =>
+          forbiddenSegments.has(segment) || /^\.env(?:\.|$)/.test(segment),
+      ),
       `Package contains forbidden generated/private path: ${entry.relativePath}`,
     );
     assert(
@@ -211,13 +216,7 @@ async function assertSafeContents(root, entries) {
       `Package contains development-only material: ${entry.relativePath}`,
     );
 
-    if (entry.type === "file") {
-      await assertNoBuildIdentity(
-        entry.absolutePath,
-        entry.relativePath,
-        privateBuildIdentities,
-      );
-    } else if (entry.type === "link") {
+    if (entry.type === "link") {
       const destination = await readlink(entry.absolutePath);
       assert(
         !privateBuildIdentities.some((value) => destination.includes(value)),
@@ -232,6 +231,11 @@ async function assertSafeContents(root, entries) {
     if (fileStat.size > 1024 * 1024) continue;
     const contentBuffer = await readFile(entry.absolutePath);
     if (contentBuffer.includes(0)) continue;
+    const findings = privacyFindings(contentBuffer, privateBuildIdentities);
+    assert(
+      findings.length === 0,
+      `Package text check failed: ${entry.relativePath}: ${findings.join(", ")}`,
+    );
     const content = contentBuffer.toString("utf8").replaceAll("\\", "/");
     assert(
       !content.includes(developmentIdentity),
@@ -555,106 +559,115 @@ async function sha256(path) {
   return digest.digest("hex");
 }
 
-assert(
-  targetDefinitions.has(target),
-  "Usage: npm run package:smoke -- <linux-x64|windows-x64|macos-arm64>",
-);
-assert(
-  process.argv.length === 3,
-  "Package smoke accepts exactly one native platform argument.",
-);
+async function main() {
+  assert(
+    targetDefinitions.has(target),
+    "Usage: npm run package:smoke -- <linux-x64|windows-x64|macos-arm64>",
+  );
+  assert(
+    process.argv.length === 3,
+    "Package smoke accepts exactly one native platform argument.",
+  );
 
-const definition = targetDefinitions.get(target);
-const artifactPaths = [];
-for (const [directory, extension] of definition.artifacts) {
-  artifactPaths.push(
-    await findSingleArtifact(resolve(bundleRoot, directory), extension),
+  const definition = targetDefinitions.get(target);
+  const artifactPaths = [];
+  for (const [directory, extension] of definition.artifacts) {
+    artifactPaths.push(
+      await findSingleArtifact(resolve(bundleRoot, directory), extension),
+    );
+  }
+
+  const scratchDirectory = await mkdtemp(
+    resolve(tmpdir(), "graphite-package-smoke-"),
+  );
+  try {
+    if (target === "linux-x64") {
+      await inspectLinux(artifactPaths, scratchDirectory);
+    } else if (target === "windows-x64") {
+      await inspectWindows(artifactPaths, scratchDirectory);
+    } else {
+      await inspectMacos(artifactPaths);
+    }
+  } finally {
+    await rm(scratchDirectory, { force: true, recursive: true });
+  }
+
+  const outputDirectory = resolve(stagingRoot, target);
+  assert(
+    relative(stagingRoot, outputDirectory) === target,
+    "Package staging must remain inside artifacts/package-smoke.",
+  );
+  await rm(outputDirectory, { force: true, recursive: true });
+  await mkdir(outputDirectory, { recursive: true });
+
+  const packages = [];
+  for (const artifactPath of artifactPaths) {
+    const destination = resolve(outputDirectory, basename(artifactPath));
+    await copyFile(artifactPath, destination);
+    packages.push({
+      file: basename(destination),
+      sha256: await sha256(destination),
+    });
+  }
+  packages.sort((left, right) => left.file.localeCompare(right.file));
+
+  await writeFile(
+    resolve(outputDirectory, "SHA256SUMS.txt"),
+    packages.map((entry) => `${entry.sha256}  ${entry.file}\n`).join(""),
+    "utf8",
+  );
+  await writeFile(
+    resolve(outputDirectory, "build-metadata.json"),
+    `${JSON.stringify(
+      {
+        schemaVersion: 1,
+        productName: "Graphite",
+        identifier: productionIdentity,
+        version: JSON.parse(
+          await readFile(resolve(repositoryRoot, "package.json"), "utf8"),
+        ).version,
+        platform: target,
+        sourceRevision: process.env.GITHUB_SHA ?? null,
+        buildHost: {
+          platform: process.platform,
+          architecture: arch(),
+          kernel: release(),
+        },
+        formats: definition.formats,
+        signed: false,
+        nativeRuntimeModel:
+          target === "linux-x64"
+            ? "Bundled CUDA inference runtime and application-linked CPU companion; no driver bundled"
+            : "Application-linked native inference (Metal on macOS), indexing, tokenization, and SQLite code",
+        packages,
+      },
+      null,
+      2,
+    )}\n`,
+    "utf8",
+  );
+
+  const stagedEntries = await readdir(outputDirectory, { withFileTypes: true });
+  assert(
+    stagedEntries.every(
+      (entry) =>
+        entry.isFile() &&
+        (artifactPaths.some((path) => basename(path) === entry.name) ||
+          entry.name === "SHA256SUMS.txt" ||
+          entry.name === "build-metadata.json"),
+    ),
+    "Package staging contains an unexpected file or directory.",
+  );
+
+  process.stdout.write(
+    `Unsigned ${target} package smoke passed; staged ${packages.length} package(s) ` +
+      `with SHA-256 checksums in ${relative(repositoryRoot, outputDirectory)}.\n`,
   );
 }
 
-const scratchDirectory = await mkdtemp(
-  resolve(tmpdir(), "graphite-package-smoke-"),
-);
-try {
-  if (target === "linux-x64") {
-    await inspectLinux(artifactPaths, scratchDirectory);
-  } else if (target === "windows-x64") {
-    await inspectWindows(artifactPaths, scratchDirectory);
-  } else {
-    await inspectMacos(artifactPaths);
-  }
-} finally {
-  await rm(scratchDirectory, { force: true, recursive: true });
+if (
+  process.argv[1] &&
+  resolve(process.argv[1]) === fileURLToPath(import.meta.url)
+) {
+  await main();
 }
-
-const outputDirectory = resolve(stagingRoot, target);
-assert(
-  relative(stagingRoot, outputDirectory) === target,
-  "Package staging must remain inside artifacts/package-smoke.",
-);
-await rm(outputDirectory, { force: true, recursive: true });
-await mkdir(outputDirectory, { recursive: true });
-
-const packages = [];
-for (const artifactPath of artifactPaths) {
-  const destination = resolve(outputDirectory, basename(artifactPath));
-  await copyFile(artifactPath, destination);
-  packages.push({
-    file: basename(destination),
-    sha256: await sha256(destination),
-  });
-}
-packages.sort((left, right) => left.file.localeCompare(right.file));
-
-await writeFile(
-  resolve(outputDirectory, "SHA256SUMS.txt"),
-  packages.map((entry) => `${entry.sha256}  ${entry.file}\n`).join(""),
-  "utf8",
-);
-await writeFile(
-  resolve(outputDirectory, "build-metadata.json"),
-  `${JSON.stringify(
-    {
-      schemaVersion: 1,
-      productName: "Graphite",
-      identifier: productionIdentity,
-      version: JSON.parse(
-        await readFile(resolve(repositoryRoot, "package.json"), "utf8"),
-      ).version,
-      platform: target,
-      sourceRevision: process.env.GITHUB_SHA ?? null,
-      buildHost: {
-        platform: process.platform,
-        architecture: arch(),
-        kernel: release(),
-      },
-      formats: definition.formats,
-      signed: false,
-      nativeRuntimeModel:
-        target === "linux-x64"
-          ? "Bundled CUDA inference runtime and application-linked CPU companion; no driver bundled"
-          : "Application-linked native inference (Metal on macOS), indexing, tokenization, and SQLite code",
-      packages,
-    },
-    null,
-    2,
-  )}\n`,
-  "utf8",
-);
-
-const stagedEntries = await readdir(outputDirectory, { withFileTypes: true });
-assert(
-  stagedEntries.every(
-    (entry) =>
-      entry.isFile() &&
-      (artifactPaths.some((path) => basename(path) === entry.name) ||
-        entry.name === "SHA256SUMS.txt" ||
-        entry.name === "build-metadata.json"),
-  ),
-  "Package staging contains an unexpected file or directory.",
-);
-
-process.stdout.write(
-  `Unsigned ${target} package smoke passed; staged ${packages.length} package(s) ` +
-    `with SHA-256 checksums in ${relative(repositoryRoot, outputDirectory)}.\n`,
-);

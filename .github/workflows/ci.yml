@@ -74,9 +74,6 @@ jobs:
       - name: Build frontend
         run: npm run build
 
-      - name: Build Pages and verify screenshot provenance
-        run: npm run site:build
-
   rust-linux-validation:
     name: Rust and native validation (Linux x64)
     runs-on: ubuntu-24.04
@@ -143,22 +140,9 @@ jobs:
         run: npm run tauri -- build --debug --no-bundle --ci --config src-tauri/tauri.dev.conf.json -- --locked
 
   native-compile:
-    name: ${{ matrix.name }}
-    runs-on: ${{ matrix.runner }}
+    name: Native validation (macOS ARM64)
+    runs-on: macos-15
     timeout-minutes: 120
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - name: Native validation (Windows x64)
-            runner: windows-2025
-            linked: true
-          - name: Native validation (macOS ARM64)
-            runner: macos-15
-            linked: true
-          - name: Native check only (macOS Intel x64)
-            runner: macos-15-intel
-            linked: false
     steps:
       - name: Check out repository
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
@@ -184,31 +168,12 @@ jobs:
           cmake --version
           clang --version
 
-      - name: Resolve libclang from PATH on Windows
-        if: runner.os == 'Windows'
-        shell: pwsh
-        run: |
-          $clang = Get-Command clang.exe -ErrorAction Stop
-          "LIBCLANG_PATH=$($clang.Source | Split-Path)" >> $env:GITHUB_ENV
-
       - name: Configure the macOS deployment target
-        if: runner.os == 'macOS'
         shell: bash
         run: echo "MACOSX_DEPLOYMENT_TARGET=11.0" >> "$GITHUB_ENV"
 
       - name: Install JavaScript dependencies
         run: npm ci
 
-      - name: Build frontend
-        if: ${{ !matrix.linked }}
-        run: npm run build
-
       - name: Link development-flavor Tauri application without bundling
-        if: matrix.linked
         run: npm run tauri -- build --debug --no-bundle --ci --config src-tauri/tauri.dev.conf.json -- --locked
-
-      - name: Check all Rust targets without linking ONNX Runtime
-        if: ${{ !matrix.linked }}
-        env:
-          ORT_SKIP_DOWNLOAD: "1"
-        run: cargo check --manifest-path src-tauri/Cargo.toml --locked --all-targets

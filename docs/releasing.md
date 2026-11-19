@@ -23,7 +23,6 @@ Build on a native host with the repository's pinned dependencies:
 
 ```bash
 npm ci
-npm run version:check
 npm run package:check
 npm run check:publication
 npm run check:privacy
@@ -43,11 +42,18 @@ packages, checksums, and synthetic metadata below the ignored
 `artifacts/package-smoke/` directory. Raw bundles are below the ignored
 `.cache/cargo-target/release/bundle/` directory.
 
-Package privacy failures report the file and finding category (build
-identity, credential-shaped token, or private key), never the matched value.
-The macOS unit suite compiles a small Objective-C/Objective-C++ fixture to
-check path remapping before the full application build. CI also builds Pages
-so screenshot provenance problems are caught before release packaging.
+Package inspection checks formats, architecture, native dependencies, licenses,
+and the exclusion of databases, models, profiles and development resources.
+Credential and private-path checks apply to bounded text resources; compiled
+binaries are not scanned for arbitrary identity or credential-like strings.
+Upstream libraries can retain their producer's build paths. Compiler path
+remapping remains best-effort hygiene, not a release acceptance requirement.
+Text failures report categories without printing matched values.
+
+`package:check` owns version and bundle-configuration checks. CI runs the
+application and packaging tests; the Pages workflow owns `test:site` and
+screenshot provenance. Windows and Intel macOS development checks run in
+`native-compatibility.yml`, independently of the Linux/Apple Silicon release.
 
 Both macOS smoke checks mount the DMG read-only in a dedicated temporary
 directory. They retry normal unmounting up to three times and verify that the

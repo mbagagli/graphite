@@ -20,13 +20,6 @@ repos:
         pass_filenames: false
         always_run: true
 
-      - id: graphite-version
-        name: Check version consistency
-        entry: npm run version:check
-        language: unsupported
-        pass_filenames: false
-        always_run: true
-
       - id: graphite-packaging
         name: Check packaging configuration
         entry: npm run package:check
