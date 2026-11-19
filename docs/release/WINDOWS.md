@@ -14,8 +14,9 @@ platform assets.
 ## Existing starting point
 
 The `Native compatibility` workflow checks Windows x64 on `windows-2025`,
-independently of Linux/macOS releases. Its regular run links the development
-application. The manual `windows_installer` input uses NSIS and the existing
+independently of Linux/macOS releases. It checks packaging configuration
+before linking the development application or building the installer.
+The manual `windows_installer` input uses NSIS and the existing
 `windows-x64` inspection and installed-runtime checks.
 
 The release workflow builds its Windows x64 candidate on `windows-2025`,

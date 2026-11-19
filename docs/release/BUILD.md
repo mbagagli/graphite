@@ -13,7 +13,8 @@ npm run version:check
 The bump command validates stable `MAJOR.MINOR.PATCH` components from 0 to
 65535, reports all affected files, and updates `package.json`,
 `package-lock.json`, `src-tauri/Cargo.toml`, and the application's entry in
-`src-tauri/Cargo.lock`. Repeating it is a no-op. Prerelease/build suffixes are
+`src-tauri/Cargo.lock`. It preserves LF or CRLF line endings. Repeating it
+is a no-op. Prerelease/build suffixes are
 not supported by this native release command. It creates no commit or tag.
 Tauri, About, and landing-page downloads derive the package version.
 

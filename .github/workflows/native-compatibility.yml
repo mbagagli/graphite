@@ -84,6 +84,10 @@ jobs:
       - name: Install JavaScript dependencies
         run: npm ci
 
+      - name: Check Windows packaging configuration
+        if: matrix.linked
+        run: npm run package:check
+
       - name: Build frontend
         if: ${{ !matrix.linked }}
         run: npm run build
@@ -99,7 +103,7 @@ jobs:
       - name: Inspect and stage Windows installer
         id: windows_package
         if: matrix.linked && inputs.windows_installer
-        run: npm run package:check && npm run package:smoke -- windows-x64
+        run: npm run package:smoke -- windows-x64
 
       - name: Validate installed Windows lifecycle
         if: matrix.linked && inputs.windows_installer

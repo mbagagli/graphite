@@ -6,7 +6,7 @@ import { setVersion, validateVersion } from "./set-version.mjs";
 
 const roots = [];
 
-async function fixture() {
+async function fixture(lineEnding = "\n") {
   const root = await mkdtemp(resolve(tmpdir(), "graphite-version-"));
   roots.push(root);
   await mkdir(resolve(root, "src-tauri"));
@@ -24,7 +24,7 @@ async function fixture() {
     "src-tauri/tauri.conf.json": JSON.stringify({ version: "../package.json" }),
   };
   for (const [name, source] of Object.entries(files)) {
-    await writeFile(resolve(root, name), source);
+    await writeFile(resolve(root, name), source.replaceAll("\n", lineEnding));
   }
   return root;
 }
@@ -60,6 +60,22 @@ describe("release versions", () => {
     expect(
       await readFile(resolve(root, "src-tauri/Cargo.lock"), "utf8"),
     ).toContain('name = "dependency"\nversion = "0.1.0"');
+  });
+
+  it("checks and updates version files in a CRLF checkout", async () => {
+    const root = await fixture("\r\n");
+    expect((await setVersion(root, undefined, true)).changed).toEqual([]);
+
+    const { changed } = await setVersion(root, "1.2.3");
+    expect(changed).toHaveLength(4);
+    for (const name of changed) {
+      const source = await readFile(resolve(root, name), "utf8");
+      expect(source).toContain("\r\n");
+      expect(source.replaceAll("\r\n", "")).not.toContain("\n");
+    }
+    const lock = await readFile(resolve(root, "src-tauri/Cargo.lock"), "utf8");
+    expect(lock).toContain('name = "dependency"\r\nversion = "0.1.0"');
+    expect((await setVersion(root, undefined, true)).version).toBe("1.2.3");
   });
 
   it("rejects drift and missing inputs before writing", async () => {

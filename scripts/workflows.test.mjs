@@ -38,6 +38,17 @@ describe("release workflow trust boundaries", () => {
     );
   });
 
+  it("checks Windows packaging before development and installer builds", async () => {
+    const source = await workflow("native-compatibility");
+    const preflight = source.indexOf("run: npm run package:check");
+    expect(source).toContain(
+      "name: Check Windows packaging configuration\n        if: matrix.linked\n        run: npm run package:check",
+    );
+    for (const build of ["--debug --no-bundle", "--bundles nsis"]) {
+      expect(source.indexOf(build)).toBeGreaterThan(preflight);
+    }
+  });
+
   it("requires validation and all native packages before creating a draft", async () => {
     const source = await workflow("release");
     const packages = await workflow("package-smoke");
