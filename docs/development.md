@@ -12,8 +12,8 @@ or modify that runtime as an implicit part of normal application setup.
 The repository pins Node.js 24.19.0, npm 11.17.0, and Rust 1.97.1. Install the
 platform prerequisites for Tauri 2, plus CMake, a C/C++ compiler, and libclang
 development files for the linked llama.cpp runtime. FastEmbed also builds an
-ONNX Runtime dependency, and USearch builds native code. Optional CUDA, Metal,
-and Vulkan builds require their platform toolkits. The native C++ dependency
+ONNX Runtime dependency, and USearch builds native code. Optional CUDA and
+Metal builds require their platform toolkits. The native C++ dependency
 graph has a configured macOS 11.0 floor. Only macOS 15 is proposed for
 release acceptance; lower runtime compatibility remains unverified.
 
@@ -77,22 +77,38 @@ system hardware records. A listed card is not a claim of inference support.
 The GPU list under "Available to Graphite's inference engine" contains only
 initialized devices the linked runtime can actually use.
 
-Inference backend is a saved choice, captured with each question:
+Inference mode is a saved choice, captured with each question:
 
-- **Auto** (default): choose the eligible GPU with most free memory, with
-  CPU fallback after recoverable GPU failures.
+- **Auto** (default) uses an eligible CUDA or Metal device in the linked build.
+  Within a backend it chooses the device with the most free memory,
+  breaking ties by the lowest runtime device index. It uses CPU when no GPU
+  is eligible and retries recoverable GPU failures on CPU.
 - **CPU**: explicitly disable GPU model layers, attention and operation
   offload for answer generation.
 - **GPU**: require an eligible GPU. Insufficient memory or a load/execution
   failure is an error; this explicit choice never silently switches to CPU.
 
-Changes apply to the next question, and changing backend reloads the model.
-A question already running keeps its original choices. Model loading checks
-weights plus a 512 MiB reserve when free memory is reported; this does not
-promise that every context fits. Automatic inference retries once only
-before visible answer text and when not cancelled. CPU failures remain errors.
-Native process aborts cannot be recovered in process. Unloading clears a
-sticky automatic fallback; device initialization failures require restart.
+Changes apply to the next question, and changing mode reloads the model.
+A question already running keeps its original choices. When a device reports
+memory, full GPU offload requires room for the GGUF weights plus 512 MiB.
+Context and compute buffers can still exceed the available memory. Automatic
+execution retries once on CPU before visible answer text and when the request
+has not been cancelled. Unloading clears a sticky automatic fallback. Restart
+to retry device initialization. Native process aborts require restarting.
+
+Set these environment variables before launching Graphite to configure a
+built-in model for the lifetime of that process:
+
+| Variable | Behavior |
+| --- | --- |
+| `GRAPHITE_GPU_BACKEND` | `auto` (default), `cuda`, or `metal`. A named backend requires a usable device for that backend and disables automatic CPU fallback. |
+| `GRAPHITE_GPU_LAYERS` | Positive layer limit, for example `12`. Without a limit, Graphite requests full offload. With a limit, Graphite still checks the 512 MiB reserve when memory is reported, and llama.cpp verifies the actual allocations. |
+
+The saved CPU mode takes precedence over both variables. Invalid overrides
+appear in runtime diagnostics and fail managed GPU requests. Lower the layer
+limit, select a smaller model or reduce the context window if GPU allocations
+fail. These options apply to answer generation. Embeddings continue to use
+FastEmbed/ONNX on CPU, and external providers own their own hardware settings.
 
 `npm run desktop:dev` selects CUDA on Linux when both an existing toolkit
 and an NVIDIA device reported by `nvidia-smi` are available. It uses Metal on
@@ -109,6 +125,9 @@ development instances simultaneously; both use port 1420. Exiting the wrapper
 also stops its development process group. GPU development uses a separate
 `.cache/cargo-cuda` build cache. Its first compilation can take several minutes.
 Window rendering acceleration is independent of inference acceleration.
+
+For Windows installer validation, see the
+[Windows enablement plan](release/WINDOWS.md).
 
 `npm run package:build` produces the standard GPU-enabled Linux DEB/AppImage
 with a CPU companion, or an Apple Silicon DMG with Metal. Linux release builds
@@ -320,6 +339,17 @@ cargo build --manifest-path src-tauri/Cargo.toml --locked
 GPU features must be checked separately on a host with the corresponding
 toolkit. Live model and real-library tests are intentionally opt-in because
 they require explicit local data or multi-gigabyte downloads.
+
+To exercise CPU inference with an already verified Lightweight GGUF, run the
+isolated inference test. It loads, streams an
+answer, unloads, and reopens the same file without downloading a model.
+
+```bash
+GRAPHITE_HARDWARE_MODEL_FILE=/path/to/Qwen3-4B-Q4_K_M.gguf \
+  GRAPHITE_HARDWARE_PROFILE=lightweight GRAPHITE_HARDWARE_EXPECT=cpu-selected \
+  GRAPHITE_HARDWARE_BACKEND=cpu cargo test --manifest-path src-tauri/Cargo.toml --locked \
+  --lib agent::managed::tests::isolated_hardware_inference_and_fallback -- --ignored --exact
+```
 
 ## Assistant interface
 

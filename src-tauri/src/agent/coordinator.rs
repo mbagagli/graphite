@@ -593,7 +593,7 @@ fn hardware_profile(runtime: super::hardware::RuntimeHardware) -> HardwareProfil
             .first()
             .map(|cpu| cpu.brand().to_owned())
             .unwrap_or_default(),
-        compiled_backend: super::hardware::compiled_backend().to_owned(),
+        compiled_backend: super::hardware::compiled_backend(),
         execution_status: runtime.status,
         gpu_devices: runtime.devices,
         graphics_adapters: super::hardware::graphics_adapters(),
@@ -642,6 +642,7 @@ mod tests {
             false,
             None,
             Default::default(),
+            Ok(Default::default()),
         ));
         assert!(profile.logical_cpus > 0);
         assert!(profile.total_memory_bytes > 0);

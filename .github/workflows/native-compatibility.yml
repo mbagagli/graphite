@@ -6,6 +6,11 @@ on:
       - main
   pull_request:
   workflow_dispatch:
+    inputs:
+      windows_installer:
+        description: Build and test an unsigned Windows x64 CPU installer
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -80,8 +85,30 @@ jobs:
         run: npm run build
 
       - name: Link development-flavor Tauri application without bundling
-        if: matrix.linked
+        if: matrix.linked && !inputs.windows_installer
         run: npm run tauri -- build --debug --no-bundle --ci --config src-tauri/tauri.dev.conf.json -- --locked
+
+      - name: Build unsigned Windows x64 CPU installer
+        if: matrix.linked && inputs.windows_installer
+        run: npm run tauri -- build --ci --bundles nsis -- --locked
+
+      - name: Inspect and stage Windows installer
+        id: windows_package
+        if: matrix.linked && inputs.windows_installer
+        run: npm run package:check && npm run package:smoke -- windows-x64
+
+      - name: Validate installed Windows lifecycle
+        if: matrix.linked && inputs.windows_installer
+        run: npm run package:installed-smoke -- windows-x64
+
+      - name: Upload inspected Windows test installer
+        if: ${{ !cancelled() && steps.windows_package.outcome == 'success' }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: graphite-windows-x64-unsigned-experiment
+          path: artifacts/package-smoke/windows-x64/
+          if-no-files-found: error
+          retention-days: 7
 
       - name: Check all Rust targets without linking ONNX Runtime
         if: ${{ !matrix.linked }}

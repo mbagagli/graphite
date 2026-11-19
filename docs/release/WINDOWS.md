@@ -15,10 +15,9 @@ a clean native system and the distribution policy is settled.
 ## Existing starting point
 
 The `Native compatibility` workflow checks Windows x64 on `windows-2025`,
-independently of Linux/macOS releases. It links the development application
-without an installer. `src-tauri/tauri.windows.conf.json` already selects
-NSIS, and both package inspection and installed-runtime scripts contain a
-`windows-x64` branch. These are starting points, not verified release support.
+independently of Linux/macOS releases. Its regular run links the development
+application. The manual `windows_installer` input uses NSIS and the existing
+`windows-x64` inspection and installed-runtime checks.
 
 The release build wrapper currently accepts only Linux x64 and Apple
 Silicon. Candidate assembly, draft uploads and website availability also
@@ -26,10 +25,17 @@ describe only those two platforms.
 
 ## First Windows installer experiment
 
-Start with native Windows x64 and CPU answer generation. Do not add CUDA
-or Vulkan to the first installer experiment. The locked Windows ONNX
+Start with native Windows x64 and CPU answer generation. The locked Windows ONNX
 dependency enables DirectML; inspect its actual runtime dependencies even
 when answer generation uses CPU.
+
+Use **Run workflow** on **Native compatibility** and enable
+`windows_installer` on the branch containing the changes. The workflow
+builds an unsigned NSIS installer, inspects its contents, and exercises its
+installed lifecycle on the hosted runner. A successful inspection makes
+the installer and checksums available as the
+`graphite-windows-x64-unsigned-experiment` artifact for seven days. Check the
+lifecycle step separately before using that artifact for desktop acceptance.
 
 Use a disposable Windows host with the repository's pinned Node/npm and
 Rust versions, Microsoft C++ Build Tools, WebView2, CMake and LLVM/libclang.
@@ -57,9 +63,8 @@ rejects Windows.
 
 ## Enablement sequence
 
-1. Add a manually dispatched Windows packaging experiment using the command
-   above, separate from public release assembly. Retain the inspected NSIS
-   installer and checksums for testing.
+1. Run the manual packaging experiment. Retain the inspected NSIS installer
+   and checksums for testing.
 2. Inspect the executable's DLL dependencies and ship required redistributable
    components. Validate the ONNX/DirectML runtime on a clean host rather than
    relying on libraries already installed on the build runner. Decide whether
@@ -78,6 +83,8 @@ rejects Windows.
    availability together. Only then advertise a Windows download. Keep the
    initial unsigned distribution explicit; signing is a separate decision.
 
-Passing hosted startup checks does not establish GPU inference or every
-desktop/WebView2 configuration. Add GPU support after the CPU installer has
-a reproducible install, application and upgrade baseline.
+After the CPU installer has a reproducible install, application and upgrade
+baseline, test a CUDA build on a Windows NVIDIA host. Check that the package
+includes the necessary CUDA redistributable DLLs and that Graphite still
+launches and answers on a machine without an NVIDIA driver. Validate the two
+paths before making CUDA part of the standard Windows installer.
