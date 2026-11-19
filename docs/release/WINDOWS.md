@@ -1,16 +1,15 @@
-# Windows support status
+# Windows x64 beta
 
-Windows is currently unavailable. We are working on support; no release
-date or supported installer is announced.
+The first Windows beta uses the CPU for built-in answer generation, including
+on computers with NVIDIA GPUs. Use **Auto** or **CPU** in the local model
+settings. The model runs offline after you download it in Graphite.
 
-The current release targets Linux x64 and macOS Apple Silicon. See
-[installation and verification](BUILD.md) for their requirements.
-
-The repository retains Windows-specific configuration and a native compile
-lane for development. A successful compile does not establish installer,
-WebView2, local-model, PDF, upgrade or uninstall compatibility. Windows will
-be added to the release matrix only after those workflows are validated on
-a clean native system and the distribution policy is settled.
+[Find your beta](https://github.com/mbagagli/graphite/releases) and look for
+the `Graphite_<version>_x64-setup.exe` asset on a published release.
+Check its SHA-256 against the release's `SHA256SUMS.txt` before running the
+unsigned NSIS installer. Setup may need internet access if Microsoft
+Edge WebView2 Runtime is missing. Published releases list their available
+platform assets.
 
 ## Existing starting point
 
@@ -19,9 +18,9 @@ independently of Linux/macOS releases. Its regular run links the development
 application. The manual `windows_installer` input uses NSIS and the existing
 `windows-x64` inspection and installed-runtime checks.
 
-The release build wrapper currently accepts only Linux x64 and Apple
-Silicon. Candidate assembly, draft uploads and website availability also
-describe only those two platforms.
+The release workflow builds its Windows x64 candidate on `windows-2025`,
+then runs the same inspection and installed lifecycle before including it
+in the release draft. See the [release workflow](BUILD.md).
 
 ## First Windows installer experiment
 
@@ -61,7 +60,7 @@ expected directory. Inspection requires 7-Zip on PATH. Do not use
 `npm run package:build` for this experiment: its current platform guard
 rejects Windows.
 
-## Enablement sequence
+## Beta acceptance
 
 1. Run the manual packaging experiment. Retain the inspected NSIS installer
    and checksums for testing.
@@ -78,10 +77,8 @@ rejects Windows.
    semantic indexing, CPU answers and reopening saved research. Check paths
    containing spaces/non-ASCII characters and both existing storage layouts.
    Test upgrade from an earlier candidate as well as reinstalling one build.
-5. Once accepted, extend `build-release.mjs`, the package workflow,
-   `release-candidate.mjs`, draft asset uploads, their tests, and website
-   availability together. Only then advertise a Windows download. Keep the
-   initial unsigned distribution explicit; signing is a separate decision.
+5. Publish the release draft after the exact Windows installer completes
+   acceptance. Check the asset and checksum on the public Releases page.
 
 After the CPU installer has a reproducible install, application and upgrade
 baseline, test a CUDA build on a Windows NVIDIA host. Check that the package

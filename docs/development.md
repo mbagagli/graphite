@@ -455,9 +455,9 @@ main, pull requests and manual dispatch. It is not called by the release:
 - Windows Server 2025 x64: linked Tauri debug/no-bundle build.
 - macOS 15 Intel x64: frontend build and native all-target Cargo check only.
 
-Windows is currently unavailable to users. The compatibility lane is
-development coverage, not a Windows release. See the
-[Windows enablement plan](release/WINDOWS.md).
+Windows x64 beta packaging and installed lifecycle checks run in the
+native package workflow. The compatibility lane also covers development
+builds. See the [Windows beta notes](release/WINDOWS.md).
 
 Website build, screenshot provenance and `npm run test:site` belong to the
 Pages workflow. `npm test` covers application, packaging and comparison

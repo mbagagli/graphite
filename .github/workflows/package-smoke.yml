@@ -41,6 +41,9 @@ jobs:
           - name: Unsigned package (macOS ARM64)
             platform: macos-arm64
             runner: macos-15
+          - name: Unsigned CPU package (Windows x64)
+            platform: windows-x64
+            runner: windows-2025
 
     steps:
       - name: Check out repository
@@ -90,6 +93,17 @@ jobs:
       - name: Activate the repository Rust toolchain
         run: rustup show active-toolchain
 
+      - name: Configure Windows packaging tools
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $clang = Get-Command clang.exe -ErrorAction Stop
+          "LIBCLANG_PATH=$($clang.Source | Split-Path)" >> $env:GITHUB_ENV
+          $sevenZip = Join-Path $env:ProgramFiles "7-Zip"
+          if (Test-Path (Join-Path $sevenZip "7z.exe")) {
+            $sevenZip >> $env:GITHUB_PATH
+          }
+
       - name: Set up pinned npm
         run: npm install --global npm@11.17.0
 
@@ -112,7 +126,12 @@ jobs:
         run: npm run check:publication && npm run check:privacy
 
       - name: Run application and packaging tests
+        if: runner.os != 'Windows'
         run: npm run test:unit
+
+      - name: Run Windows-compatible packaging tests
+        if: runner.os == 'Windows'
+        run: npm exec -- vitest run scripts/package-runtime-check.test.mjs scripts/release-candidate.test.mjs
 
       - name: Read release version
         id: version
@@ -124,7 +143,12 @@ jobs:
         run: npm run cuda:prepare
 
       - name: Build unsigned native packages
+        if: runner.os != 'Windows'
         run: npm run package:build
+
+      - name: Build unsigned Windows CPU installer
+        if: runner.os == 'Windows'
+        run: npm run tauri -- build --ci --bundles nsis -- --locked
 
       - name: Inspect and stage unsigned packages
         id: inspect_packages

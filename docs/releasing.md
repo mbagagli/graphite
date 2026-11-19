@@ -1,11 +1,10 @@
 # Packaging and installed-runtime validation
 
 The current release contract is in [Build and publication](release/BUILD.md).
-It uses version 0.3.4 and prepares Linux x64 DEB/AppImage and macOS Apple
-Silicon DMG candidates. Windows is currently unavailable; we are working
-on support. See the [Windows status](release/WINDOWS.md). Build and test the
-exact versioned artifacts before publishing; earlier packages do not validate
-changed source.
+It uses version 0.3.4 and prepares Linux x64 DEB/AppImage, macOS Apple
+Silicon DMG and Windows x64 NSIS candidates. The first
+[Windows beta](release/WINDOWS.md) uses CPU for built-in answers.
+Build and test the exact versioned artifacts before publishing.
 
 Packages use GNU GPL version 3 (`GPL-3.0-only`) and carry the repository
 LICENSE. Metadata uses the neutral Graphite identity. The candidate workflow
@@ -42,6 +41,8 @@ packages, checksums, and synthetic metadata below the ignored
 `artifacts/package-smoke/` directory. Raw bundles are below the ignored
 `.cache/cargo-target/release/bundle/` directory.
 
+On Windows x64, use the [Windows NSIS build and inspection commands](release/WINDOWS.md).
+
 Package inspection checks formats, architecture, native dependencies, licenses,
 and the exclusion of databases, models, profiles and development resources.
 Credential and private-path checks apply to bounded text resources; compiled
@@ -53,7 +54,7 @@ Text failures report categories without printing matched values.
 `package:check` owns version and bundle-configuration checks. CI runs the
 application and packaging tests; the Pages workflow owns `test:site` and
 screenshot provenance. Windows and Intel macOS development checks run in
-`native-compatibility.yml`, independently of the Linux/Apple Silicon release.
+`native-compatibility.yml`, independently of release packaging.
 
 Both macOS smoke checks mount the DMG read-only in a dedicated temporary
 directory. They retry normal unmounting up to three times and verify that the

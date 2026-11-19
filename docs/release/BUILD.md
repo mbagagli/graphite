@@ -30,6 +30,7 @@ third-party obligations.
 | ------------------- | ----------------- | ----------------------------------------------------------- | ----------------------------------------------------- |
 | Linux x64           | Ubuntu 24.04      | `Graphite_0.3.4_amd64.deb`, `Graphite_0.3.4_amd64.AppImage` | Current package build and installed lifecycle pending |
 | macOS Apple Silicon | macOS 15          | `Graphite_0.3.4_aarch64.dmg`                                | Native build/install/launch unverified here           |
+| Windows x64 beta    | Windows Server 2025 | `Graphite_0.3.4_x64-setup.exe`                             | CPU inference and clean desktop acceptance pending   |
 
 These are candidate targets, not a claim of completed platform acceptance.
 Linux binaries inherit the build host's glibc/system-library constraints;
@@ -43,11 +44,14 @@ works on macOS 11. The interface requires Safari/WebKit 15.4 or newer for native
 The proposed tested baseline is macOS 15; minimum-runtime
 acceptance on an older OS is unverified. The locked `ort-sys` distribution
 contains an ARM Darwin CoreML archive and no Intel Darwin archive. Intel
-macOS and universal packages are not advertised. Linux ARM is not part of
-the existing release matrix. Windows is currently unavailable; we are working on
-[support](WINDOWS.md).
+macOS and universal packages are not advertised. Linux ARM is outside the
+release matrix. The [Windows x64 beta](WINDOWS.md) uses CPU for built-in
+answers.
 
 ## Reproduction and installation
+
+[Find your beta](https://github.com/mbagagli/graphite/releases) for published
+installers and checksums. Check the Assets list for your platform.
 
 Read `docs/development.md` for native prerequisites. Use Node.js 24.19.0,
 npm 11.17.0, Rust 1.97.1, and the committed locks. Run:
@@ -73,6 +77,9 @@ Package validation checks native dependencies, required resources, licenses,
 installation and startup. Private-path and credential checks cover source and
 packaged text resources; arbitrary strings inside compiled binaries are not a
 release gate. See the [inspection boundary](SECURITY.md#boundary-checks).
+
+On a Windows x64 build host, use the NSIS commands in the
+[Windows beta notes](WINDOWS.md).
 
 For a clean disposable Linux host, install the DEB using the native package
 manager, then start Graphite from the desktop menu. AppImage is portable:
@@ -100,15 +107,14 @@ workflows. Actions are pinned to full revisions, artifacts are temporary,
 and installers use versioned checksums. A version-tag push starts validation,
 packaging and creation of an unpublished release draft. Public publication
 remains manual. Ordinary CI and pull requests perform validation only.
-The release requires application CI and both distributed platforms. Website
-build/tests and Windows/Intel macOS compatibility checks run independently;
-they do not block creation of the Linux/Apple Silicon draft.
+The release requires application CI and all three package jobs. Website
+build/tests and development compatibility checks run independently.
 
 `package-smoke.yml` runs on explicit `workflow_dispatch` or as a reusable
 workflow called by `release.yml`. It validates
 frontend/version metadata, builds native packages, inspects contents, and
 runs the guarded install/remove/reinstall lifecycle. Upload names include
-the version and platform. Candidate assembly requires both platforms,
+the version and platform. Candidate assembly requires all three platforms,
 rechecks every checksum, records `GITHUB_SHA`, and keeps `publicRelease`
 and `signed` false. Package jobs have read-only repository permissions.
 
@@ -134,19 +140,20 @@ chosen deliberately, because its URL becomes visible in page links.
 
 1. Commit the intended public source, including the workflow files and both
    dependency lockfiles. Publication and privacy checks must pass first.
-2. Set the release version with `npm run version:set -- 0.3.4`, review the
-   versioned release docs, and commit the resulting files. Screenshot
-   provenance is validated separately by the Pages workflow.
-3. Create and push the matching version tag, for example `v0.3.4`. This starts
+2. Set an unused release version with `npm run version:set -- 0.3.5` (example).
+   Review the versioned release docs and commit the resulting files.
+   The Pages workflow validates screenshot provenance separately.
+3. Create and push the matching version tag, for example `v0.3.5`. This starts
    **Actions > Release installers**. The tag must match all app manifests.
    To retry an existing tag, rerun its workflow or dispatch Release installers
    with that tag as the ref. A branch ref is deliberately rejected; use the
    package smoke workflow for branch-only builds.
-4. The workflow runs application CI, then reuses the Linux/macOS package
-   and installed-runtime checks. Both platforms must succeed before it
+4. The workflow runs application CI, then reuses the Linux, macOS and Windows
+   package and installed-runtime checks. All three jobs must succeed before it
    assembles the candidate and creates a GitHub release draft.
 5. Open the draft under **Releases**. It contains the DEB, AppImage, Apple
-   Silicon DMG, `SHA256SUMS.txt`, and `release-manifest.json`. Review the
+   Silicon DMG, Windows x64 NSIS setup, `SHA256SUMS.txt`, and
+   `release-manifest.json`. Review the
    release notes, corresponding source, third-party notices and native
    acceptance evidence before manually publishing it.
 
@@ -177,7 +184,7 @@ and [draft release CLI options](https://cli.github.com/manual/gh_release_create)
 A package that passes structural inspection is retained even if its
 later install/launch check fails. Read the job result before treating
 that artifact as accepted. The combined release candidate is uploaded
-only when both platform jobs and the aggregate checks pass. macOS
+only when all platform jobs and the aggregate checks pass. macOS
 compilation and acceptance require successful results from the native job
 and the first-launch check above.
 
@@ -190,7 +197,7 @@ Before publication, the owner must:
    run `npm run check:publication` and the [privacy checks](SECURITY.md).
    Ignore rules do not remove files already tracked in an older checkout.
    Review the version, license obligations, test evidence and source revision.
-2. Run the manual native workflow from that reviewed revision; verify both
+2. Run the manual native workflow from that reviewed revision and verify all
    targets on clean hosts, including Help/About, Zotero access, the real demo,
    year navigation, document rendering, and citations.
 3. Verify the macOS ad-hoc package and first-launch instructions without
@@ -202,9 +209,9 @@ Before publication, the owner must:
 5. Preview Pages, confirm the correct repository and links, then dispatch
    Pages with publication enabled. Check download URLs after publication.
 
-Release download links become usable only after the matching release assets
-are published. Check their availability and checksums before announcing the
-release.
+**Find your beta** links to the GitHub Releases page. Check that its
+published Assets list includes each installer and the matching checksums
+before announcing the release.
 
 ## Rollback
 

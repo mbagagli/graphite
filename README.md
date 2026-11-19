@@ -5,7 +5,11 @@
 Explore your Zotero library as a research graph, read the original papers,
 and ask questions with traceable local evidence.
 
-[Website](https://mbagagli.github.io/graphite/) | [User manual](https://mbagagli.github.io/graphite/manual.html) | [First-use tutorial](https://mbagagli.github.io/graphite/tutorial.html) | [Installation](docs/release/BUILD.md)
+[Find your beta](https://github.com/mbagagli/graphite/releases) | [Website](https://mbagagli.github.io/graphite/) | [User manual](https://mbagagli.github.io/graphite/manual.html) | [First-use tutorial](https://mbagagli.github.io/graphite/tutorial.html)
+
+The first Windows x64 beta uses CPU for built-in answer generation.
+See the [Windows beta notes](docs/release/WINDOWS.md) for installation and
+the [installation guide](docs/release/BUILD.md) for platform requirements.
 
 ![Graphite's dark research workspace with the real 60-paper demo](website/assets/workspace.png)
 
