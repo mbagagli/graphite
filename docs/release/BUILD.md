@@ -26,11 +26,11 @@ third-party obligations.
 
 ## Proposed native matrix
 
-| Target              | Native build host | Candidate files                                             | Runtime acceptance                                    |
-| ------------------- | ----------------- | ----------------------------------------------------------- | ----------------------------------------------------- |
-| Linux x64           | Ubuntu 24.04      | `Graphite_0.3.4_amd64.deb`, `Graphite_0.3.4_amd64.AppImage` | Current package build and installed lifecycle pending |
-| macOS Apple Silicon | macOS 15          | `Graphite_0.3.4_aarch64.dmg`                                | Native build/install/launch unverified here           |
-| Windows x64 beta    | Windows Server 2025 | `Graphite_0.3.4_x64-setup.exe`                             | CPU inference and clean desktop acceptance pending   |
+| Target              | Native build host   | Candidate files                                             | Runtime acceptance                                    |
+| ------------------- | ------------------- | ----------------------------------------------------------- | ----------------------------------------------------- |
+| Linux x64           | Ubuntu 24.04        | `Graphite_0.3.4_amd64.deb`, `Graphite_0.3.4_amd64.AppImage` | Current package build and installed lifecycle pending |
+| macOS Apple Silicon | macOS 15            | `Graphite_0.3.4_aarch64.dmg`                                | Native build/install/launch unverified here           |
+| Windows x64 beta    | Windows Server 2025 | `Graphite_0.3.4_x64-setup.exe`                              | CPU inference and clean desktop acceptance pending    |
 
 These are candidate targets, not a claim of completed platform acceptance.
 Linux binaries inherit the build host's glibc/system-library constraints;
@@ -137,6 +137,11 @@ name; local previews default to `/graphite/`. The public repository must be
 chosen deliberately, because its URL becomes visible in page links.
 
 ### Build installers and create a release draft
+
+Before bumping the version, use **Unsigned package and installed runtime
+smoke** on the reviewed branch to check all three installers. This branch
+run stages temporary artifacts without creating a release draft or
+deploying the website.
 
 1. Commit the intended public source, including the workflow files and both
    dependency lockfiles. Publication and privacy checks must pass first.

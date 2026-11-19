@@ -50,6 +50,8 @@ binaries are not scanned for arbitrary identity or credential-like strings.
 Upstream libraries can retain their producer's build paths. Compiler path
 remapping remains best-effort hygiene, not a release acceptance requirement.
 Text failures report categories without printing matched values.
+Windows inspection checks the executable's PE imports and rejects CUDA
+dependencies in the CPU beta.
 
 `package:check` owns version and bundle-configuration checks. CI runs the
 application and packaging tests; the Pages workflow owns `test:site` and
@@ -65,6 +67,7 @@ no forced unmount or skipped package check is used.
 
 macOS dependency inspection accepts Apple's system SQLite library under
 `/usr/lib/`, while still rejecting external copies of the checked runtimes.
+The DMG inspector checks the app's ad-hoc signature with `codesign`.
 Installed-startup failures include captured standard output and error output,
 including timeouts. If process termination also fails, both errors remain
 visible. A vanished unrelated volume does not prevent DMG cleanup; other

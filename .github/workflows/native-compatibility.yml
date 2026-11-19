@@ -65,12 +65,16 @@ jobs:
           cmake --version
           clang --version
 
-      - name: Resolve libclang from PATH on Windows
+      - name: Configure Windows packaging tools
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
           $clang = Get-Command clang.exe -ErrorAction Stop
           "LIBCLANG_PATH=$($clang.Source | Split-Path)" >> $env:GITHUB_ENV
+          $sevenZip = Join-Path $env:ProgramFiles "7-Zip"
+          if (Test-Path (Join-Path $sevenZip "7z.exe")) {
+            $sevenZip >> $env:GITHUB_PATH
+          }
 
       - name: Configure the macOS deployment target
         if: runner.os == 'macOS'

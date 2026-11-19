@@ -38,8 +38,16 @@ describe("release workflow trust boundaries", () => {
     );
   });
 
-  it("requires validation and both native packages before creating a draft", async () => {
+  it("requires validation and all native packages before creating a draft", async () => {
     const source = await workflow("release");
+    const packages = await workflow("package-smoke");
+    for (const platform of ["linux-x64", "macos-arm64", "windows-x64"]) {
+      expect(packages).toContain(`platform: ${platform}`);
+    }
+    expect(packages).toContain(
+      "npm run tauri -- build --ci --bundles nsis -- --locked",
+    );
+    expect(packages).toContain("needs: package");
     expect(source).toContain('tags:\n      - "v*"');
     expect(source).not.toContain("pull_request:");
     expect(source).toContain(
@@ -59,6 +67,14 @@ describe("release workflow trust boundaries", () => {
     expect(draft).toContain("--verify-tag --draft");
     expect(draft).toContain("Refusing to overwrite a published release.");
     expect(draft).toContain("sha256sum --check --strict SHA256SUMS.txt");
+    for (const suffix of [
+      "amd64.deb",
+      "amd64.AppImage",
+      "aarch64.dmg",
+      "x64-setup.exe",
+    ]) {
+      expect(draft).toContain(`Graphite_${"${VERSION}"}_${suffix}`);
+    }
     expect(draft).toContain(".sourceRevision == $revision");
     expect(await workflow("ci")).toContain("  workflow_call:");
     expect(await workflow("ci")).not.toContain("npm run site:build");

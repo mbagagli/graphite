@@ -99,10 +99,10 @@ to retry device initialization. Native process aborts require restarting.
 Set these environment variables before launching Graphite to configure a
 built-in model for the lifetime of that process:
 
-| Variable | Behavior |
-| --- | --- |
-| `GRAPHITE_GPU_BACKEND` | `auto` (default), `cuda`, or `metal`. A named backend requires a usable device for that backend and disables automatic CPU fallback. |
-| `GRAPHITE_GPU_LAYERS` | Positive layer limit, for example `12`. Without a limit, Graphite requests full offload. With a limit, Graphite still checks the 512 MiB reserve when memory is reported, and llama.cpp verifies the actual allocations. |
+| Variable               | Behavior                                                                                                                                                                                                                 |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `GRAPHITE_GPU_BACKEND` | `auto` (default), `cuda`, or `metal`. A named backend requires a usable device for that backend and disables automatic CPU fallback.                                                                                     |
+| `GRAPHITE_GPU_LAYERS`  | Positive layer limit, for example `12`. Without a limit, Graphite requests full offload. With a limit, Graphite still checks the 512 MiB reserve when memory is reported, and llama.cpp verifies the actual allocations. |
 
 The saved CPU mode takes precedence over both variables. Invalid overrides
 appear in runtime diagnostics and fail managed GPU requests. Lower the layer

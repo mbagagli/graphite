@@ -19,7 +19,11 @@ import { arch, homedir, hostname, release, tmpdir } from "node:os";
 import { basename, dirname, extname, join, relative, resolve } from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
-import { assertNoCustomDynamicRuntime } from "./package-runtime-check.mjs";
+import {
+  assertNoCustomDynamicRuntime,
+  assertWindowsCpuImports,
+  isWindowsCudaLibrary,
+} from "./package-runtime-check.mjs";
 import { withMountedDmg } from "./mounted-dmg.mjs";
 import { privacyFindings } from "./privacy-check.mjs";
 
@@ -485,14 +489,23 @@ async function inspectWindows(artifacts, scratchDirectory) {
   await assertProjectLicense(entries);
   const executable = findApplicationExecutable(entries, "graphite.exe");
   await assertPeX64(executable);
-
-  const unexpectedSidecars = entries.filter(
-    (entry) =>
-      entry.type === "file" &&
-      /(?:onnxruntime|llama|usearch|onig|sqlite3).*\.dll$/i.test(
-        basename(entry.relativePath),
-      ),
+  assertWindowsCpuImports(
+    runFirstAvailable(
+      ["llvm-objdump.exe", "llvm-objdump", "objdump"],
+      ["-p", executable],
+      {},
+      "inspect the Windows executable's DLL imports",
+    ),
   );
+
+  const unexpectedSidecars = entries.filter((entry) => {
+    if (entry.type !== "file") return false;
+    const name = basename(entry.relativePath);
+    return (
+      /(?:onnxruntime|llama|usearch|onig|sqlite3).*\.dll$/i.test(name) ||
+      isWindowsCudaLibrary(name)
+    );
+  });
   assert(
     unexpectedSidecars.length === 0,
     "NSIS unexpectedly contains custom native runtime sidecars: " +
@@ -514,6 +527,12 @@ async function inspectMacos(artifacts) {
       `DMG must contain exactly one application bundle; found ${appDirectories.length}.`,
     );
     const appRoot = appDirectories[0].absolutePath;
+    runCommand("codesign", ["--verify", "--deep", "--strict", appRoot]);
+    const signature = runCommand("codesign", ["-dv", "--verbose=4", appRoot]);
+    assert(
+      /^Signature=adhoc\s*$/m.test(signature),
+      "DMG application must carry the configured ad-hoc signature.",
+    );
     const infoPlist = resolve(appRoot, "Contents/Info.plist");
     const identifier = runCommand("plutil", [
       "-extract",
@@ -638,7 +657,9 @@ async function main() {
         nativeRuntimeModel:
           target === "linux-x64"
             ? "Bundled CUDA inference runtime and application-linked CPU companion; no driver bundled"
-            : "Application-linked native inference (Metal on macOS), indexing, tokenization, and SQLite code",
+            : target === "windows-x64"
+              ? "Application-linked CPU inference, indexing, tokenization, and SQLite code"
+              : "Application-linked Metal and CPU inference, indexing, tokenization, and SQLite code",
         packages,
       },
       null,

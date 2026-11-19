@@ -28,13 +28,15 @@ Start with native Windows x64 and CPU answer generation. The locked Windows ONNX
 dependency enables DirectML; inspect its actual runtime dependencies even
 when answer generation uses CPU.
 
-Use **Run workflow** on **Native compatibility** and enable
-`windows_installer` on the branch containing the changes. The workflow
-builds an unsigned NSIS installer, inspects its contents, and exercises its
-installed lifecycle on the hosted runner. A successful inspection makes
-the installer and checksums available as the
-`graphite-windows-x64-unsigned-experiment` artifact for seven days. Check the
-lifecycle step separately before using that artifact for desktop acceptance.
+Before tagging, run **Unsigned package and installed runtime smoke** on the
+reviewed branch. It checks Linux, macOS, and Windows and uploads each
+inspected installer with its checksum. Check the Windows lifecycle result
+before using the artifact for desktop acceptance.
+
+For a Windows-only run, use **Native compatibility** with
+`windows_installer` enabled once that workflow is registered on the
+repository's default branch. It uploads the inspected installer and
+checksums as `graphite-windows-x64-unsigned-experiment` for seven days.
 
 Use a disposable Windows host with the repository's pinned Node/npm and
 Rust versions, Microsoft C++ Build Tools, WebView2, CMake and LLVM/libclang.
@@ -55,23 +57,22 @@ npm run package:smoke -- windows-x64
 
 These are proposed validation commands, not a record of a successful run.
 The native build uses the Windows platform configuration automatically.
-Omitting an explicit target keeps output in the existing package inspector's
-expected directory. Inspection requires 7-Zip on PATH. Do not use
+Omitting an explicit target keeps output in the package inspector's expected
+directory. Inspection requires 7-Zip and LLVM's `llvm-objdump` (or a PE-capable
+`objdump`) on PATH. Do not use
 `npm run package:build` for this experiment: its current platform guard
 rejects Windows.
 
 ## Beta acceptance
 
-1. Run the manual packaging experiment. Retain the inspected NSIS installer
+1. Run a hosted packaging check. Retain the inspected NSIS installer
    and checksums for testing.
-2. Inspect the executable's DLL dependencies and ship required redistributable
-   components. Validate the ONNX/DirectML runtime on a clean host rather than
-   relying on libraries already installed on the build runner. Decide whether
-   WebView2 is downloaded during setup or included for offline installation.
-3. Run `npm run package:installed-smoke -- windows-x64` on a clean hosted
-   Actions runner after inspection. It checks first launch, state isolation,
-   uninstall/reinstall and state preservation. Keep its runner guards; do not
-   enable them artificially on a personal Windows profile.
+2. Check the installer inspection results. The inspector checks the x64
+   executable's DLL imports and rejects separately distributed inference
+   runtimes and CUDA DLLs. Validate ONNX and its system dependencies on a clean
+   host. Check that setup can provision WebView2 when needed.
+3. Check that the hosted installed-runtime step passed. It checks first
+   launch, state isolation, uninstall/reinstall and state preservation.
 4. Test the exact installer on a clean Windows desktop: graph rendering,
    PDF reading/export, read-only Zotero access, explicit model download,
    semantic indexing, CPU answers and reopening saved research. Check paths
