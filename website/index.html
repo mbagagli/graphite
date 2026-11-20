@@ -280,21 +280,28 @@
           <div>
             <p>
               Check GitHub Releases for published installers, release notes, and
-              checksums. The Windows x64 beta uses CPU for built-in answers.
+              checksums.
             </p>
             <a class="button" href="__RELEASES__">Find your beta</a>
           </div>
         </div>
         <div class="downloads">
           <div>
-            <strong>Linux</strong><span>x64 &middot; DEB or AppImage</span>
+            <strong>Linux</strong
+            ><span
+              >x64 &middot; DEB or AppImage<br />NVIDIA CUDA with CPU
+              fallback</span
+            >
           </div>
           <div>
-            <strong>macOS</strong><span>Apple Silicon &middot; DMG</span>
+            <strong>macOS</strong
+            ><span
+              >Apple Silicon &middot; DMG<br />Metal with CPU fallback</span
+            >
           </div>
           <div>
             <strong>Windows beta</strong
-            ><span>x64 &middot; NSIS &middot; CPU inference</span>
+            ><span>x64 &middot; NSIS<br />CPU for built-in answers</span>
           </div>
         </div>
         <div class="install-notes">
@@ -311,9 +318,8 @@
           <div>
             <h3>macOS Apple Silicon</h3>
             <p>
-              Open the disk image and drag Graphite into Applications. macOS
-              releases are unsigned and unnotarized, with a local ad-hoc
-              signature. Apple does not verify the publisher.
+              Open the disk image and drag Graphite into Applications. The app
+              carries an ad-hoc signature and is not notarized.
             </p>
             <p>
               Check the release source and checksum before opening. If macOS

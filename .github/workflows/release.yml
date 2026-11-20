@@ -78,10 +78,11 @@ jobs:
           Graphite release candidate for Linux x64, macOS Apple Silicon,
           and Windows x64.
 
-          Linux includes DEB and AppImage installers. macOS includes an ad-hoc
-          signed DMG without Apple notarization. The Windows x64 beta includes
-          an unsigned NSIS installer and runs built-in answer generation on CPU.
-          Intel Mac installers are not provided.
+          Linux DEB and AppImage packages offer NVIDIA CUDA with CPU fallback.
+          The Apple Silicon DMG offers Metal with CPU fallback. The Mac app
+          carries an ad-hoc signature and is not notarized. The Windows x64
+          beta includes an unsigned NSIS installer and generates built-in
+          answers on CPU.
 
           Review the changes, native acceptance results, license notices and
           known limitations before publishing this draft. On a clean Mac, also

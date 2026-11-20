@@ -2,11 +2,11 @@
 
 ## Version and license
 
-The current version **0.3.4** is authoritative in `package.json`.
+The current version **0.3.5** is authoritative in `package.json`.
 No compatibility or stable-release claim is added by retaining it.
 
 ```bash
-npm run version:set -- 0.3.4
+npm run version:set -- 0.3.5
 npm run version:check
 ```
 
@@ -27,13 +27,14 @@ third-party obligations.
 
 ## Proposed native matrix
 
-| Target              | Native build host   | Candidate files                                             | Runtime acceptance                                    |
-| ------------------- | ------------------- | ----------------------------------------------------------- | ----------------------------------------------------- |
-| Linux x64           | Ubuntu 24.04        | `Graphite_0.3.4_amd64.deb`, `Graphite_0.3.4_amd64.AppImage` | Current package build and installed lifecycle pending |
-| macOS Apple Silicon | macOS 15            | `Graphite_0.3.4_aarch64.dmg`                                | Native build/install/launch unverified here           |
-| Windows x64 beta    | Windows Server 2025 | `Graphite_0.3.4_x64-setup.exe`                              | CPU inference and clean desktop acceptance pending    |
+| Target              | Native build host   | Candidate files                                             | Built-in answer inference     |
+| ------------------- | ------------------- | ----------------------------------------------------------- | ----------------------------- |
+| Linux x64           | Ubuntu 24.04        | `Graphite_0.3.5_amd64.deb`, `Graphite_0.3.5_amd64.AppImage` | NVIDIA CUDA with CPU fallback |
+| macOS Apple Silicon | macOS 15            | `Graphite_0.3.5_aarch64.dmg`                                | Apple Metal with CPU fallback |
+| Windows x64 beta    | Windows Server 2025 | `Graphite_0.3.5_x64-setup.exe`                              | CPU                           |
 
-These are candidate targets, not a claim of completed platform acceptance.
+The host column lists the CI build environments. Before publishing, verify
+installation, first launch, and local inference with the exact installers.
 Linux binaries inherit the build host's glibc/system-library constraints;
 do not advertise older distributions without native verification. Tauri
 uses WebKitGTK 4.1 and GTK 3. DEB declares system dependencies; AppImage
@@ -86,10 +87,8 @@ For a clean disposable Linux host, install the DEB using the native package
 manager, then start Graphite from the desktop menu. AppImage is portable:
 mark it executable and run it; if FUSE is unavailable, explicitly test
 `APPIMAGE_EXTRACT_AND_RUN=1`. On a disposable Mac, mount the DMG and copy
-Graphite.app into Applications. macOS releases are unsigned and unnotarized
-by design. A free local ad-hoc signature supports Apple Silicon; it does not
-identify an Apple-verified publisher. No Apple account or paid certificate
-is required. The build wrapper omits inherited Apple credentials and keeps
+Graphite.app into Applications. The app carries an ad-hoc signature and is
+not notarized. The build wrapper omits inherited Apple credentials and keeps
 Metal enabled. See [the signing policy](../../CODE_SIGNING_POLICY.md).
 
 After checking the release source and SHA-256, try opening Graphite. If
@@ -182,8 +181,8 @@ and [draft release CLI options](https://cli.github.com/manual/gh_release_create)
    select **Run workflow** for the reviewed branch.
 3. The macOS job uses the native Apple Silicon `macos-15` runner, checks
    Xcode/Clang and the SDK, activates `rust-toolchain.toml`, installs the
-   pinned Node/npm dependencies and compiles `Graphite_0.3.4_aarch64.dmg`.
-4. Download `graphite-0.3.4-unsigned-macos-arm64` from the run artifacts.
+   pinned Node/npm dependencies and compiles `Graphite_0.3.5_aarch64.dmg`.
+4. Download `graphite-0.3.5-unsigned-macos-arm64` from the run artifacts.
    It contains the DMG, checksums and build metadata. Artifacts remain
    available for seven days. No Apple signing credentials are needed.
 

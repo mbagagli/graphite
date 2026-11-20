@@ -7,9 +7,10 @@ and ask questions with traceable local evidence.
 
 [Find your beta](https://github.com/mbagagli/graphite/releases) | [Website](https://mbagagli.github.io/graphite/) | [User manual](https://mbagagli.github.io/graphite/manual.html) | [First-use tutorial](https://mbagagli.github.io/graphite/tutorial.html)
 
-The first Windows x64 beta uses CPU for built-in answer generation.
-See the [Windows beta notes](docs/release/WINDOWS.md) for installation and
-the [installation guide](docs/release/BUILD.md) for platform requirements.
+Graphite 0.3.5 targets Linux x64 (DEB or AppImage), macOS on Apple Silicon
+(DMG), and Windows x64 (NSIS beta). See the
+[installation guide](docs/release/BUILD.md) for platform requirements and the
+[Windows beta notes](docs/release/WINDOWS.md) for Windows setup.
 
 ![Graphite's dark research workspace with the real 60-paper demo](website/assets/workspace.png)
 
@@ -260,9 +261,10 @@ failure if a device cannot run the model. See
 [managed inference hardware](docs/development.md#managed-inference-hardware)
 for backend overrides and partial GPU offload.
 
-The standard Linux DEB/AppImage includes CUDA support and a CPU companion.
-The Apple Silicon DMG enables Metal. These packages need no development
-toolkit.
+The Linux x64 DEB and AppImage offer CUDA on compatible NVIDIA devices and
+include a CPU companion. The Apple Silicon DMG offers Metal and CPU inference.
+The Windows x64 beta uses CPU for built-in answers. These packages need no
+development toolkit.
 
 The square context slider offers Low, Medium (default), High, and Extra-High.
 It shows the actual token limit for the selected model: Medium is 4,096 for

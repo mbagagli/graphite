@@ -1,7 +1,7 @@
 {
   "name": "graphite",
   "private": true,
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Discover Knowledge with a local-first visual research environment",
   "license": "GPL-3.0-only",
   "type": "module",

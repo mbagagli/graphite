@@ -1,7 +1,7 @@
 # Packaging and installed-runtime validation
 
 The current release contract is in [Build and publication](release/BUILD.md).
-It uses version 0.3.4 and prepares Linux x64 DEB/AppImage, macOS Apple
+Version 0.3.5 prepares Linux x64 DEB/AppImage, macOS Apple
 Silicon DMG and Windows x64 NSIS candidates. The first
 [Windows beta](release/WINDOWS.md) uses CPU for built-in answers.
 Build and test the exact versioned artifacts before publishing.
@@ -13,8 +13,7 @@ The [release workflow](release/BUILD.md#build-installers-and-create-a-release-dr
 starts from a matching version tag, reuses CI and package validation, and
 attaches the verified installers to an unpublished GitHub release draft.
 Publishing that draft remains a manual owner action.
-macOS distribution is intentionally unsigned and unnotarized; a free local
-ad-hoc signature supports Apple Silicon without an Apple account. See the
+The macOS app carries an ad-hoc signature and is not notarized. See the
 [signing policy](../CODE_SIGNING_POLICY.md) and
 [first-launch instructions](release/BUILD.md#reproduction-and-installation).
 
